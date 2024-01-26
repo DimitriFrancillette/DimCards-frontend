@@ -1,8 +1,12 @@
 import React from 'react'
+import Header from "../components/Header";
 
 const CardsPage = () => {
   return (
-    <div>CardsPage</div>
+    <div>
+      <Header />      
+      CardsPage
+      </div>
   )
 }
 

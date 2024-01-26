@@ -1,8 +1,12 @@
 import React from 'react'
+import Header from "../components/Header";
 
 const DecksManagerPage = () => {
   return (
-    <div>DecksManagerPage</div>
+    <div>
+      <Header />
+      DecksManagerPage
+    </div>
   )
 }
 

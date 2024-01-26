@@ -6,7 +6,12 @@ export default function Home() {
   return (
     <div>
       <Header />
-      <h1>Hello World</h1>
+      <div className="flex justify-center mt-12">
+        <h1 className="text-5xl">Build your LoR Decks</h1>
+      </div>
+      <div className="flex justify-center mt-6">
+        <p className="font-semibold">Build you decks and craft your victory !</p>
+      </div>
     </div>
   );
 }

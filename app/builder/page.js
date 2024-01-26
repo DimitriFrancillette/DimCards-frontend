@@ -1,8 +1,12 @@
 import React from 'react'
+import Header from "../components/Header";
 
 const DeckBuilderPage = () => {
   return (
-    <div>DeckBuilderPage</div>
+    <div>
+      <Header />
+      DeckBuilderPage
+    </div>
   )
 }
 

@@ -1,13 +1,12 @@
 'use client'
 import React from 'react'
-import Header from "../components/Header";
 import { useState, useEffect } from 'react';
 import Image from "next/image";
 
 const CardsPage = () => {
   const [apiCards, setApiCards] = useState([]);
   const fakedata = ["01DE012T1", "01DE017", "01DE022T1", "01DE048", "01FR024T1", "01FR024T3", "01FR028", "01IO009T2", "01IO023", "01IO028T2", "01IO057", "01NX002", "01NX008", "01NX024", "01NX049", "01PZ008T2", "01PZ056T9", "01SI030", "01SI044", "01SI047"]
-
+ 
   // useEffect(() => {
 
   //   fetch('http://localhost:3000/cards')
@@ -39,7 +38,6 @@ const CardsPage = () => {
 
   return (
     <div>
-      <Header />
       <div className='flex'>
         {/* basis-4/6 for the right size with the left filter menu */}
         <div className='mt-6 px-4 basis-4/6'>

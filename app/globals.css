@@ -13,7 +13,11 @@
 }
 
 body {
+  min-height: 100vh;
   color: rgb(var(--foreground-rgb));
+  background-image:
+  url("../public/img/pattern.svg"),
+  linear-gradient(to bottom right, #0284C7, #82c0cc 55%);
 }
 
 @layer utilities {

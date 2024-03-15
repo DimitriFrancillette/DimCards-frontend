@@ -47,6 +47,7 @@ const CardsPage = () => {
             {cards}
           </div>
         </div>
+        
         {/* filter menu */}
         <div className='px-3 basis-2/6 bg-orange-300'>
           <div className='mt-6 flex justify-between'>

@@ -40,7 +40,7 @@ const CardsPage = () => {
     <div>
       <div className='flex'>
         {/* basis-4/6 for the right size with the left filter menu */}
-        <div className='mt-6 px-4 basis-4/6'>
+        <div className='pt-6 px-4 basis-4/6 h-screen overflow-x-auto'>
           <h2 className='text-5xl font-semibold'>Cards Gallery</h2>
           <p className='text-lg ml-2'>found 20 cards</p>
           <div className="flex flex-wrap justify-center mt-2">
@@ -49,7 +49,7 @@ const CardsPage = () => {
         </div>
 
         {/* filter menu */}
-        <div className='px-3 basis-2/6 bg-orange-300'>
+        <div className='px-3 basis-2/6 bg-orange-300 h-screen overflow-x-auto pb-6'>
           <div className='mt-6 flex justify-between'>
             <h3 className='text-2xl'>Filters</h3>
             <div>
@@ -65,49 +65,49 @@ const CardsPage = () => {
           <div className='flex justify-around'>
             <div>
               <div className='my-4 flex min-w-28'>
-                <Image className='mr-2' src={'/img/icon-bandlecity.png'} width={24} height={24} alt={"Bandle City Icone"} />
+                <Image className='mr-2' src={'/img/icon-bandlecity.png'} width={24} height={24} alt={"Bandle City Icon"} />
                 Bandle City
               </div>
               <div className='my-4 flex min-w-28'>
-                <Image className='mr-2' src={'/img/icon-bilgewater.png'} width={24} height={24} alt={"Bilgewater Icone"} />
+                <Image className='mr-2' src={'/img/icon-bilgewater.png'} width={24} height={24} alt={"Bilgewater Icon"} />
                 Bilgewater
               </div>
               <div className='my-4 flex min-w-28'>
-                <Image className='mr-2' src={'/img/icon-demacia.png'} width={24} height={24} alt={"Demacia Icone"} />
+                <Image className='mr-2' src={'/img/icon-demacia.png'} width={24} height={24} alt={"Demacia Icon"} />
                 Demacia
               </div>
               <div className='my-4 flex min-w-28'>
-                <Image className='mr-2' src={'/img/icon-freljord.png'} width={24} height={24} alt={"Freljord Icone"} />
+                <Image className='mr-2' src={'/img/icon-freljord.png'} width={24} height={24} alt={"Freljord Icon"} />
                 Freljord
               </div>
               <div className='my-4 flex min-w-28'>
-                <Image className='mr-2' src={'/img/icon-ionia.png'} width={24} height={24} alt={"Ionia Icone"} />
+                <Image className='mr-2' src={'/img/icon-ionia.png'} width={24} height={24} alt={"Ionia Icon"} />
                 Ionia
               </div>
               <div className='my-4 flex min-w-28'>
-                <Image className='mr-2' src={'/img/icon-noxus.png'} width={24} height={24} alt={"Noxus Icone"} />
+                <Image className='mr-2' src={'/img/icon-noxus.png'} width={24} height={24} alt={"Noxus Icon"} />
                 Noxus
               </div>
             </div>
             <div>
               <div className='my-4 flex min-w-28'>
-                <Image className='mr-2' src={'/img/icon-piltoverzaun.png'} width={24} height={24} alt={"Piltover & Zaun Icone"} />
+                <Image className='mr-2' src={'/img/icon-piltoverzaun.png'} width={24} height={24} alt={"Piltover & Zaun Icon"} />
                 Piltover & Zaun
               </div>
               <div className='my-4 flex min-w-28'>
-                <Image className='mr-2' src={'/img/icon-runeterra.png'} width={24} height={24} alt={"Runeterran Icone"} />
+                <Image className='mr-2' src={'/img/icon-runeterra.png'} width={24} height={24} alt={"Runeterran Icon"} />
                 Runeterran
               </div>
               <div className='my-4 flex min-w-28'>
-                <Image className='mr-2' src={'/img/icon-shadowisles.png'} width={24} height={24} alt={"Shadow Isles Icone"} />
+                <Image className='mr-2' src={'/img/icon-shadowisles.png'} width={24} height={24} alt={"Shadow Isles Icon"} />
                 Shadow Isles
               </div>
               <div className='my-4 flex min-w-28'>
-                <Image className='mr-2' src={'/img/icon-shurima.png'} width={24} height={24} alt={"Shurima Icone"} />
+                <Image className='mr-2' src={'/img/icon-shurima.png'} width={24} height={24} alt={"Shurima Icon"} />
                 Shurima
               </div>
               <div className='my-4 flex min-w-28'>
-                <Image className='mr-2' src={'/img/icon-targon.png'} width={24} height={24} alt={"Targon Icone"} />
+                <Image className='mr-2' src={'/img/icon-targon.png'} width={24} height={24} alt={"Targon Icon"} />
                 Targon
               </div>
             </div>
@@ -149,25 +149,25 @@ const CardsPage = () => {
           <div className='flex justify-around'>
             <div>
               <div className='my-4 flex min-w-28'>
-                <Image className='mr-2' src={'/img/icon-champion.svg'} width={24} height={24} alt={"Champion Icone"} />
+                <Image className='mr-2' src={'/img/icon-champion.svg'} width={24} height={24} alt={"Champion Icon"} />
                 Champion
               </div>
               <div className='my-4 flex min-w-28'>
-                <Image className='mr-2' src={'/img/icon-unit.svg'} width={24} height={24} alt={"Follower Icone"} />
+                <Image className='mr-2' src={'/img/icon-unit.svg'} width={24} height={24} alt={"Follower Icon"} />
                 Follower
               </div>
               <div className='my-4 flex min-w-28'>
-                <Image className='mr-2' src={'/img/icon-spell.svg'} width={24} height={24} alt={"Spell Icone"} />
+                <Image className='mr-2' src={'/img/icon-spell.svg'} width={24} height={24} alt={"Spell Icon"} />
                 Spell
               </div>
             </div>
             <div>
               <div className='my-4 flex min-w-28'>
-                <Image className='mr-2' src={'/img/icon-landmark.svg'} width={24} height={24} alt={"Landmark Icone"} />
+                <Image className='mr-2' src={'/img/icon-landmark.svg'} width={24} height={24} alt={"Landmark Icon"} />
                 Landmark
               </div>
               <div className='my-4 flex min-w-28'>
-                <Image className='mr-2' src={'/img/icon-equipment.svg'} width={24} height={24} alt={"Equipment Icone"} />
+                <Image className='mr-2' src={'/img/icon-equipment.svg'} width={24} height={24} alt={"Equipment Icon"} />
                 Equipment
               </div>
             </div>

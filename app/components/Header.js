@@ -7,7 +7,7 @@ import { FaBoxArchive } from "react-icons/fa6";
 const Header = () => {
     return (
         <header>
-            <div className="bg-sky-700 flex justify-between min-h-16">
+            <div className="bg-sky-700 flex justify-between min-h-14">
                 <div className='flex min-w-80'>
                     <Link href="/" className='flex'>
                         <GiAtomicSlashes className='size-14 mx-2' />

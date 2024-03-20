@@ -26,9 +26,9 @@ const CardsPage = () => {
 
   const cards = fakedata.map(data => {
     const path = `/img/${data}.png`
-    return <>
-      <Image key={data} className='mx-2' src={path} width={250} height={250} alt={":x"} />
-    </>
+    return <div key={data} >
+      <Image className='mx-2' src={path} width={250} height={250} alt={":x"} />
+    </div>
 
   })
 
@@ -146,16 +146,16 @@ const CardsPage = () => {
           </div>
 
           <div className='flex justify-center'>
-            <select className="select select-bordered w-full max-w-xs">
-              <option disabled selected>Any card keyword</option>
-              <option>Quick Attack</option>
-              <option>Elusive</option>
-              <option>Slow</option>
-              <option>Overwhelm</option>
-              <option>Burst</option>
-              <option>Regeneration</option>
-              <option>Double Attack</option>
-              <option>Fearsome</option>
+            <select defaultValue="Any card keyword" className="select select-bordered w-full max-w-xs">
+              <option value="Any card keyword" disabled>Any card keyword</option>
+              <option value="Quick Attack">Quick Attack</option>
+              <option value="Elusive">Elusive</option>
+              <option value="Slow">Slow</option>
+              <option value="Overwhelm">Overwhelm</option>
+              <option value="Burst">Burst</option>
+              <option value="Regeneration">Regeneration</option>
+              <option value="Double Attack">Double Attack</option>
+              <option value="Fearsome">Fearsome</option>
             </select>
           </div>
         </div>

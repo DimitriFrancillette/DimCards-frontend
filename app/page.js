@@ -4,7 +4,7 @@ import Link from "next/link";
 
 export default function Home() {
   return (
-    <div className="min-h-[80.8vh]">
+    <div>
       <div className="flex justify-center mt-12">
         <h1 className="text-5xl">Build your LoR Decks</h1>
       </div>

@@ -64,19 +64,52 @@ const CardsPage = () => {
           </div>
           <div className='flex justify-around'>
             <div>
-              <div className='my-4 flex min-w-28'> <Image className='mr-2' src={'/img/icon-bandlecity.png'} width={24} height={24} alt={"Bandle City Icone"} /> Bandle City</div>
-              <div className='my-4 flex min-w-28'> <Image className='mr-2' src={'/img/icon-bilgewater.png'} width={24} height={24} alt={"Bilgewater Icone"} /> Bilgewater</div>
-              <div className='my-4 flex min-w-28'> <Image className='mr-2' src={'/img/icon-demacia.png'} width={24} height={24} alt={"Demacia Icone"} /> Demacia</div>
-              <div className='my-4 flex min-w-28'> <Image className='mr-2' src={'/img/icon-freljord.png'} width={24} height={24} alt={"Freljord Icone"} /> Freljord</div>
-              <div className='my-4 flex min-w-28'> <Image className='mr-2' src={'/img/icon-ionia.png'} width={24} height={24} alt={"Ionia Icone"} /> Ionia</div>
-              <div className='my-4 flex min-w-28'> <Image className='mr-2' src={'/img/icon-noxus.png'} width={24} height={24} alt={"Noxus Icone"} /> Noxus</div>
+              <div className='my-4 flex min-w-28'>
+                <Image className='mr-2' src={'/img/icon-bandlecity.png'} width={24} height={24} alt={"Bandle City Icone"} />
+                Bandle City
+              </div>
+              <div className='my-4 flex min-w-28'>
+                <Image className='mr-2' src={'/img/icon-bilgewater.png'} width={24} height={24} alt={"Bilgewater Icone"} />
+                Bilgewater
+              </div>
+              <div className='my-4 flex min-w-28'>
+                <Image className='mr-2' src={'/img/icon-demacia.png'} width={24} height={24} alt={"Demacia Icone"} />
+                Demacia
+              </div>
+              <div className='my-4 flex min-w-28'>
+                <Image className='mr-2' src={'/img/icon-freljord.png'} width={24} height={24} alt={"Freljord Icone"} />
+                Freljord
+              </div>
+              <div className='my-4 flex min-w-28'>
+                <Image className='mr-2' src={'/img/icon-ionia.png'} width={24} height={24} alt={"Ionia Icone"} />
+                Ionia
+              </div>
+              <div className='my-4 flex min-w-28'>
+                <Image className='mr-2' src={'/img/icon-noxus.png'} width={24} height={24} alt={"Noxus Icone"} />
+                Noxus
+              </div>
             </div>
             <div>
-              <div className='my-4 flex min-w-28'> <Image className='mr-2' src={'/img/icon-piltoverzaun.png'} width={24} height={24} alt={"Piltover & Zaun Icone"} /> Piltover & Zaun</div>
-              <div className='my-4 flex min-w-28'> <Image className='mr-2' src={'/img/icon-runeterra.png'} width={24} height={24} alt={"Runeterran Icone"} /> Runeterran</div>
-              <div className='my-4 flex min-w-28'> <Image className='mr-2' src={'/img/icon-shadowisles.png'} width={24} height={24} alt={"Shadow Isles Icone"} /> Shadow Isles</div>
-              <div className='my-4 flex min-w-28'> <Image className='mr-2' src={'/img/icon-shurima.png'} width={24} height={24} alt={"Shurima Icone"} /> Shurima</div>
-              <div className='my-4 flex min-w-28'> <Image className='mr-2' src={'/img/icon-targon.png'} width={24} height={24} alt={"Targon Icone"} /> Targon</div>
+              <div className='my-4 flex min-w-28'>
+                <Image className='mr-2' src={'/img/icon-piltoverzaun.png'} width={24} height={24} alt={"Piltover & Zaun Icone"} />
+                Piltover & Zaun
+              </div>
+              <div className='my-4 flex min-w-28'>
+                <Image className='mr-2' src={'/img/icon-runeterra.png'} width={24} height={24} alt={"Runeterran Icone"} />
+                Runeterran
+              </div>
+              <div className='my-4 flex min-w-28'>
+                <Image className='mr-2' src={'/img/icon-shadowisles.png'} width={24} height={24} alt={"Shadow Isles Icone"} />
+                Shadow Isles
+              </div>
+              <div className='my-4 flex min-w-28'>
+                <Image className='mr-2' src={'/img/icon-shurima.png'} width={24} height={24} alt={"Shurima Icone"} />
+                Shurima
+              </div>
+              <div className='my-4 flex min-w-28'>
+                <Image className='mr-2' src={'/img/icon-targon.png'} width={24} height={24} alt={"Targon Icone"} />
+                Targon
+              </div>
             </div>
           </div>
           <div className='my-3 flex justify-around items-center'>
@@ -115,13 +148,28 @@ const CardsPage = () => {
           </div>
           <div className='flex justify-around'>
             <div>
-              <div className='my-4'>Champion</div>
-              <div className='my-4'>Follower</div>
-              <div className='my-4'>Spell</div>
+              <div className='my-4 flex min-w-28'>
+                <Image className='mr-2' src={'/img/icon-champion.svg'} width={24} height={24} alt={"Champion Icone"} />
+                Champion
+              </div>
+              <div className='my-4 flex min-w-28'>
+                <Image className='mr-2' src={'/img/icon-unit.svg'} width={24} height={24} alt={"Follower Icone"} />
+                Follower
+              </div>
+              <div className='my-4 flex min-w-28'>
+                <Image className='mr-2' src={'/img/icon-spell.svg'} width={24} height={24} alt={"Spell Icone"} />
+                Spell
+              </div>
             </div>
             <div>
-              <div className='my-4'>Landmark</div>
-              <div className='my-4'>Equipment</div>
+              <div className='my-4 flex min-w-28'>
+                <Image className='mr-2' src={'/img/icon-landmark.svg'} width={24} height={24} alt={"Landmark Icone"} />
+                Landmark
+              </div>
+              <div className='my-4 flex min-w-28'>
+                <Image className='mr-2' src={'/img/icon-equipment.svg'} width={24} height={24} alt={"Equipment Icone"} />
+                Equipment
+              </div>
             </div>
           </div>
           <div className='my-3 flex justify-around items-center'>
@@ -131,12 +179,24 @@ const CardsPage = () => {
 
           <div className='flex justify-around min-h-24'>
             <div className='flex flex-col justify-around'>
-              <div>Champion</div>
-              <div>Epic</div>
+              <div className='flex'>
+                <Image className='mr-2' src={'/img/champion.svg'} width={24} height={24} alt={"Champion rarity icone"} />
+                Champion
+              </div>
+              <div className='flex'>
+                <Image className='mr-2' src={'/img/epic.svg'} width={24} height={24} alt={"Champion rarity icone"} />
+                Epic
+              </div>
             </div>
             <div className='flex flex-col justify-around'>
-              <div>Rare</div>
-              <div>Common</div>
+              <div className='flex'>
+                <Image className='mr-2' src={'/img/rare.svg'} width={24} height={24} alt={"Champion rarity icone"} />
+                Rare
+              </div>
+              <div className='flex'>
+                <Image className='mr-2' src={'/img/common.svg'} width={24} height={24} alt={"Champion rarity icone"} />
+                Common
+              </div>
             </div>
           </div>
 

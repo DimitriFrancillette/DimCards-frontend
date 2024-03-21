@@ -40,7 +40,7 @@ const CardsPage = () => {
     <div>
       <div className='flex'>
         {/* basis-4/6 for the right size with the left filter menu */}
-        <div className='pt-6 px-4 basis-4/6 h-screen overflow-x-auto'>
+        <div className='pt-6 px-4 basis-4/6 h-screen overflow-y-auto'>
           <h2 className='text-5xl font-semibold'>Cards Gallery</h2>
           <p className='text-lg ml-2'>found 20 cards</p>
           <div className="flex flex-wrap justify-center mt-2">
@@ -49,7 +49,7 @@ const CardsPage = () => {
         </div>
 
         {/* filter menu */}
-        <div className='px-3 basis-2/6 bg-orange-300 h-screen overflow-x-auto pb-6'>
+        <div className='px-3 basis-2/6 bg-cyan-700/75 h-screen overflow-y-auto pb-6'>
           <div className='mt-6 flex justify-between'>
             <h3 className='text-2xl'>Filters</h3>
             <div>

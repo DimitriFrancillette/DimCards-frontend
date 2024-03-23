@@ -5,33 +5,41 @@ import Image from "next/image";
 
 const CardsPage = () => {
   const [apiCards, setApiCards] = useState([]);
-  const fakedata = ["01DE012T1", "01DE017", "01DE022T1", "01DE048", "01FR024T1", "01FR024T3", "01FR028", "01IO009T2", "01IO023", "01IO028T2", "01IO057", "01NX002", "01NX008", "01NX024", "01NX049", "01PZ008T2", "01PZ056T9", "01SI030", "01SI044", "01SI047"]
+  const [shownCards, setShownCards] = useState([]);
+  
+  useEffect(() => {
 
-  // useEffect(() => {
+    fetch('http://localhost:3000/cards')
+      .then(response => response.json())
+      .then((data) => {
+        setShownCards(data.result);
+        setApiCards(data.result);
+      });
 
-  //   fetch('http://localhost:3000/cards')
-  //     .then(response => response.json())
-  //     .then((data) => {
-  //       setApiCards(data.result);
-  //       // console.log(data.result)
-  //     });
-  // }, []);
+  }, []);
 
-  // const cards = apiCards.map(data => {
-  //   // <img className="w-96" src={data.assets[0].gameAbsolutePath} alt={":x"} />
-  //   return <>
-  //     <Image src={data.assets[0].gameAbsolutePath} width={250} height={250} alt={":x"} />
-  //   </>
-  // })
-
-  const cards = fakedata.map(data => {
-    const path = `/img/${data}.png`
-    return <div key={data} >
-      <Image className='mx-2' src={path} width={250} height={250} alt={":x"} />
-    </div>
-
+  let cards = shownCards.map(data => {
+    return <>
+      <Image src={data.assets[0].gameAbsolutePath} width={250} height={250} alt={data.name} />
+    </>
   })
 
+
+
+  // const fakedata = ["01DE012T1", "01DE017", "01DE022T1", "01DE048", "01FR024T1", "01FR024T3", "01FR028", "01IO009T2", "01IO023", "01IO028T2", "01IO057", "01NX002", "01NX008", "01NX024", "01NX049", "01PZ008T2", "01PZ056T9", "01SI030", "01SI044", "01SI047"]
+  // const cards = fakedata.map(data => {
+  //   const path = `/img/${data}.png`
+  //   return <div key={data} >
+  //     <Image className='mx-2' src={path} width={250} height={250} alt={":x"} />
+  //   </div>
+
+  // })
+
+  const handleClick = (region) => {
+    const filteredCards = apiCards.filter((card)=> {return card.regions.includes(region) === true});
+    // console.log("filtered CARDS",filteredCards);
+    setShownCards(filteredCards)
+	}
 
 
 
@@ -64,49 +72,49 @@ const CardsPage = () => {
           </div>
           <div className='flex justify-around'>
             <div>
-              <div className='my-4 flex min-w-28'>
+              <div className='my-4 flex min-w-28' onClick={() => handleClick("BandleCity")}>
                 <Image className='mr-2' src={'/img/icon-bandlecity.png'} width={24} height={24} alt={"Bandle City Icon"} />
                 Bandle City
               </div>
-              <div className='my-4 flex min-w-28'>
+              <div className='my-4 flex min-w-28' onClick={() => handleClick("Bilgewater")}>
                 <Image className='mr-2' src={'/img/icon-bilgewater.png'} width={24} height={24} alt={"Bilgewater Icon"} />
                 Bilgewater
               </div>
-              <div className='my-4 flex min-w-28'>
+              <div className='my-4 flex min-w-28' onClick={() => handleClick("Demacia")}>
                 <Image className='mr-2' src={'/img/icon-demacia.png'} width={24} height={24} alt={"Demacia Icon"} />
                 Demacia
               </div>
-              <div className='my-4 flex min-w-28'>
+              <div className='my-4 flex min-w-28' onClick={() => handleClick("Freljord")}>
                 <Image className='mr-2' src={'/img/icon-freljord.png'} width={24} height={24} alt={"Freljord Icon"} />
                 Freljord
               </div>
-              <div className='my-4 flex min-w-28'>
+              <div className='my-4 flex min-w-28' onClick={() => handleClick("Ionia")}>
                 <Image className='mr-2' src={'/img/icon-ionia.png'} width={24} height={24} alt={"Ionia Icon"} />
                 Ionia
               </div>
-              <div className='my-4 flex min-w-28'>
+              <div className='my-4 flex min-w-28' onClick={() => handleClick("Noxus")}>
                 <Image className='mr-2' src={'/img/icon-noxus.png'} width={24} height={24} alt={"Noxus Icon"} />
                 Noxus
               </div>
             </div>
             <div>
-              <div className='my-4 flex min-w-28'>
+              <div className='my-4 flex min-w-28' onClick={() => handleClick("PiltoverZaun")}>
                 <Image className='mr-2' src={'/img/icon-piltoverzaun.png'} width={24} height={24} alt={"Piltover & Zaun Icon"} />
                 Piltover & Zaun
               </div>
-              <div className='my-4 flex min-w-28'>
+              <div className='my-4 flex min-w-28' onClick={() => handleClick("Runeterran")}>
                 <Image className='mr-2' src={'/img/icon-runeterra.png'} width={24} height={24} alt={"Runeterran Icon"} />
                 Runeterran
               </div>
-              <div className='my-4 flex min-w-28'>
+              <div className='my-4 flex min-w-28' onClick={() => handleClick("ShadowIsles")}>
                 <Image className='mr-2' src={'/img/icon-shadowisles.png'} width={24} height={24} alt={"Shadow Isles Icon"} />
                 Shadow Isles
               </div>
-              <div className='my-4 flex min-w-28'>
+              <div className='my-4 flex min-w-28' onClick={() => handleClick("Shurima")}>
                 <Image className='mr-2' src={'/img/icon-shurima.png'} width={24} height={24} alt={"Shurima Icon"} />
                 Shurima
               </div>
-              <div className='my-4 flex min-w-28'>
+              <div className='my-4 flex min-w-28' onClick={() => handleClick("Targon")}>
                 <Image className='mr-2' src={'/img/icon-targon.png'} width={24} height={24} alt={"Targon Icon"} />
                 Targon
               </div>

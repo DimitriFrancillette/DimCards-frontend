@@ -48,7 +48,7 @@ const CardsPage = () => {
     <div>
       <div className='flex'>
         {/* basis-4/6 for the right size with the left filter menu */}
-        <div className='pt-6 px-4 basis-4/6 h-screen overflow-y-auto no-scrollbar'>
+        <div className='pt-6 px-4 basis-4/6 h-screen overflow-y-auto scrollbar-webkit'>
           <h2 className='text-5xl font-semibold'>Cards Gallery</h2>
           <p className='text-lg ml-2'>found 20 cards</p>
           <div className="flex flex-wrap justify-center mt-2">

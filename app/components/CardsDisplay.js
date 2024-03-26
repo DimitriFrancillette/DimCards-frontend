@@ -6,7 +6,6 @@ import Image from "next/image";
 const CardsDisplay = () => {
   const [apiCards, setApiCards] = useState([]);
   const [shownCards, setShownCards] = useState([]);
-
   useEffect(() => {
 
     fetch('http://localhost:3000/cards')
@@ -18,12 +17,18 @@ const CardsDisplay = () => {
 
   }, []);
 
-  let cards = shownCards.map(data => {
-    return <>
-      <Image src={data.assets[0].gameAbsolutePath} width={250} height={250} alt={data.name} />
-    </>
-  })
+  
 
+  const cardStyle = {
+    width: "auto",
+    height: "auto"
+  }
+
+  let cards = shownCards.map(data => {
+    return <div key={data._id}> 
+      <Image src={data.assets[0].gameAbsolutePath} width={250} height={250} alt={data.name} style={cardStyle} />
+    </div>
+  })
 
 
   // const fakedata = ["01DE012T1", "01DE017", "01DE022T1", "01DE048", "01FR024T1", "01FR024T3", "01FR028", "01IO009T2", "01IO023", "01IO028T2", "01IO057", "01NX002", "01NX008", "01NX024", "01NX049", "01PZ008T2", "01PZ056T9", "01SI030", "01SI044", "01SI047"]

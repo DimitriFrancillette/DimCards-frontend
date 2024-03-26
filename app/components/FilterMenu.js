@@ -7,29 +7,15 @@ const FilterMenu = () => {
     const [apiCards, setApiCards] = useState([]);
     const [shownCards, setShownCards] = useState([]);
 
-    useEffect(() => {
-
-        fetch('http://localhost:3000/cards')
-            .then(response => response.json())
-            .then((data) => {
-                setShownCards(data.result);
-                setApiCards(data.result);
-            });
-
-    }, []);
-
-    let cards = shownCards.map(data => {
-        return <>
-            <Image src={data.assets[0].gameAbsolutePath} width={250} height={250} alt={data.name} />
-        </>
-    })
 
 
     const handleClick = (region) => {
+
+        console.log(region);
         const filteredCards = apiCards.filter((card) => { return card.regions.includes(region) === true });
         // console.log("filtered CARDS",filteredCards);
         setShownCards(filteredCards)
-      }
+    }
 
     return (
         <div className='px-3 w-1/3 bg-cyan-700/75 h-screen overflow-y-auto no-scrollbar pb-6'>

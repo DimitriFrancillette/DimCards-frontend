@@ -1,26 +1,26 @@
 "use client"
 import CardsDisplay from '../components/CardsDisplay';
 import FilterMenu from '../components/FilterMenu';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 
 const CardsPage = () => {
-  const [isFilterMenu, setIsFilterMenu] = useState(false);
+  const [isMenu, setIsMenu] = useState(false);
 
   const closeFilter = (param) => {
-    setIsFilterMenu(param);
+    setIsMenu(param);
   }
 
-  const openFilter = (param) => {
-    setIsFilterMenu(param);
+  const openMenu = (param) => {
+    setIsMenu(param);
   }
 
   return (
     <div>
       <div className='flex'>
-        <CardsDisplay isFilterMenu={isFilterMenu} openFilter={openFilter}/>
+        <CardsDisplay isMenu={isMenu} openMenu={openMenu} pageName={"Cards Gallery"}/>
 
-        {isFilterMenu &&
+        {isMenu &&
           <FilterMenu closeFilter={closeFilter} />
         }
       </div>

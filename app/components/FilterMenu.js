@@ -5,9 +5,6 @@ import Image from "next/image";
 const FilterMenu = (props) => {
     const [apiCards, setApiCards] = useState([]);
     const [shownCards, setShownCards] = useState([]);
-    const [showMenu, setShowMenu] = useState(true);
-
-
 
     const handleClick = (region) => {
 

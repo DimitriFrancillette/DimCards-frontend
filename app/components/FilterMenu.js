@@ -1,11 +1,11 @@
-'use client'
 import React from 'react'
 import { useState, useEffect } from 'react';
 import Image from "next/image";
 
-const FilterMenu = () => {
+const FilterMenu = (props) => {
     const [apiCards, setApiCards] = useState([]);
     const [shownCards, setShownCards] = useState([]);
+    const [showMenu, setShowMenu] = useState(true);
 
 
 
@@ -17,12 +17,16 @@ const FilterMenu = () => {
         setShownCards(filteredCards)
     }
 
+    const handleClose = () => {
+        props.closeFilter(false)
+    }
+
     return (
         <div className='px-3 w-1/3 bg-cyan-700/75 h-screen overflow-y-auto no-scrollbar pb-6'>
             <div className='mt-6 flex justify-between'>
                 <h3 className='text-2xl'>Filters</h3>
                 <div>
-                    <div className='bg-sky-600 w-10 h-10 rounded-full flex justify-center pt-2'>
+                    <div className='bg-success w-10 h-10 rounded-full flex justify-center pt-2' onClick={() => handleClose()}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                     </div>
                 </div>

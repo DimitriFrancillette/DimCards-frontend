@@ -9,7 +9,7 @@ const DeckBuilderPage = () => {
   const cards = fakedata.map(data => {
     const path = `/img/${data}.png`
     return <div key={data} >
-      <Image className='mx-2' src={path} width={250} height={250} alt={":x"} />
+      <Image className='mx-2' src={path} width={250} height={250} style={{width: "auto",height: "auto"}} alt={":x"} />
     </div>
 
   })
@@ -49,19 +49,19 @@ const DeckBuilderPage = () => {
             <div className='text-center'>5</div>
             <div className='text-center'>40/40</div>
             <div className='flex justify-center'>
-              <Image className='mr-2' src={'/img/icon-champion.svg'} width={24} height={24} alt={"Champion Icon"} />
+              <Image className='mr-2' src={'/img/icon-champion.svg'} width={24} height={24} style={{width: "auto",height: "auto"}} alt={"Champion Icon"} />
             </div>
             <div className='flex justify-center'>
-            <Image className='mr-2' src={'/img/icon-unit.svg'} width={24} height={24} alt={"Follower Icon"} />
+            <Image className='mr-2' src={'/img/icon-unit.svg'} width={24} height={24} style={{width: "auto",height: "auto"}} alt={"Follower Icon"} />
             </div>
             <div className='flex justify-center'>
-            <Image className='mr-2' src={'/img/icon-spell.svg'} width={24} height={24} alt={"Spell Icon"} />
+            <Image className='mr-2' src={'/img/icon-spell.svg'} width={24} height={24} style={{width: "auto",height: "auto"}} alt={"Spell Icon"} />
             </div>
             <div className='flex justify-center'>
-            <Image className='mr-2' src={'/img/icon-landmark.svg'} width={24} height={24} alt={"Landmark Icon"} />
+            <Image className='mr-2' src={'/img/icon-landmark.svg'} width={24} height={24} style={{width: "auto",height: "auto"}} alt={"Landmark Icon"} />
             </div>
             <div className='flex justify-center'>
-            <Image className='mr-2 ' src={'/img/icon-equipment.svg'} width={24} height={24} alt={"Equipment Icon"} />
+            <Image className='mr-2 ' src={'/img/icon-equipment.svg'} width={24} height={24} style={{width: "auto",height: "auto"}} alt={"Equipment Icon"} />
             </div>
             <div className='flex justify-center'>
               Total

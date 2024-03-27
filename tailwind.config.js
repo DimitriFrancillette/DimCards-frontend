@@ -47,7 +47,7 @@ module.exports = {
         //for firefox
         ".scrollbar-thin": {
           scrollbarWidth: "thin",
-          scrollbarcolor: "rgb(31 29 29) white",
+          scrollbarcolor: "rgb(255, 166, 43) white",
         },
         //for chrome
         ".scrollbar-webkit": {
@@ -58,9 +58,9 @@ module.exports = {
             background: "white"
           },
           "&::-webkit-scrollbar-thumb" : {
-            backgroundColor: "rgb(31 41 55)",
+            backgroundColor: "rgb(255, 166, 43)",
             borderRadius: "20px",
-            border: "1px solid white"
+            border: "1px solid black"
           }
         }
       };

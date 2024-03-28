@@ -1,17 +1,9 @@
-import React from 'react'
-import { useState, useEffect } from 'react';
 import Image from "next/image";
 
 const FilterMenu = (props) => {
-    const [apiCards, setApiCards] = useState([]);
-    const [shownCards, setShownCards] = useState([]);
 
-    const handleClick = (region) => {
-
-        console.log(region);
-        const filteredCards = apiCards.filter((card) => { return card.regions.includes(region) === true });
-        // console.log("filtered CARDS",filteredCards);
-        setShownCards(filteredCards)
+    const handleRegion = (region) => {
+        props.selected(region);
     }
 
     const handleClose = () => {
@@ -30,53 +22,53 @@ const FilterMenu = (props) => {
             </div>
             <div className='my-3 flex justify-around items-center'>
                 <div className="divider divider-start divider-primary" style={{ width: '80%' }}>Regions</div>
-                <p>Clear</p>
+                <div onClick={() => handleRegion("Clear")}>Clear</div>
             </div>
             <div className='flex justify-around'>
                 <div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleClick("BandleCity")}>
+                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("BandleCity")}>
                         <Image className='mr-2' src={'/img/icon-bandlecity.png'} width={24} height={24} alt={"Bandle City Icon"} />
                         Bandle City
                     </div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleClick("Bilgewater")}>
+                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("Bilgewater")}>
                         <Image className='mr-2' src={'/img/icon-bilgewater.png'} width={24} height={24} alt={"Bilgewater Icon"} />
                         Bilgewater
                     </div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleClick("Demacia")}>
+                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("Demacia")}>
                         <Image className='mr-2' src={'/img/icon-demacia.png'} width={24} height={24} alt={"Demacia Icon"} />
                         Demacia
                     </div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleClick("Freljord")}>
+                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("Freljord")}>
                         <Image className='mr-2' src={'/img/icon-freljord.png'} width={24} height={24} alt={"Freljord Icon"} />
                         Freljord
                     </div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleClick("Ionia")}>
+                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("Ionia")}>
                         <Image className='mr-2' src={'/img/icon-ionia.png'} width={24} height={24} alt={"Ionia Icon"} />
                         Ionia
                     </div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleClick("Noxus")}>
+                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("Noxus")}>
                         <Image className='mr-2' src={'/img/icon-noxus.png'} width={24} height={24} alt={"Noxus Icon"} />
                         Noxus
                     </div>
                 </div>
                 <div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleClick("PiltoverZaun")}>
+                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("PiltoverZaun")}>
                         <Image className='mr-2' src={'/img/icon-piltoverzaun.png'} width={24} height={24} alt={"Piltover & Zaun Icon"} />
                         Piltover & Zaun
                     </div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleClick("Runeterran")}>
+                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("Runeterran")}>
                         <Image className='mr-2' src={'/img/icon-runeterra.png'} width={24} height={24} alt={"Runeterran Icon"} />
                         Runeterran
                     </div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleClick("ShadowIsles")}>
+                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("ShadowIsles")}>
                         <Image className='mr-2' src={'/img/icon-shadowisles.png'} width={24} height={24} alt={"Shadow Isles Icon"} />
                         Shadow Isles
                     </div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleClick("Shurima")}>
+                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("Shurima")}>
                         <Image className='mr-2' src={'/img/icon-shurima.png'} width={24} height={24} alt={"Shurima Icon"} />
                         Shurima
                     </div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleClick("Targon")}>
+                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("Targon")}>
                         <Image className='mr-2' src={'/img/icon-targon.png'} width={24} height={24} alt={"Targon Icon"} />
                         Targon
                     </div>

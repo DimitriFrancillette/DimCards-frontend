@@ -1,10 +1,10 @@
-import React from 'react'
 import { useState, useEffect } from 'react';
 import Image from "next/image";
 
 const CardsDisplay = (props) => {
   const [apiCards, setApiCards] = useState([]);
   const [shownCards, setShownCards] = useState([]);
+
   useEffect(() => {
 
     fetch('http://localhost:3000/cards')
@@ -16,7 +16,6 @@ const CardsDisplay = (props) => {
 
   }, []);
 
-
   let cards = shownCards.map(data => {
     return <div key={data._id}>
       <Image src={data.assets[0].gameAbsolutePath} width={250} height={250} alt={data.name} style={{ width: "auto", height: "auto" }} />
@@ -24,7 +23,21 @@ const CardsDisplay = (props) => {
   });
 
 
+  if (props.selectedFilter.length > 0) {
+    let newCards = [];
 
+    for (const element of props.selectedFilter) {
+
+      const filteredCards = apiCards.filter((card) => { return card.regions.includes(element) === true });
+      newCards = newCards.concat(filteredCards)
+    }
+
+    cards = newCards.map(data => {
+      return <div key={data._id}>
+        <Image src={data.assets[0].gameAbsolutePath} width={250} height={250} alt={data.name} style={{ width: "auto", height: "auto" }} />
+      </div>
+    });
+  }
 
   const handleOpen = () => {
     props.openMenu(true)
@@ -32,7 +45,7 @@ const CardsDisplay = (props) => {
 
   let divClass = 'pt-6 px-4 basis-4/6 h-screen overflow-y-auto scrollbar-webkit';
   if (props.isMenu === false) {
-    divClass = 'pt-6 px-4 h-screen overflow-y-auto scrollbar-webkit';
+    divClass = 'pt-6 px-4 h-screen min-w-full overflow-y-auto scrollbar-webkit';
   };
 
   let menuButtonClass = 'bg-success w-12 h-12 rounded-full flex justify-center pt-2 mr-24';
@@ -58,9 +71,7 @@ const CardsDisplay = (props) => {
   )
 
 
-
-
-    // const fakedata = ["01DE012T1", "01DE017", "01DE022T1", "01DE048", "01FR024T1", "01FR024T3", "01FR028", "01IO009T2", "01IO023", "01IO028T2", "01IO057", "01NX002", "01NX008", "01NX024", "01NX049", "01PZ008T2", "01PZ056T9", "01SI030", "01SI044", "01SI047"]
+  // const fakedata = ["01DE012T1", "01DE017", "01DE022T1", "01DE048", "01FR024T1", "01FR024T3", "01FR028", "01IO009T2", "01IO023", "01IO028T2", "01IO057", "01NX002", "01NX008", "01NX024", "01NX049", "01PZ008T2", "01PZ056T9", "01SI030", "01SI044", "01SI047"]
   // const cards = fakedata.map(data => {
   //   const path = `/img/${data}.png`
   //   return <div key={data} >

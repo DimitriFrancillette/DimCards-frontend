@@ -21,141 +21,141 @@ const FilterMenu = (props) => {
                 </div>
             </div>
             <div className='my-3 flex justify-around items-center'>
-                <div className="divider divider-start divider-primary" style={{ width: '80%' }}>Regions</div>
-                <div onClick={() => handleRegion("Clear")}>Clear</div>
+                <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Regions</div>
+                <div className="font-extrabold p-1 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info" onClick={() => handleRegion("Clear")}>Clear</div>
             </div>
             <div className='flex justify-around'>
                 <div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("BandleCity")}>
+                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info' onClick={() => handleRegion("BandleCity")}>
                         <Image className='mr-2' src={'/img/icon-bandlecity.png'} width={24} height={24} alt={"Bandle City Icon"} />
-                        Bandle City
+                        <div>Bandle City</div>
                     </div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("Bilgewater")}>
+                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info' onClick={() => handleRegion("Bilgewater")}>
                         <Image className='mr-2' src={'/img/icon-bilgewater.png'} width={24} height={24} alt={"Bilgewater Icon"} />
-                        Bilgewater
+                        <div>Bilgewater</div>
                     </div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("Demacia")}>
+                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info' onClick={() => handleRegion("Demacia")}>
                         <Image className='mr-2' src={'/img/icon-demacia.png'} width={24} height={24} alt={"Demacia Icon"} />
-                        Demacia
+                        <div>Demacia</div>
                     </div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("Freljord")}>
+                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info' onClick={() => handleRegion("Freljord")}>
                         <Image className='mr-2' src={'/img/icon-freljord.png'} width={24} height={24} alt={"Freljord Icon"} />
-                        Freljord
+                        <div>Freljord</div>
                     </div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("Ionia")}>
+                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info' onClick={() => handleRegion("Ionia")}>
                         <Image className='mr-2' src={'/img/icon-ionia.png'} width={24} height={24} alt={"Ionia Icon"} />
-                        Ionia
+                        <div>Ionia</div>
                     </div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("Noxus")}>
+                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info' onClick={() => handleRegion("Noxus")}>
                         <Image className='mr-2' src={'/img/icon-noxus.png'} width={24} height={24} alt={"Noxus Icon"} />
-                        Noxus
+                        <div>Noxus</div>
                     </div>
                 </div>
                 <div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("PiltoverZaun")}>
+                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info' onClick={() => handleRegion("PiltoverZaun")}>
                         <Image className='mr-2' src={'/img/icon-piltoverzaun.png'} width={24} height={24} alt={"Piltover & Zaun Icon"} />
-                        Piltover & Zaun
+                        <div>Piltover & Zaun</div>
                     </div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("Runeterran")}>
+                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info' onClick={() => handleRegion("Runeterran")}>
                         <Image className='mr-2' src={'/img/icon-runeterra.png'} width={24} height={24} alt={"Runeterran Icon"} />
-                        Runeterran
+                        <div>Runeterran</div>
                     </div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("ShadowIsles")}>
+                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info' onClick={() => handleRegion("ShadowIsles")}>
                         <Image className='mr-2' src={'/img/icon-shadowisles.png'} width={24} height={24} alt={"Shadow Isles Icon"} />
-                        Shadow Isles
+                        <div>Shadow Isles</div>
                     </div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("Shurima")}>
+                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info' onClick={() => handleRegion("Shurima")}>
                         <Image className='mr-2' src={'/img/icon-shurima.png'} width={24} height={24} alt={"Shurima Icon"} />
-                        Shurima
+                        <div>Shurima</div>
                     </div>
-                    <div className='my-4 flex min-w-28' onClick={() => handleRegion("Targon")}>
+                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info' onClick={() => handleRegion("Targon")}>
                         <Image className='mr-2' src={'/img/icon-targon.png'} width={24} height={24} alt={"Targon Icon"} />
-                        Targon
+                        <div>Targon</div>
                     </div>
                 </div>
             </div>
             <div className='my-3 flex justify-around items-center'>
-                <div className="divider divider-start" style={{ width: '80%' }}>Mana Cost</div>
-                <p>Clear</p>
+                <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Mana Cost</div>
+                <p className="font-extrabold p-1 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info">Clear</p>
             </div>
             <div className='flex justify-around'>
-                <div className='bg-sky-600 w-9 h-9 rounded-full flex justify-center pt-1.5'>
-                    <p>0</p>
+                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info'>
+                    <div>0</div>
                 </div>
-                <div className='bg-sky-600 w-9 h-9 rounded-full flex justify-center pt-1.5'>
-                    <p>1</p>
+                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info'>
+                    <div>1</div>
                 </div>
-                <div className='bg-sky-600 w-9 h-9 rounded-full flex justify-center pt-1.5'>
-                    <p>2</p>
+                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info'>
+                    <div>2</div>
                 </div>
-                <div className='bg-sky-600 w-9 h-9 rounded-full flex justify-center pt-1.5'>
-                    <p>3</p>
+                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info'>
+                    <div>3</div>
                 </div>
-                <div className='bg-sky-600 w-9 h-9 rounded-full flex justify-center pt-1.5'>
-                    <p>4</p>
+                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info'>
+                    <div>4</div>
                 </div>
-                <div className='bg-sky-600 w-9 h-9 rounded-full flex justify-center pt-1.5'>
-                    <p>5</p>
+                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info'>
+                    <div>5</div>
                 </div>
-                <div className='bg-sky-600 w-9 h-9 rounded-full flex justify-center pt-1.5'>
-                    <p>6</p>
+                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info'>
+                    <div>6</div>
                 </div>
-                <div className='bg-sky-600 w-9 h-9 rounded-full flex justify-center pt-1.5'>
-                    <p>7+</p>
+                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info'>
+                    <div>7+</div>
                 </div>
             </div>
             <div className='my-3 flex justify-around items-center'>
-                <div className="divider divider-start" style={{ width: '80%' }}>Types</div>
-                <p>Clear</p>
+                <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Types</div>
+                <p className="font-extrabold p-1 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info">Clear</p>
             </div>
             <div className='flex justify-around'>
                 <div>
-                    <div className='my-4 flex min-w-28'>
+                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info'>
                         <Image className='mr-2' src={'/img/icon-champion.svg'} width={24} height={24} alt={"Champion Icon"} />
-                        Champion
+                        <div>Champion</div>
                     </div>
-                    <div className='my-4 flex min-w-28'>
+                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info'>
                         <Image className='mr-2' src={'/img/icon-unit.svg'} width={24} height={24} alt={"Follower Icon"} />
-                        Follower
+                        <div>Follower</div>
                     </div>
-                    <div className='my-4 flex min-w-28'>
+                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info'>
                         <Image className='mr-2' src={'/img/icon-spell.svg'} width={24} height={24} alt={"Spell Icon"} />
-                        Spell
+                        <div>Spell</div>
                     </div>
                 </div>
                 <div>
-                    <div className='my-4 flex min-w-28'>
+                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info'>
                         <Image className='mr-2' src={'/img/icon-landmark.svg'} width={24} height={24} alt={"Landmark Icon"} />
-                        Landmark
+                        <div>Landmark</div>
                     </div>
-                    <div className='my-4 flex min-w-28'>
+                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info'>
                         <Image className='mr-2' src={'/img/icon-equipment.svg'} width={24} height={24} alt={"Equipment Icon"} />
-                        Equipment
+                        <div>Equipment</div>
                     </div>
                 </div>
             </div>
             <div className='my-3 flex justify-around items-center'>
-                <div className="divider divider-start" style={{ width: '80%' }}>Rarity</div>
-                <p>Clear</p>
+                <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Rarity</div>
+                <p className="font-extrabold p-1 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info">Clear</p>
             </div>
 
             <div className='flex justify-around min-h-24'>
                 <div className='flex flex-col justify-around'>
-                    <div className='flex'>
+                    <div className='flex rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info'>
                         <Image className='mr-2' src={'/img/champion.svg'} width={24} height={24} alt={"Champion rarity icone"} />
                         Champion
                     </div>
-                    <div className='flex'>
+                    <div className='flex rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info'>
                         <Image className='mr-2' src={'/img/epic.svg'} width={24} height={24} alt={"Champion rarity icone"} />
                         Epic
                     </div>
                 </div>
                 <div className='flex flex-col justify-around'>
-                    <div className='flex'>
+                    <div className='flex rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info'>
                         <Image className='mr-2' src={'/img/rare.svg'} width={24} height={24} alt={"Champion rarity icone"} />
                         Rare
                     </div>
-                    <div className='flex'>
+                    <div className='flex rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info'>
                         <Image className='mr-2' src={'/img/common.svg'} width={24} height={24} alt={"Champion rarity icone"} />
                         Common
                     </div>
@@ -163,8 +163,8 @@ const FilterMenu = (props) => {
             </div>
 
             <div className='my-3 flex justify-around items-center'>
-                <div className="divider divider-start" style={{ width: '80%' }}>Keywords</div>
-                <p>Clear</p>
+                <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Keywords</div>
+                <p className="font-extrabold p-1 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info">Clear</p>
             </div>
 
             <div className='flex justify-center'>

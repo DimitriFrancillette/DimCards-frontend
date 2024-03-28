@@ -37,8 +37,9 @@ const CardsDisplay = (props) => {
         <Image src={data.assets[0].gameAbsolutePath} width={250} height={250} alt={data.name} style={{ width: "auto", height: "auto" }} />
       </div>
     });
-  }
+  };
 
+  console.log("CARDS", cards);
   const handleOpen = () => {
     props.openMenu(true)
   };

@@ -15,19 +15,23 @@ const CardsPage = () => {
   const openMenu = (param) => {
     setIsMenu(param);
   }
-  
+
   const selected = (param) => {
-    if(param === "Clear") {
+    if (param === "Clear") {
       setSelectedFilter([]);
       return
     }
-    setSelectedFilter([...selectedFilter, param])
+    if (!selectedFilter.includes(param)) {
+      setSelectedFilter([...selectedFilter, param])
+    } else {
+      setSelectedFilter( selectedFilter.filter(e => e !== param) );
+    }
   }
 
   return (
     <div>
       <div className='flex'>
-        <CardsDisplay isMenu={isMenu} openMenu={openMenu} pageName={"Cards Gallery"} selectedFilter={selectedFilter}/>
+        <CardsDisplay isMenu={isMenu} openMenu={openMenu} pageName={"Cards Gallery"} selectedFilter={selectedFilter} />
 
         {isMenu &&
           <FilterMenu closeFilter={closeFilter} selected={selected} />

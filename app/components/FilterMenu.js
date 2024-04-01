@@ -3,7 +3,11 @@ import Image from "next/image";
 const FilterMenu = (props) => {
 
     const handleRegion = (region) => {
-        props.selected(region);
+        props.selected({region});
+    }
+
+    const handleCost = (cost) => {
+        props.selected({cost});
     }
 
     const handleClose = () => {
@@ -79,28 +83,28 @@ const FilterMenu = (props) => {
                 <p className="font-extrabold p-1 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info">Clear</p>
             </div>
             <div className='flex justify-around'>
-                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info'>
+                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info' onClick={() => handleCost(0)}>
                     <div>0</div>
                 </div>
-                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info'>
+                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info' onClick={() => handleCost(1)}>
                     <div>1</div>
                 </div>
-                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info'>
+                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info' onClick={() => handleCost(2)}>
                     <div>2</div>
                 </div>
-                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info'>
+                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info' onClick={() => handleCost(3)}>
                     <div>3</div>
                 </div>
-                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info'>
+                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info' onClick={() => handleCost(4)}>
                     <div>4</div>
                 </div>
-                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info'>
+                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info' onClick={() => handleCost(5)}>
                     <div>5</div>
                 </div>
-                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info'>
+                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info' onClick={() => handleCost(6)}>
                     <div>6</div>
                 </div>
-                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info'>
+                <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info' onClick={() => handleCost(7)}>
                     <div>7+</div>
                 </div>
             </div>

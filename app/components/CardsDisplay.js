@@ -24,68 +24,55 @@ const CardsDisplay = (props) => {
   });
 
   const filter = props.selectedFilter;
-  console.log("FILTER", filter)
-
 
   if (filter.region.length > 0 || filter.cost.length > 0) {
-    let newCards = [];
+    let cardsToDisplay = [];
 
+    //FILTER THE CARDS BY REGION
     for (const element of filter.region) {
-
-      const filteredCards = apiCards.filter((card) => {
+      const filteredRegionCards = apiCards.filter((card) => {
         return card.regions.includes(element) === true
       });
-      newCards = newCards.concat(filteredCards)
+      cardsToDisplay = cardsToDisplay.concat(filteredRegionCards)
+    };
 
-    }
-
-    //todo inclure tout les cost dans le tri avant de commit et de continuer a chercher pourquoi il y a un doublon qui se fait avec certaines cartess
+    //FILTER THE CARDS BY COST AND CHECK IF THE CARDS ARE NOT ALREADY SELECTED TO BE DISPLAY
     for (const element of filter.cost) {
-      // dans le state contenant toute les cartes on récupère les cartes ayant le cout selectionné 
-      const filteredCards = apiCards.filter((card) => {
+
+      const filteredCostCards = apiCards.filter((card) => {
         if (element === 7) {
           return card.cost === 7 || card.cost > 7
         }
         return card.cost === element
       });
 
-      // on vérifier que les cartes selectionné ne soient pas déja dans la variable newCards
-      filteredCards.forEach(card => {
-        //récupérer les noms des cartes dans newsCard
-        const namesCollection = [];
-        newCards.forEach(newCard => {
 
-          if (!namesCollection.includes(newCard._id)) {
-            namesCollection.push(newCard._id)
+      const cardsAlreadyDisplayed = [];
+
+      for (let i = filteredCostCards.length - 1; i >= 0; i--) {
+
+        cardsToDisplay.forEach(newCard => {
+          if (!cardsAlreadyDisplayed.includes(newCard._id)) {
+            cardsAlreadyDisplayed.push(newCard._id)
           }
         });
 
-        // on vérifie si les cartes de filteredCards ne sont pas déja dans Names collection
-        if (namesCollection.includes(card._id)) {
-          //si elle y sont on trouve l'index
-          const indexToRemove = filteredCards.findIndex(item => item._id === card._id);
-          //si l'index est plus de -1 on enleve la carte
+        if (cardsAlreadyDisplayed.includes(filteredCostCards[i]._id)) {
+          const indexToRemove = filteredCostCards.findIndex(item => item._id === filteredCostCards[i]._id);
           if (indexToRemove !== -1) {
-            filteredCards.splice(indexToRemove, 1);
+            filteredCostCards.splice(indexToRemove, 1);
           }
-        }
-
-        console.log("NAMES COLLECTION", namesCollection)
-        console.log("EACH CARD 1", card)
-      })
-
-      //on rajouté les cartes qui reste dans newCards
-      newCards = newCards.concat(filteredCards)
+        };
+      };
+      cardsToDisplay = cardsToDisplay.concat(filteredCostCards)
     }
 
-    cards = newCards.map(data => {
+    cards = cardsToDisplay.map(data => {
       return <div key={data._id} name={data.name} regions={data.regions} cost={data.cost} type={data.type} keywords={data.keywords} rarity={data.rarity}>
         <Image src={data.assets[0].gameAbsolutePath} width={250} height={250} alt={data.name} style={{ width: "auto", height: "auto" }} />
       </div>
     });
   };
-
-  console.log("CARDS", cards)
 
   const handleOpen = () => {
     props.openMenu(true)

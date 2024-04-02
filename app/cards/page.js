@@ -33,7 +33,6 @@ const CardsPage = () => {
 
 
       if (!selectedFilter.region.includes(param.region)) {
-        console.log('REGION FILTER')
         setSelectedFilter(prevState => ({ ...prevState, region: [...prevState.region, param.region] }));
       }
       else {
@@ -50,24 +49,12 @@ const CardsPage = () => {
 
 
       if (!selectedFilter.cost.includes(param.cost)) {
-        console.log('COST FILTER')
         setSelectedFilter(prevState => ({ ...prevState, cost: [...prevState.cost, param.cost] }));
       }
       else {
         setSelectedFilter(prevState => ({ ...prevState, cost: prevState.cost.filter(e => e !== param.cost) }));
       }
     }
-
-    // if (!selectedFilter.some(obj => obj.region === param.region)) {
-    //   setSelectedFilter([...selectedFilter, param])
-    // } else {
-    //   setSelectedFilter( selectedFilter.filter(e => e.region !== param.region) );
-    // }
-
-    // if (param.cost === "Clear") {
-    //   setSelectedFilter([]);
-    //   return
-    // }
 
   }
 

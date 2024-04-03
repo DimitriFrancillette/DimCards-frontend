@@ -25,7 +25,7 @@ const CardsDisplay = (props) => {
 
   const filter = props.selectedFilter;
 
-  if (filter.region.length > 0 || filter.cost.length > 0 || filter.type.length > 0) {
+  if (filter.region.length > 0 || filter.cost.length > 0 || filter.type.length > 0 || filter.rarity.length > 0) {
     let cardsToDisplay = [];
 
     //FILTER THE CARDS BY REGION
@@ -93,6 +93,35 @@ const CardsDisplay = (props) => {
         };
       };
       cardsToDisplay = cardsToDisplay.concat(filteredTypeCards)
+    }
+
+    //FILTER THE CARDS BY RARITY
+
+    for (const element of filter.rarity) {
+
+      const filteredRarityCards = apiCards.filter((card) => {
+        return card.rarity === element
+      });
+
+
+      const cardsAlreadyDisplayed = [];
+
+      for (let i = filteredRarityCards.length - 1; i >= 0; i--) {
+
+        cardsToDisplay.forEach(newCard => {
+          if (!cardsAlreadyDisplayed.includes(newCard._id)) {
+            cardsAlreadyDisplayed.push(newCard._id)
+          }
+        });
+
+        if (cardsAlreadyDisplayed.includes(filteredRarityCards[i]._id)) {
+          const indexToRemove = filteredRarityCards.findIndex(item => item._id === filteredRarityCards[i]._id);
+          if (indexToRemove !== -1) {
+            filteredRarityCards.splice(indexToRemove, 1);
+          }
+        };
+      };
+      cardsToDisplay = cardsToDisplay.concat(filteredRarityCards)
     }
 
     cards = cardsToDisplay.map(data => {

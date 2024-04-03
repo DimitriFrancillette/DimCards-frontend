@@ -72,6 +72,21 @@ const CardsPage = () => {
       }
     }
 
+    if (param.rarity) {
+      if (param.rarity === "Clear") {
+        setSelectedFilter(prevState => ({ ...prevState, rarity: [] }));
+        return
+      }
+
+
+      if (!selectedFilter.rarity.includes(param.rarity)) {
+        setSelectedFilter(prevState => ({ ...prevState, rarity: [...prevState.rarity, param.rarity] }));
+      }
+      else {
+        setSelectedFilter(prevState => ({ ...prevState, rarity: prevState.rarity.filter(e => e !== param.rarity) }));
+      }
+    }
+
   }
 
   return (

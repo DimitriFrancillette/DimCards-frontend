@@ -14,6 +14,10 @@ const FilterMenu = (props) => {
         props.selected({type})
     }
 
+    const handleRarity = (rarity) => {
+        props.selected({rarity})
+    }
+
     const handleClose = () => {
         props.closeFilter(false)
     }
@@ -140,26 +144,26 @@ const FilterMenu = (props) => {
             </div>
             <div className='my-3 flex justify-around items-center'>
                 <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Rarity</div>
-                <p className="font-extrabold p-1 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info">Clear</p>
+                <p className="font-extrabold p-1 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info" onClick={() => handleRarity("Clear")}>Clear</p>
             </div>
 
             <div className='flex justify-around min-h-24'>
                 <div className='flex flex-col justify-around'>
-                    <div className='flex rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info'>
+                    <div className='flex rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info' onClick={() => handleRarity("Champion")}>
                         <Image className='mr-2' src={'/img/champion.svg'} width={24} height={24} alt={"Champion rarity icone"} />
                         Champion
                     </div>
-                    <div className='flex rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info'>
+                    <div className='flex rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info' onClick={() => handleRarity("Epic")}>
                         <Image className='mr-2' src={'/img/epic.svg'} width={24} height={24} alt={"Champion rarity icone"} />
                         Epic
                     </div>
                 </div>
                 <div className='flex flex-col justify-around'>
-                    <div className='flex rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info'>
+                    <div className='flex rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info' onClick={() => handleRarity("Rare")}>
                         <Image className='mr-2' src={'/img/rare.svg'} width={24} height={24} alt={"Champion rarity icone"} />
                         Rare
                     </div>
-                    <div className='flex rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info'>
+                    <div className='flex rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info' onClick={() => handleRarity("Common")}>
                         <Image className='mr-2' src={'/img/common.svg'} width={24} height={24} alt={"Champion rarity icone"} />
                         Common
                     </div>

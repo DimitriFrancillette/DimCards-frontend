@@ -1,10 +1,12 @@
-import Image from "next/image";
 import styles from './Home.module.css';
 import Link from "next/link";
+import Header from "./components/Header.js";
+import Footer from "./components/Footer.js";
 
 export default function Home() {
   return (
     <div>
+      <Header />
       <div className="flex justify-center mt-12">
         <h1 className="text-5xl">Build your LoR Decks</h1>
       </div>
@@ -20,6 +22,7 @@ export default function Home() {
           <button className="btn btn-success px-10">Find a Deck</button>
         </Link>
       </div>
+      <Footer />
     </div>
   );
 }

@@ -2,10 +2,18 @@
 import CardsDisplay from '../components/CardsDisplay';
 import DeckMenu from "../components/DeckMenu";
 import { useState } from 'react';
+import Header from '../components/Header';
+import Footer from "../components/Footer.js";
 
 const DeckBuilderPage = () => {
   const [isMenu, setIsMenu] = useState(true);
-  const [selectedFilter, setSelectedFilter] = useState([]);
+  const [selectedFilter, setSelectedFilter] = useState({
+    region: [],
+    cost: [],
+    type: [],
+    rarity: [],
+    keyword: [],
+  });
 
 
   const closeMenu = (param) => {
@@ -22,12 +30,14 @@ const DeckBuilderPage = () => {
 
   return (
     <div>
+      <Header />
       <div className='flex'>
-        <CardsDisplay isMenu={isMenu} openMenu={openMenu} pageName={"Deck Builder"} selectedFilter={selectedFilter}/>
+        <CardsDisplay isMenu={isMenu} openMenu={openMenu} pageName={"Deck Builder"} selectedFilter={selectedFilter} />
         {isMenu &&
           <DeckMenu closeMenu={closeMenu} />
         }
       </div>
+      <Footer />
     </div>
   )
 }

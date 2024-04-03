@@ -2,7 +2,8 @@
 import CardsDisplay from '../components/CardsDisplay';
 import FilterMenu from '../components/FilterMenu';
 import { useState } from 'react';
-
+import Header from "../components/Header.js";
+import Footer from "../components/Footer.js";
 
 const CardsPage = () => {
   const [isMenu, setIsMenu] = useState(false);
@@ -60,6 +61,7 @@ const CardsPage = () => {
 
   return (
     <div>
+      <Header />
       <div className='flex'>
         <CardsDisplay isMenu={isMenu} openMenu={openMenu} pageName={"Cards Gallery"} selectedFilter={selectedFilter} />
 
@@ -67,6 +69,7 @@ const CardsPage = () => {
           <FilterMenu closeFilter={closeFilter} selected={selected} />
         }
       </div>
+      <Footer />
     </div>
   )
 }

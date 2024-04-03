@@ -80,7 +80,7 @@ const FilterMenu = (props) => {
             </div>
             <div className='my-3 flex justify-around items-center'>
                 <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Mana Cost</div>
-                <p className="font-extrabold p-1 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info">Clear</p>
+                <div className="font-extrabold p-1 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info" onClick={() => handleCost("Clear")}>Clear</div>
             </div>
             <div className='flex justify-around'>
                 <div className='bg-error text-slate-200 w-9 h-9 rounded-full flex justify-center pt-1.5 cursor-pointer hover:ring hover:ring-info' onClick={() => handleCost(0)}>

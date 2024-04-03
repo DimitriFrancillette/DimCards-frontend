@@ -57,6 +57,21 @@ const CardsPage = () => {
       }
     }
 
+    if (param.type) {
+      if (param.type === "Clear") {
+        setSelectedFilter(prevState => ({ ...prevState, type: [] }));
+        return
+      }
+
+
+      if (!selectedFilter.type.includes(param.type)) {
+        setSelectedFilter(prevState => ({ ...prevState, type: [...prevState.type, param.type] }));
+      }
+      else {
+        setSelectedFilter(prevState => ({ ...prevState, type: prevState.type.filter(e => e !== param.type) }));
+      }
+    }
+
   }
 
   return (

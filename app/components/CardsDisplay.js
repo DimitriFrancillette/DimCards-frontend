@@ -25,7 +25,7 @@ const CardsDisplay = (props) => {
 
   const filter = props.selectedFilter;
 
-  if (filter.region.length > 0 || filter.cost.length > 0) {
+  if (filter.region.length > 0 || filter.cost.length > 0 || filter.type.length > 0) {
     let cardsToDisplay = [];
 
     //FILTER THE CARDS BY REGION
@@ -67,6 +67,34 @@ const CardsDisplay = (props) => {
       cardsToDisplay = cardsToDisplay.concat(filteredCostCards)
     }
 
+    //FILTER THE CARDS BY TYPE AND CHECK IF THE CARDS ARE NOT ALREADY SELECTED TO BE DISPLAY
+    for (const element of filter.type) {
+
+      const filteredTypeCards = apiCards.filter((card) => {
+        return card.type === element
+      });
+
+
+      const cardsAlreadyDisplayed = [];
+
+      for (let i = filteredTypeCards.length - 1; i >= 0; i--) {
+
+        cardsToDisplay.forEach(newCard => {
+          if (!cardsAlreadyDisplayed.includes(newCard._id)) {
+            cardsAlreadyDisplayed.push(newCard._id)
+          }
+        });
+
+        if (cardsAlreadyDisplayed.includes(filteredTypeCards[i]._id)) {
+          const indexToRemove = filteredTypeCards.findIndex(item => item._id === filteredTypeCards[i]._id);
+          if (indexToRemove !== -1) {
+            filteredTypeCards.splice(indexToRemove, 1);
+          }
+        };
+      };
+      cardsToDisplay = cardsToDisplay.concat(filteredTypeCards)
+    }
+
     cards = cardsToDisplay.map(data => {
       return <div key={data._id} name={data.name} regions={data.regions} cost={data.cost} type={data.type} keywords={data.keywords} rarity={data.rarity}>
         <Image src={data.assets[0].gameAbsolutePath} width={250} height={250} alt={data.name} style={{ width: "auto", height: "auto" }} />
@@ -105,15 +133,6 @@ const CardsDisplay = (props) => {
     </div>
   )
 
-
-  // const fakedata = ["01DE012T1", "01DE017", "01DE022T1", "01DE048", "01FR024T1", "01FR024T3", "01FR028", "01IO009T2", "01IO023", "01IO028T2", "01IO057", "01NX002", "01NX008", "01NX024", "01NX049", "01PZ008T2", "01PZ056T9", "01SI030", "01SI044", "01SI047"]
-  // const cards = fakedata.map(data => {
-  //   const path = `/img/${data}.png`
-  //   return <div key={data} >
-  //     <Image className='mx-2' src={path} width={250} height={250} alt={":x"} />
-  //   </div>
-
-  // })
 }
 
 export default CardsDisplay;

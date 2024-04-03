@@ -10,6 +10,10 @@ const FilterMenu = (props) => {
         props.selected({cost});
     }
 
+    const handleType = (type) => {
+        props.selected({type})
+    }
+
     const handleClose = () => {
         props.closeFilter(false)
     }
@@ -110,29 +114,25 @@ const FilterMenu = (props) => {
             </div>
             <div className='my-3 flex justify-around items-center'>
                 <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Types</div>
-                <p className="font-extrabold p-1 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info">Clear</p>
+                <p className="font-extrabold p-1 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info" onClick={() => handleType("Clear")}>Clear</p>
             </div>
             <div className='flex justify-around'>
                 <div>
-                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info'>
-                        <Image className='mr-2' src={'/img/icon-champion.svg'} width={24} height={24} alt={"Champion Icon"} />
-                        <div>Champion</div>
-                    </div>
-                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info'>
+                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info' onClick={() => handleType("Unit")}>
                         <Image className='mr-2' src={'/img/icon-unit.svg'} width={24} height={24} alt={"Follower Icon"} />
                         <div>Follower</div>
                     </div>
-                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info'>
+                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info' onClick={() => handleType("Spell")}>
                         <Image className='mr-2' src={'/img/icon-spell.svg'} width={24} height={24} alt={"Spell Icon"} />
                         <div>Spell</div>
                     </div>
                 </div>
                 <div>
-                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info'>
+                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info' onClick={() => handleType("Landmark")}>
                         <Image className='mr-2' src={'/img/icon-landmark.svg'} width={24} height={24} alt={"Landmark Icon"} />
                         <div>Landmark</div>
                     </div>
-                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info'>
+                    <div className='my-4 p-1 flex min-w-28 rounded-md cursor-pointer hover:bg-secondary hover:ring hover:ring-info' onClick={() => handleType("Equipment")}>
                         <Image className='mr-2' src={'/img/icon-equipment.svg'} width={24} height={24} alt={"Equipment Icon"} />
                         <div>Equipment</div>
                     </div>

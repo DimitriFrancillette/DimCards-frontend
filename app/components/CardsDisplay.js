@@ -140,7 +140,7 @@ const CardsDisplay = (props) => {
     divClass = 'pt-6 px-4 h-screen min-w-full overflow-y-auto scrollbar-webkit';
   };
 
-  let menuButtonClass = 'bg-success w-12 h-12 rounded-full flex justify-center pt-2 mr-24';
+  let menuButtonClass = 'btn btn-circle bg-success hover:bg-info mr-8';
   if (props.isMenu === true) {
     menuButtonClass = 'hidden';
   };
@@ -152,9 +152,9 @@ const CardsDisplay = (props) => {
           <h2 className='text-5xl font-semibold'>{props.pageName}</h2>
           <p className='text-lg ml-2'>found {cards.length} cards</p>
         </div>
-        <div className={menuButtonClass} onClick={() => handleOpen()}>
+        <button className={menuButtonClass} onClick={() => handleOpen()}>
           <svg className="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" /></svg>
-        </div>
+        </button>
       </div>
       <div className="flex flex-wrap justify-center mt-2">
         {cards}

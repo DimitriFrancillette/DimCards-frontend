@@ -19,7 +19,7 @@ const CardsDisplay = (props) => {
 
   let cards = shownCards.map(data => {
     return <div key={data._id} name={data.name} regions={data.regions} cost={data.cost} type={data.type} keywords={data.keywords} rarity={data.rarity}>
-      <Image src={data.assets[0].gameAbsolutePath} width={250} height={250} alt={data.name} style={{ width: "auto", height: "auto" }} />
+      <Image src={data.assets[0].gameAbsolutePath} width={250} height={250} alt={data.name} style={{ width: "auto", height: "auto" }} loading='lazy' />
     </div>
   });
 

@@ -1,10 +1,26 @@
 import Image from "next/image";
+import { useState, useEffect } from 'react';
+import RegionButton from "./filterComponents/RegionButton";
 
 const FilterMenu = (props) => {
+    const [ghostButton, setGhostButton] = useState("btn btn-ghost justify-start")
+
+    const selectedRegion = (region) => {
+        console.log(region)
+        props.selected({ region });
+    }
 
     const handleRegion = (region) => {
         props.selected({ region });
+
+        if (ghostButton === "btn btn-ghost justify-start") {
+            setGhostButton("btn btn-ghost justify-start btn-outline")
+        } else {
+            setGhostButton("btn btn-ghost justify-start")
+        }
     }
+
+
 
     const handleCost = (cost) => {
         props.selected({ cost });
@@ -21,7 +37,7 @@ const FilterMenu = (props) => {
     const handleClose = () => {
         props.closeFilter(false)
     }
-    //TODO MODIFICATION DES BOUTONS REGIONS FAITE? FAIRE POUR LE BOUTON DE FERMTURE ET D OUVERTURE AINSI QUE LE RESTE
+
     return (
         <div className='px-3 w-1/3 bg-cyan-700/75 h-screen overflow-y-auto no-scrollbar pb-6'>
             <div className='mt-6 flex justify-between'>
@@ -40,52 +56,19 @@ const FilterMenu = (props) => {
             </div>
             <div className='flex justify-around'>
                 <div className="flex flex-col gap-y-2">
-                    <button className="btn btn-ghost justify-start" onClick={() => handleRegion("BandleCity")}>
-                        <Image src={'/img/icon-bandlecity.png'} width={24} height={24} alt={"Bandle City Icon"} />
-                        <div>Bandle City</div>
-                    </button>
-                    <button className="btn btn-ghost justify-start" onClick={() => handleRegion("Bilgewater")}>
-                        <Image src={'/img/icon-bilgewater.png'} width={24} height={24} alt={"Bilgewater Icon"} />
-                        <div>Bilgewater</div>
-                    </button>
-                    <button className="btn btn-ghost justify-start" onClick={() => handleRegion("Demacia")}>
-                        <Image src={'/img/icon-demacia.png'} width={24} height={24} alt={"Demacia Icon"} />
-                        <div>Demacia</div>
-                    </button>
-                    <button className="btn btn-ghost justify-start" onClick={() => handleRegion("Freljord")}>
-                        <Image src={'/img/icon-freljord.png'} width={24} height={24} alt={"Freljord Icon"} />
-                        <div>Freljord</div>
-                    </button>
-                    <button className="btn btn-ghost justify-start" onClick={() => handleRegion("Ionia")}>
-                        <Image src={'/img/icon-ionia.png'} width={24} height={24} alt={"Ionia Icon"} />
-                        <div>Ionia</div>
-                    </button>
-                    <button className="btn btn-ghost justify-start" onClick={() => handleRegion("Noxus")}>
-                        <Image src={'/img/icon-noxus.png'} width={24} height={24} alt={"Noxus Icon"} />
-                        <div>Noxus</div>
-                    </button>
+                    <RegionButton selectedRegion={selectedRegion} region="BandleCity" />
+                    <RegionButton selectedRegion={selectedRegion} region="Bilgewater" />
+                    <RegionButton selectedRegion={selectedRegion} region="Demacia" />
+                    <RegionButton selectedRegion={selectedRegion} region="Freljord" />
+                    <RegionButton selectedRegion={selectedRegion} region="Ionia" />
+                    <RegionButton selectedRegion={selectedRegion} region="Noxus" />
                 </div>
                 <div className="flex flex-col gap-y-2">
-                    <button className="btn btn-ghost justify-start" onClick={() => handleRegion("PiltoverZaun")}>
-                        <Image src={'/img/icon-piltoverzaun.png'} width={24} height={24} alt={"Piltover & Zaun Icon"} />
-                        <div>Piltover & Zaun</div>
-                    </button>
-                    <button className="btn btn-ghost justify-start" onClick={() => handleRegion("Runeterran")}>
-                        <Image src={'/img/icon-runeterra.png'} width={24} height={24} alt={"Runeterran Icon"} />
-                        <div>Runeterran</div>
-                    </button>
-                    <button className="btn btn-ghost justify-start" onClick={() => handleRegion("ShadowIsles")}>
-                        <Image src={'/img/icon-shadowisles.png'} width={24} height={24} alt={"Shadow Isles Icon"} />
-                        <div>Shadow Isles</div>
-                    </button>
-                    <button className="btn btn-ghost justify-start" onClick={() => handleRegion("Shurima")}>
-                        <Image src={'/img/icon-shurima.png'} width={24} height={24} alt={"Shurima Icon"} />
-                        <div>Shurima</div>
-                    </button>
-                    <button className="btn btn-ghost justify-start" onClick={() => handleRegion("Targon")}>
-                        <Image src={'/img/icon-targon.png'} width={24} height={24} alt={"Targon Icon"} />
-                        <div>Targon</div>
-                    </button>
+                    <RegionButton selectedRegion={selectedRegion} region="PiltoverZaun" />
+                    <RegionButton selectedRegion={selectedRegion} region="Runeterran" />
+                    <RegionButton selectedRegion={selectedRegion} region="ShadowIsles" />
+                    <RegionButton selectedRegion={selectedRegion} region="Shurima" />
+                    <RegionButton selectedRegion={selectedRegion} region="Targon" />
                 </div>
             </div>
             <div className='my-3 flex justify-around items-center'>

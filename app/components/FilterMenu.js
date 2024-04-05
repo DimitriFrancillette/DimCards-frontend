@@ -1,26 +1,14 @@
 import Image from "next/image";
-import { useState, useEffect } from 'react';
 import RegionButton from "./filterComponents/RegionButton";
+import { useState } from "react";
 
 const FilterMenu = (props) => {
-    const [ghostButton, setGhostButton] = useState("btn btn-ghost justify-start")
+    const [clear, setClear] = useState(false)
 
     const selectedRegion = (region) => {
-        console.log(region)
         props.selected({ region });
+        if (region === "Clear") { setClear(!clear) };
     }
-
-    const handleRegion = (region) => {
-        props.selected({ region });
-
-        if (ghostButton === "btn btn-ghost justify-start") {
-            setGhostButton("btn btn-ghost justify-start btn-outline")
-        } else {
-            setGhostButton("btn btn-ghost justify-start")
-        }
-    }
-
-
 
     const handleCost = (cost) => {
         props.selected({ cost });
@@ -50,25 +38,25 @@ const FilterMenu = (props) => {
             </div>
             <div className='my-3 flex justify-around items-center'>
                 <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Regions</div>
-                <button className="btn btn-ghost font-extrabold text-lg" onClick={() => handleRegion("Clear")}>
+                <button className="btn btn-ghost font-extrabold text-lg" onClick={() => selectedRegion("Clear")}>
                     Clear
                 </button>
             </div>
             <div className='flex justify-around'>
                 <div className="flex flex-col gap-y-2">
-                    <RegionButton selectedRegion={selectedRegion} region="BandleCity" />
-                    <RegionButton selectedRegion={selectedRegion} region="Bilgewater" />
-                    <RegionButton selectedRegion={selectedRegion} region="Demacia" />
-                    <RegionButton selectedRegion={selectedRegion} region="Freljord" />
-                    <RegionButton selectedRegion={selectedRegion} region="Ionia" />
-                    <RegionButton selectedRegion={selectedRegion} region="Noxus" />
+                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="BandleCity" />
+                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="Bilgewater" />
+                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="Demacia" />
+                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="Freljord" />
+                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="Ionia" />
+                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="Noxus" />
                 </div>
                 <div className="flex flex-col gap-y-2">
-                    <RegionButton selectedRegion={selectedRegion} region="PiltoverZaun" />
-                    <RegionButton selectedRegion={selectedRegion} region="Runeterran" />
-                    <RegionButton selectedRegion={selectedRegion} region="ShadowIsles" />
-                    <RegionButton selectedRegion={selectedRegion} region="Shurima" />
-                    <RegionButton selectedRegion={selectedRegion} region="Targon" />
+                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="PiltoverZaun" />
+                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="Runeterran" />
+                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="ShadowIsles" />
+                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="Shurima" />
+                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="Targon" />
                 </div>
             </div>
             <div className='my-3 flex justify-around items-center'>

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Image from "next/image";
 
 const RegionButton = (props) => {
@@ -13,6 +13,11 @@ const RegionButton = (props) => {
             setGhostButton("btn btn-ghost justify-start")
         }
     };
+
+    useEffect(() =>{
+        setGhostButton("btn btn-ghost justify-start")
+    },[props.clear])
+    
 
     let buttonText = props.region;
     if (buttonText === 'BandleCity') { buttonText = 'Bandle City' };

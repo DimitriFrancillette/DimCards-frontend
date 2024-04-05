@@ -1,11 +1,13 @@
 import Image from "next/image";
 import RegionButton from "./filterComponents/RegionButton";
 import ManaCostButton from "./filterComponents/ManaCostButton";
+import TypeButton from "./filterComponents/TypeButton";
 import { useState } from "react";
 
 const FilterMenu = (props) => {
     const [regionClear, regionSetClear] = useState(false);
     const [costClear, costSetClear] = useState(false);
+    const [typeClear, typeSetClear] = useState(false);
 
     const selectedRegion = (region) => {
         props.selected({ region });
@@ -17,8 +19,9 @@ const FilterMenu = (props) => {
         if (cost === "Clear") { costSetClear(!costClear) };
     }
 
-    const handleType = (type) => {
-        props.selected({ type })
+    const selectedType = (type) => {
+        props.selected({ type });
+        if (type === "Clear") { typeSetClear(!typeClear) };
     }
 
     const handleRarity = (rarity) => {
@@ -80,32 +83,18 @@ const FilterMenu = (props) => {
             </div>
             <div className='my-3 flex justify-around items-center'>
                 <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Types</div>
-                <button className="btn btn-ghost font-extrabold text-lg" onClick={() => handleType("Clear")}>
+                <button className="btn btn-ghost font-extrabold text-lg" onClick={() => selectedType("Clear")}>
                     Clear
                 </button>
             </div>
             <div className='flex justify-around'>
                 <div>
-                    <button className="btn btn-ghost justify-start" onClick={() => handleType("Unit")}>
-                        <Image className='mr-2' src={'/img/icon-unit.svg'} width={24} height={24} alt={"Follower Icon"} />
-                        <div>Follower</div>
-                    </button>
-
-                    <button className="btn btn-ghost justify-start" onClick={() => handleType("Spell")}>
-                        <Image className='mr-2' src={'/img/icon-spell.svg'} width={24} height={24} alt={"Spell Icon"} />
-                        <div>Spell</div>
-                    </button>
+                    <TypeButton selectedType={selectedType} typeClear={typeClear} type="Unit" />
+                    <TypeButton selectedType={selectedType} typeClear={typeClear} type="Spell" />
                 </div>
                 <div>
-                    <button className="btn btn-ghost justify-start" onClick={() => handleType("Landmark")}>
-                        <Image className='mr-2' src={'/img/icon-landmark.svg'} width={24} height={24} alt={"Landmark Icon"} />
-                        <div>Landmark</div>
-                    </button>
-
-                    <button className="btn btn-ghost justify-start" onClick={() => handleType("Equipment")}>
-                        <Image className='mr-2' src={'/img/icon-equipment.svg'} width={24} height={24} alt={"Equipment Icon"} />
-                        <div>Equipment</div>
-                    </button>
+                    <TypeButton selectedType={selectedType} typeClear={typeClear} type="Landmark" />
+                    <TypeButton selectedType={selectedType} typeClear={typeClear} type="Equipment" />
                 </div>
             </div>
             <div className='my-3 flex justify-around items-center'>

@@ -8,7 +8,7 @@ const RegionButton = (props) => {
         props.selectedRegion(region);
 
         if (ghostButton === "btn btn-ghost justify-start") {
-            setGhostButton("btn btn-ghost justify-start btn-outline")
+            setGhostButton("btn btn-ghost justify-start btn-outline border-yellow-500")
         } else {
             setGhostButton("btn btn-ghost justify-start")
         }
@@ -16,8 +16,7 @@ const RegionButton = (props) => {
 
     useEffect(() =>{
         setGhostButton("btn btn-ghost justify-start")
-    },[props.clear])
-    
+    },[props.regionClear])
 
     let buttonText = props.region;
     if (buttonText === 'BandleCity') { buttonText = 'Bandle City' };

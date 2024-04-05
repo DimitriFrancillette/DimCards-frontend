@@ -1,17 +1,20 @@
 import Image from "next/image";
 import RegionButton from "./filterComponents/RegionButton";
+import ManaCostButton from "./filterComponents/ManaCostButton";
 import { useState } from "react";
 
 const FilterMenu = (props) => {
-    const [clear, setClear] = useState(false)
+    const [regionClear, regionSetClear] = useState(false);
+    const [costClear, costSetClear] = useState(false);
 
     const selectedRegion = (region) => {
         props.selected({ region });
-        if (region === "Clear") { setClear(!clear) };
+        if (region === "Clear") { regionSetClear(!regionClear) };
     }
 
-    const handleCost = (cost) => {
+    const selectedCost = (cost) => {
         props.selected({ cost });
+        if (cost === "Clear") { costSetClear(!costClear) };
     }
 
     const handleType = (type) => {
@@ -44,52 +47,36 @@ const FilterMenu = (props) => {
             </div>
             <div className='flex justify-around'>
                 <div className="flex flex-col gap-y-2">
-                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="BandleCity" />
-                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="Bilgewater" />
-                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="Demacia" />
-                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="Freljord" />
-                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="Ionia" />
-                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="Noxus" />
+                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="BandleCity" />
+                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="Bilgewater" />
+                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="Demacia" />
+                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="Freljord" />
+                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="Ionia" />
+                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="Noxus" />
                 </div>
                 <div className="flex flex-col gap-y-2">
-                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="PiltoverZaun" />
-                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="Runeterran" />
-                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="ShadowIsles" />
-                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="Shurima" />
-                    <RegionButton selectedRegion={selectedRegion} clear={clear} region="Targon" />
+                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="PiltoverZaun" />
+                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="Runeterran" />
+                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="ShadowIsles" />
+                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="Shurima" />
+                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="Targon" />
                 </div>
             </div>
             <div className='my-3 flex justify-around items-center'>
                 <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Mana Cost</div>
-                <button className="btn btn-ghost font-extrabold text-lg" onClick={() => handleCost("Clear")}>
+                <button className="btn btn-ghost font-extrabold text-lg" onClick={() => selectedCost("Clear")}>
                     Clear
                 </button>
             </div>
             <div className='flex justify-around'>
-                <button className="btn btn-circle btn-sm bg-error text-slate-200" onClick={() => handleCost(0)}>
-                    <div>0</div>
-                </button>
-                <button className="btn btn-circle btn-sm bg-error text-slate-200" onClick={() => handleCost(1)}>
-                    <div>1</div>
-                </button>
-                <button className="btn btn-circle btn-sm bg-error text-slate-200" onClick={() => handleCost(2)}>
-                    <div>2</div>
-                </button>
-                <button className="btn btn-circle btn-sm bg-error text-slate-200" onClick={() => handleCost(3)}>
-                    <div>3</div>
-                </button>
-                <button className="btn btn-circle btn-sm bg-error text-slate-200" onClick={() => handleCost(4)}>
-                    <div>4</div>
-                </button>
-                <button className="btn btn-circle btn-sm bg-error text-slate-200" onClick={() => handleCost(5)}>
-                    <div>5</div>
-                </button>
-                <button className="btn btn-circle btn-sm bg-error text-slate-200" onClick={() => handleCost(6)}>
-                    <div>6</div>
-                </button>
-                <button className="btn btn-circle btn-sm bg-error text-slate-200" onClick={() => handleCost(7)}>
-                    <div>7+</div>
-                </button>
+                <ManaCostButton selectedCost={selectedCost} costClear={costClear} cost={0} />
+                <ManaCostButton selectedCost={selectedCost} costClear={costClear} cost={1} />
+                <ManaCostButton selectedCost={selectedCost} costClear={costClear} cost={2} />
+                <ManaCostButton selectedCost={selectedCost} costClear={costClear} cost={3} />
+                <ManaCostButton selectedCost={selectedCost} costClear={costClear} cost={4} />
+                <ManaCostButton selectedCost={selectedCost} costClear={costClear} cost={5} />
+                <ManaCostButton selectedCost={selectedCost} costClear={costClear} cost={6} />
+                <ManaCostButton selectedCost={selectedCost} costClear={costClear} cost={7} />
             </div>
             <div className='my-3 flex justify-around items-center'>
                 <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Types</div>

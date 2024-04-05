@@ -2,12 +2,14 @@ import Image from "next/image";
 import RegionButton from "./filterComponents/RegionButton";
 import ManaCostButton from "./filterComponents/ManaCostButton";
 import TypeButton from "./filterComponents/TypeButton";
+import RarityButton from "./filterComponents/RarityButton";
 import { useState } from "react";
 
 const FilterMenu = (props) => {
     const [regionClear, regionSetClear] = useState(false);
     const [costClear, costSetClear] = useState(false);
     const [typeClear, typeSetClear] = useState(false);
+    const [rarityClear, raritySetClear] = useState(false);
 
     const selectedRegion = (region) => {
         props.selected({ region });
@@ -24,8 +26,9 @@ const FilterMenu = (props) => {
         if (type === "Clear") { typeSetClear(!typeClear) };
     }
 
-    const handleRarity = (rarity) => {
+    const selectedRarity = (rarity) => {
         props.selected({ rarity })
+        if (rarity === "Clear") { raritySetClear(!rarityClear) };
     }
 
     const handleClose = () => {
@@ -99,37 +102,25 @@ const FilterMenu = (props) => {
             </div>
             <div className='my-3 flex justify-around items-center'>
                 <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Rarity</div>
-                <button className="btn btn-ghost font-extrabold text-lg" onClick={() => handleRarity("Clear")}>
+                <button className="btn btn-ghost font-extrabold text-lg" onClick={() => selectedRarity("Clear")}>
                     Clear
                 </button>
             </div>
 
             <div className='flex justify-around min-h-24'>
                 <div className='flex flex-col justify-around'>
-                    <button className="btn btn-ghost justify-start" onClick={() => handleRarity("Champion")}>
-                        <Image className='mr-2' src={'/img/champion.svg'} width={24} height={24} alt={"Champion rarity icone"} />
-                        Champion
-                    </button>
-                    <button className="btn btn-ghost justify-start" onClick={() => handleRarity("Epic")}>
-                        <Image className='mr-2' src={'/img/epic.svg'} width={24} height={24} alt={"Champion rarity icone"} />
-                        Epic
-                    </button>
+                    <RarityButton selectedRarity={selectedRarity} rarityClear={rarityClear} rarity="Champion" />
+                    <RarityButton selectedRarity={selectedRarity} rarityClear={rarityClear} rarity="Epic" />
                 </div>
                 <div className='flex flex-col justify-around'>
-                    <button className="btn btn-ghost justify-start" onClick={() => handleRarity("Rare")}>
-                        <Image className='mr-2' src={'/img/rare.svg'} width={24} height={24} alt={"Champion rarity icone"} />
-                        Rare
-                    </button>
-                    <button className="btn btn-ghost justify-start" onClick={() => handleRarity("Common")}>
-                        <Image className='mr-2' src={'/img/common.svg'} width={24} height={24} alt={"Champion rarity icone"} />
-                        Common
-                    </button>
+                    <RarityButton selectedRarity={selectedRarity} rarityClear={rarityClear} rarity="Rare" />
+                    <RarityButton selectedRarity={selectedRarity} rarityClear={rarityClear} rarity="Common" />
                 </div>
             </div>
 
             <div className='my-3 flex justify-around items-center'>
                 <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Keywords</div>
-                <button className="btn btn-ghost font-extrabold text-lg" onClick={() => handleRarity("Clear")}>
+                <button className="btn btn-ghost font-extrabold text-lg" onClick={() => selectedRarity("Clear")}>
                     Clear
                 </button>
             </div>

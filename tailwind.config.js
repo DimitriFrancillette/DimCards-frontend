@@ -12,6 +12,19 @@ module.exports = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      colors: {
+        'demaciaColor': '#cec19d',
+        'noxusColor': '#a52626',
+        'piltoverzaunColor': '#ec9b6f',
+        'freljordColor': '#8adcf9',
+        'ioniaColor': '#d0829c',
+        'shadowislesColor': '#0ead93',
+        'bilgewaterColor': '#ae4228',
+        'shurimaColor': '#f6a000',
+        'bandlecityColor': '#adbe00',
+        'targonColor': '#7063eb',
+        'runeterraColor': '#756650',
+      },
     },
   },
   daisyui: {

@@ -6,6 +6,10 @@ const nextConfig = {
             protocol: 'http',
             hostname: 'dd.b.pvp.net',
           },
+          {
+            protocol: 'https',
+            hostname: 'dd.b.pvp.net',
+          },
         ],
       },
 };

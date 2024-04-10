@@ -12,7 +12,7 @@ const DeckMenu = (props) => {
             <div className='mt-6 flex justify-between'>
                 <div className='flex items-center'>
                     <FaPen className='size-6 mr-4' />
-                    <h3 className='text-2xl'>Deck Name</h3>
+                    <input type="text" placeholder="Deck Name" className="input input-success w-72 bg-transparent text-xl placeholder-neutral-100" />
                 </div>
                 <div>
                     <div className='btn btn-circle bg-success hover:bg-success hover:opacity-70' onClick={() => handleClose()}>

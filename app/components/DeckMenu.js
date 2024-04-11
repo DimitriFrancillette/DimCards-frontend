@@ -127,13 +127,8 @@ const DeckMenu = (props) => {
                     </div>
                 </div>
 
-
-            </div>
-
-
-
-            {/* --------------CARD IN DECK TESTING WITH backgroundImage
-            <div className="relative h-14 rounded-2xl overflow-hidden flex items-center text-slate-100">
+                {/* --------------CARD IN DECK TESTING WITH backgroundImage */}
+                {/* <div className="relative h-14 rounded-2xl overflow-hidden flex items-center text-slate-100">
                     <div className="absolute inset-0 bg-gradient-to-r from-demaciaColor to-transparent from-40% z-10"></div>
                     <div className="relative p-4 flex justify-between items-center w-full z-10">
                         <div className="flex justify-between items-center min-w-40">
@@ -156,8 +151,14 @@ const DeckMenu = (props) => {
                             />
                         </div>
                     </div>
-                </div>
-                --------------CARD IN DECK TESTING WITH backgroundImage */}
+                </div> */}
+                {/* --------------CARD IN DECK TESTING WITH backgroundImage */}
+                
+            </div>
+
+
+
+
 
         </div>
     )

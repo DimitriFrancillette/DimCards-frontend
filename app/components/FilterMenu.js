@@ -6,29 +6,29 @@ import RarityButton from "./filterComponents/RarityButton";
 import { useState } from "react";
 
 const FilterMenu = (props) => {
-    const [regionClear, regionSetClear] = useState(false);
-    const [costClear, costSetClear] = useState(false);
-    const [typeClear, typeSetClear] = useState(false);
-    const [rarityClear, raritySetClear] = useState(false);
+    const [regionClear, setRegionClear] = useState(false);
+    const [costClear, setCostClear] = useState(false);
+    const [typeClear, setTypeClear] = useState(false);
+    const [rarityClear, setRarityClear] = useState(false);
 
     const selectedRegion = (region) => {
         props.selected({ region });
-        if (region === "Clear") { regionSetClear(!regionClear) };
+        if (region === "Clear") { setRegionClear(!regionClear) };
     }
 
     const selectedCost = (cost) => {
         props.selected({ cost });
-        if (cost === "Clear") { costSetClear(!costClear) };
+        if (cost === "Clear") { setCostClear(!costClear) };
     }
 
     const selectedType = (type) => {
         props.selected({ type });
-        if (type === "Clear") { typeSetClear(!typeClear) };
+        if (type === "Clear") { setTypeClear(!typeClear) };
     }
 
     const selectedRarity = (rarity) => {
         props.selected({ rarity })
-        if (rarity === "Clear") { raritySetClear(!rarityClear) };
+        if (rarity === "Clear") { setRarityClear(!rarityClear) };
     }
 
     const handleClose = () => {

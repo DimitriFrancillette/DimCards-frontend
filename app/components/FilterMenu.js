@@ -10,29 +10,51 @@ const FilterMenu = (props) => {
     const [typeClear, setTypeClear] = useState(false);
     const [rarityClear, setRarityClear] = useState(false);
 
+    const gameRegions = ['BandleCity', 'Bilgewater', 'Demacia', 'Freljord', 'Ionia', 'Noxus', 'PiltoverZaun', 'Runeterran', 'ShadowIsles', 'Shurima', 'Targon'];
+    const cardsCosts = [0, 1, 2, 3, 4, 5, 6, 7];
+    const cardsTypes = ["Unit", "Spell", "Landmark", "Equipment"];
+    const cardsRarity = ["Champion", "Epic", "Rare", "Common"];
+
     const selectedRegion = (region) => {
         props.selected({ region });
         if (region === "Clear") { setRegionClear(!regionClear) };
-    }
+    };
 
     const selectedCost = (cost) => {
         props.selected({ cost });
         if (cost === "Clear") { setCostClear(!costClear) };
-    }
+    };
 
     const selectedType = (type) => {
         props.selected({ type });
         if (type === "Clear") { setTypeClear(!typeClear) };
-    }
+    };
 
     const selectedRarity = (rarity) => {
         props.selected({ rarity })
         if (rarity === "Clear") { setRarityClear(!rarityClear) };
-    }
+    };
 
     const handleClose = () => {
         props.closeFilter(false)
-    }
+    };
+
+    const regionButtons = gameRegions.map(regionName => {
+        return <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region={regionName} />
+    });
+
+    const manaButtons = cardsCosts.map(costMana => {
+        return <ManaCostButton selectedCost={selectedCost} costClear={costClear} cost={costMana} />
+    });
+
+    const typeButtons = cardsTypes.map(typeName => {
+        return <TypeButton selectedType={selectedType} typeClear={typeClear} type={typeName} />
+    });
+
+    const rarityButtons = cardsRarity.map(rarityName => {
+        return <RarityButton selectedRarity={selectedRarity} rarityClear={rarityClear} rarity={rarityName} />
+    });
+
 
     return (
         <div className='px-3 w-1/3 bg-cyan-700/75 h-screen overflow-y-auto no-scrollbar pb-6'>
@@ -50,22 +72,8 @@ const FilterMenu = (props) => {
                     Clear
                 </button>
             </div>
-            <div className='flex justify-around'>
-                <div className="flex flex-col gap-y-2">
-                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="BandleCity" />
-                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="Bilgewater" />
-                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="Demacia" />
-                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="Freljord" />
-                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="Ionia" />
-                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="Noxus" />
-                </div>
-                <div className="flex flex-col gap-y-2">
-                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="PiltoverZaun" />
-                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="Runeterran" />
-                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="ShadowIsles" />
-                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="Shurima" />
-                    <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region="Targon" />
-                </div>
+            <div className='grid grid-cols-2 gap-y-2 justify-items-center'>
+                {regionButtons}
             </div>
             <div className='my-3 flex justify-around items-center'>
                 <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Mana Cost</div>
@@ -74,14 +82,7 @@ const FilterMenu = (props) => {
                 </button>
             </div>
             <div className='flex justify-around'>
-                <ManaCostButton selectedCost={selectedCost} costClear={costClear} cost={0} />
-                <ManaCostButton selectedCost={selectedCost} costClear={costClear} cost={1} />
-                <ManaCostButton selectedCost={selectedCost} costClear={costClear} cost={2} />
-                <ManaCostButton selectedCost={selectedCost} costClear={costClear} cost={3} />
-                <ManaCostButton selectedCost={selectedCost} costClear={costClear} cost={4} />
-                <ManaCostButton selectedCost={selectedCost} costClear={costClear} cost={5} />
-                <ManaCostButton selectedCost={selectedCost} costClear={costClear} cost={6} />
-                <ManaCostButton selectedCost={selectedCost} costClear={costClear} cost={7} />
+                {manaButtons}
             </div>
             <div className='my-3 flex justify-around items-center'>
                 <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Types</div>
@@ -89,15 +90,8 @@ const FilterMenu = (props) => {
                     Clear
                 </button>
             </div>
-            <div className='flex justify-around'>
-                <div>
-                    <TypeButton selectedType={selectedType} typeClear={typeClear} type="Unit" />
-                    <TypeButton selectedType={selectedType} typeClear={typeClear} type="Spell" />
-                </div>
-                <div>
-                    <TypeButton selectedType={selectedType} typeClear={typeClear} type="Landmark" />
-                    <TypeButton selectedType={selectedType} typeClear={typeClear} type="Equipment" />
-                </div>
+            <div className='grid grid-cols-2 gap-y-2 justify-items-center'>
+                {typeButtons}
             </div>
             <div className='my-3 flex justify-around items-center'>
                 <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Rarity</div>
@@ -106,15 +100,8 @@ const FilterMenu = (props) => {
                 </button>
             </div>
 
-            <div className='flex justify-around min-h-24'>
-                <div className='flex flex-col justify-around'>
-                    <RarityButton selectedRarity={selectedRarity} rarityClear={rarityClear} rarity="Champion" />
-                    <RarityButton selectedRarity={selectedRarity} rarityClear={rarityClear} rarity="Epic" />
-                </div>
-                <div className='flex flex-col justify-around'>
-                    <RarityButton selectedRarity={selectedRarity} rarityClear={rarityClear} rarity="Rare" />
-                    <RarityButton selectedRarity={selectedRarity} rarityClear={rarityClear} rarity="Common" />
-                </div>
+            <div className='grid grid-cols-2 gap-y-2 justify-items-center'>
+                {rarityButtons}
             </div>
 
             <div className='my-3 flex justify-around items-center'>

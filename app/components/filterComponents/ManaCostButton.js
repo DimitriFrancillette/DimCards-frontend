@@ -1,20 +1,15 @@
 import { useState, useEffect } from 'react';
 
 const ManaCostButton = ({ selectedCost, cost, costClear }) => {
-    const [circleButton, setCircleButton] = useState("btn btn-circle btn-sm bg-error text-slate-200");
+    const [isBorderActive, setIsBorderActive] = useState(false);
 
     const handleCost = (cost) => {
         selectedCost(cost);
-
-        if (circleButton === "btn btn-circle btn-sm bg-error text-slate-200") {
-            setCircleButton("btn btn-circle btn-sm bg-error text-slate-200 border-2 border-yellow-500")
-        } else {
-            setCircleButton("btn btn-circle btn-sm bg-error text-slate-200")
-        }
+        setIsBorderActive(!isBorderActive);
     };
 
     useEffect(() => {
-        setCircleButton("btn btn-circle btn-sm bg-error text-slate-200")
+        setIsBorderActive(false);
     }, [costClear])
 
     let buttonText = cost.toString();
@@ -22,7 +17,7 @@ const ManaCostButton = ({ selectedCost, cost, costClear }) => {
 
     return (
         <div>
-            <button className={circleButton} onClick={() => handleCost(cost)}>
+            <button className={isBorderActive ? "btn btn-circle btn-sm bg-error text-slate-200 border-2 border-yellow-500" : "btn btn-circle btn-sm bg-error text-slate-200"} onClick={() => handleCost(cost)}>
                 <div>{buttonText}</div>
             </button>
         </div>

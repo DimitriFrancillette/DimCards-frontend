@@ -2,20 +2,15 @@ import { useState, useEffect } from 'react';
 import Image from "next/image";
 
 const TypeButton = ({ selectedType, typeClear, type }) => {
-    const [ghostButton, setGhostButton] = useState("btn btn-ghost justify-start");
+    const [isBorderActive, setIsBorderActive] = useState(false);
 
     const handleType = (type) => {
         selectedType(type);
-
-        if (ghostButton === "btn btn-ghost justify-start") {
-            setGhostButton("btn btn-ghost justify-start btn-outline border-yellow-500")
-        } else {
-            setGhostButton("btn btn-ghost justify-start")
-        }
+        setIsBorderActive(!isBorderActive);
     };
 
     useEffect(() => {
-        setGhostButton("btn btn-ghost justify-start")
+        setIsBorderActive(false);
     }, [typeClear])
 
     let buttonText = type;
@@ -23,7 +18,7 @@ const TypeButton = ({ selectedType, typeClear, type }) => {
 
     return (
         <div>
-            <button className={ghostButton} onClick={() => handleType(type)}>
+            <button className={isBorderActive ? "btn btn-ghost justify-start btn-outline border-yellow-500" : "btn btn-ghost justify-start"} onClick={() => handleType(type)}>
                 <Image src={`/img/icon-${type}.svg`} className='mr-2' width={24} height={24} alt={`${type} Icon`} />
                 <div>{buttonText}</div>
             </button>

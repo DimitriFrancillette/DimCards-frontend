@@ -1,4 +1,3 @@
-import Image from "next/image";
 import RegionButton from "./filterComponents/RegionButton";
 import ManaCostButton from "./filterComponents/ManaCostButton";
 import TypeButton from "./filterComponents/TypeButton";

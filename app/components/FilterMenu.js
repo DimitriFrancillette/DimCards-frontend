@@ -2,6 +2,7 @@ import RegionButton from "./filterComponents/RegionButton";
 import ManaCostButton from "./filterComponents/ManaCostButton";
 import TypeButton from "./filterComponents/TypeButton";
 import RarityButton from "./filterComponents/RarityButton";
+import ClearButton from "./filterComponents/ClearButton";
 import { useState } from "react";
 
 const FilterMenu = (props) => {
@@ -68,36 +69,28 @@ const FilterMenu = (props) => {
             </div>
             <div className='my-3 flex justify-around items-center'>
                 <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Regions</div>
-                <button className="btn btn-ghost font-extrabold text-lg" onClick={() => selectedRegion("Clear")}>
-                    Clear
-                </button>
+                <ClearButton selectedFunction={selectedRegion} />
             </div>
             <div className='grid grid-cols-2 gap-y-2 justify-items-center'>
                 {regionButtons}
             </div>
             <div className='my-3 flex justify-around items-center'>
                 <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Mana Cost</div>
-                <button className="btn btn-ghost font-extrabold text-lg" onClick={() => selectedCost("Clear")}>
-                    Clear
-                </button>
+                <ClearButton selectedFunction={selectedCost} />
             </div>
             <div className='flex justify-around'>
                 {manaButtons}
             </div>
             <div className='my-3 flex justify-around items-center'>
                 <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Types</div>
-                <button className="btn btn-ghost font-extrabold text-lg" onClick={() => selectedType("Clear")}>
-                    Clear
-                </button>
+                <ClearButton selectedFunction={selectedType} />
             </div>
             <div className='grid grid-cols-2 gap-y-2 justify-items-center'>
                 {typeButtons}
             </div>
             <div className='my-3 flex justify-around items-center'>
                 <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Rarity</div>
-                <button className="btn btn-ghost font-extrabold text-lg" onClick={() => selectedRarity("Clear")}>
-                    Clear
-                </button>
+                <ClearButton selectedFunction={selectedRarity} />
             </div>
 
             <div className='grid grid-cols-2 gap-y-2 justify-items-center'>
@@ -106,7 +99,7 @@ const FilterMenu = (props) => {
 
             <div className='my-3 flex justify-around items-center'>
                 <div className="divider divider-start divider-primary text-xl" style={{ width: '80%' }}>Keywords</div>
-                <button className="btn btn-ghost font-extrabold text-lg" onClick={() => selectedRarity("Clear")}>
+                <button className="btn btn-ghost font-extrabold text-lg" onClick={() => console.log("Clear Keywords")}>
                     Clear
                 </button>
             </div>

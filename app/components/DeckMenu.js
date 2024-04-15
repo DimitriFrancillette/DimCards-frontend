@@ -8,18 +8,19 @@ const DeckMenu = (props) => {
     }
 
     return (
-        <div className='px-3 basis-2/6 bg-cyan-700/75 h-screen overflow-y-auto pb-6'>
-            <div className='mt-6 flex justify-between'>
-                <div className='flex items-center'>
-                    <FaPen className='size-6 mr-4' />
-                    <input type="text" placeholder="Deck Name" className="input input-success w-72 bg-transparent text-xl placeholder-neutral-100" />
-                </div>
+        <div className='px-3 w-1/5 bg-cyan-700/75 h-screen overflow-y-auto pb-6'>
+            <div className='my-6 flex justify-between'>
+                <h3 className='text-3xl'>Filters</h3>
                 <div>
-                    <div className='btn btn-circle bg-success hover:bg-success hover:opacity-70' onClick={() => handleClose()}>
+                    <div className='btn btn-circle bg-success btn-sm hover:bg-success hover:opacity-70' onClick={() => handleClose()}>
                         <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
                     </div>
                 </div>
             </div>
+            <div className='flex items-center'>
+                    <FaPen className='size-6 mr-4' />
+                    <input type="text" placeholder="Deck Name" className="input input-success w-72 bg-transparent text-xl placeholder-neutral-100" />
+                </div>
             <div className='grid grid-cols-6 grid-rows-2 gap-y-2 mt-6 text-lg font-medium'>
                 <div className='text-center'>6/6</div>
                 <div className='text-center'>4</div>
@@ -153,7 +154,7 @@ const DeckMenu = (props) => {
                     </div>
                 </div> */}
                 {/* --------------CARD IN DECK TESTING WITH backgroundImage */}
-                
+
             </div>
 
 

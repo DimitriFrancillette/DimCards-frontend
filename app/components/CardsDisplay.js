@@ -135,7 +135,7 @@ const CardsDisplay = (props) => {
     props.openMenu(true)
   };
 
-  let divClass = 'pt-6 px-4 basis-4/6 h-screen overflow-y-auto scrollbar-webkit';
+  let divClass = 'pt-6 px-4 w-4/5 h-screen overflow-y-auto scrollbar-webkit';
   if (props.isMenu === false) {
     divClass = 'pt-6 px-4 h-screen min-w-full overflow-y-auto scrollbar-webkit';
   };

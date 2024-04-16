@@ -1,11 +1,52 @@
 import Image from "next/image";
 import { FaPen } from "react-icons/fa";
 
-const DeckMenu = (props) => {
+const DeckMenu = ({ closeMenu, deckList, removeFromDeck }) => {
+
+    const removeCard = (card) => {
+        removeFromDeck(card);
+    };
 
     const handleClose = () => {
-        props.closeMenu(false)
+        closeMenu(false)
     }
+
+    let cardsToShow = deckList.map(data => {
+        const lowerCaseRegion = data.regions[0].toLowerCase();
+        return <div
+            key={data.id}
+            name={data.name}
+            regions={data.regions}
+            cost={data.cost}
+            type={data.type}
+            keywords={data.keywords}
+            rarity={data.rarity}
+            onClick={() => removeCard({
+                id: data.id,
+                name: data.name,
+                regions: data.regions,
+                cost: data.cost,
+                type: data.type,
+                keywords: data.keywords,
+                rarity: data.rarity,
+            })}
+        >
+            <div className={`h-12 rounded-2xl bg-gradient-to-r from-${lowerCaseRegion}Color from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100`} >
+                <div className="flex items-center min-w-40">
+                    <div className="btn-circle btn-xs bg-error flex justify-center items-center mr-4">
+                        {data.cost}
+                    </div>
+                    <div className="text-lg">
+                        {data.name}
+                    </div>
+                </div>
+                <div className="btn-square btn-xs bg-slate-500 flex justify-center items-center">
+                    1
+                </div>
+            </div>
+        </div>
+    });
+
 
     return (
         <div className='px-3 w-1/5 bg-cyan-700/75 h-screen overflow-y-auto pb-6'>
@@ -18,9 +59,9 @@ const DeckMenu = (props) => {
                 </div>
             </div>
             <div className='flex items-center'>
-                    <FaPen className='size-6 mr-4' />
-                    <input type="text" placeholder="Deck Name" className="input input-success w-72 bg-transparent text-xl placeholder-neutral-100" />
-                </div>
+                <FaPen className='size-6 mr-4' />
+                <input type="text" placeholder="Deck Name" className="input input-success w-72 bg-transparent text-xl placeholder-neutral-100" />
+            </div>
             <div className='grid grid-cols-6 grid-rows-2 gap-y-2 mt-6 text-lg font-medium'>
                 <div className='text-center'>6/6</div>
                 <div className='text-center'>4</div>
@@ -49,84 +90,8 @@ const DeckMenu = (props) => {
             </div>
 
             <div className="mt-8 h-screen flex flex-col gap-1 bg-secondary pt-2 px-2 rounded-md">
-                <div className="h-12 rounded-2xl bg-gradient-to-r from-piltoverzaunColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100">
-                    <div className="flex items-center min-w-40">
-                        <div className="btn-circle btn-xs bg-error flex justify-center items-center mr-6">
-                            3
-                        </div>
-                        <div className="text-2xl">
-                            Ezreal
-                        </div>
-                    </div>
-                    <div className="btn-square btn-xs bg-slate-500 flex justify-center items-center">
-                        2
-                    </div>
-                </div>
-                <div className="h-12 rounded-2xl bg-gradient-to-r from-freljordColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100">
-                    <div className="flex items-center min-w-40">
-                        <div className="btn-circle btn-xs bg-error flex justify-center items-center mr-6">
-                            4
-                        </div>
-                        <div className="text-2xl">
-                            Ashe
-                        </div>
-                    </div>
-                    <div className="btn-square btn-xs bg-slate-500 flex justify-center items-center">
-                        1
-                    </div>
-                </div>
-                <div className="h-12 rounded-2xl bg-gradient-to-r from-ioniaColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100">
-                    <div className="flex items-center min-w-40">
-                        <div className="btn-circle btn-xs bg-error flex justify-center items-center mr-6">
-                            6
-                        </div>
-                        <div className="text-2xl">
-                            Zephyr Sage
-                        </div>
-                    </div>
-                    <div className="btn-square btn-xs bg-slate-500 flex justify-center items-center">
-                        1
-                    </div>
-                </div>
-                <div className="h-12 rounded-2xl bg-gradient-to-r from-demaciaColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100">
-                    <div className="flex items-center min-w-40">
-                        <div className="btn-circle btn-xs bg-error flex justify-center items-center mr-6">
-                            4
-                        </div>
-                        <div className="text-2xl">
-                            Laurent Chevalier
-                        </div>
-                    </div>
-                    <div className="btn-square btn-xs bg-slate-500 flex justify-center items-center">
-                        3
-                    </div>
-                </div>
-                <div className="h-12 rounded-2xl bg-gradient-to-r from-shadowislesColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100">
-                    <div className="flex items-center min-w-40">
-                        <div className="btn-circle btn-xs bg-error flex justify-center items-center mr-6">
-                            4
-                        </div>
-                        <div className="text-2xl">
-                            Withering wail
-                        </div>
-                    </div>
-                    <div className="btn-square btn-xs bg-slate-500 flex justify-center items-center">
-                        2
-                    </div>
-                </div>
-                <div className="h-12 rounded-2xl bg-gradient-to-r from-noxusColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100">
-                    <div className="flex items-center min-w-40">
-                        <div className="btn-circle btn-xs bg-error flex justify-center items-center mr-6">
-                            5
-                        </div>
-                        <div className="text-2xl">
-                            Vladimir
-                        </div>
-                    </div>
-                    <div className="btn-square btn-xs bg-slate-500 flex justify-center items-center">
-                        2
-                    </div>
-                </div>
+                {cardsToShow}
+
 
                 {/* --------------CARD IN DECK TESTING WITH backgroundImage */}
                 {/* <div className="relative h-14 rounded-2xl overflow-hidden flex items-center text-slate-100">

@@ -31,12 +31,32 @@ const DeckBuilderPage = () => {
     setSelectedFilter([...selectedFilter, param]);
   };
 
+  //* IM HERE-----------------------------------------------------------
+  [{
+    id: 6565656,
+    card: {},
+    number: 0
+}]
+
   const addToDeck = (card) => {
-    console.log("CARD ARRIVE ON PAGE",card);
-    setDeckList([...deckList, card]);
+    // console.log("CARD ARRIVE ON PAGE",card);
+
+    // si card dans deckList et pas à 3, on up le nombre
+
+    // si card dans deckList et à 3, on ne change rien
+
+    // si card pas dans deck list, on le rajoute
+
+
+
+    setDeckList([...deckList, {card, number:1} ]);
   };
 
-  const removeFromDeck =  (card) => {
+
+  //* IM HERE-------------------------------------------------------------------
+
+
+  const removeFromDeck = (card) => {
     console.log("used")
     setDeckList(deckList.filter(element => element.id !== card.id));
   }
@@ -47,7 +67,7 @@ const DeckBuilderPage = () => {
       <div className='flex'>
         <BuilderCardsDisplay isMenu={isMenu} openMenu={openMenu} pageName={"Deck Builder"} selectedFilter={selectedFilter} addToDeck={addToDeck} />
         {isMenu &&
-          <DeckMenu closeMenu={closeMenu} deckList={deckList} removeFromDeck={removeFromDeck} key={deckList}/>
+          <DeckMenu closeMenu={closeMenu} deckList={deckList} removeFromDeck={removeFromDeck} key={deckList} />
         }
       </div>
       <Footer />

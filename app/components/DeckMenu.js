@@ -2,7 +2,6 @@ import Image from "next/image";
 import { FaPen } from "react-icons/fa";
 
 const DeckMenu = ({ closeMenu, deckList, removeFromDeck }) => {
-
     const removeCard = (card) => {
         removeFromDeck(card);
     };
@@ -12,36 +11,50 @@ const DeckMenu = ({ closeMenu, deckList, removeFromDeck }) => {
     }
 
     let cardsToShow = deckList.map(data => {
-        const lowerCaseRegion = data.regions[0].toLowerCase();
+        const lowerCaseRegion = data.card.regions[0].toLowerCase();
+        const regionStyles = {
+            demacia: 'h-12 rounded-2xl bg-gradient-to-r from-demaciaColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+            noxus: 'h-12 rounded-2xl bg-gradient-to-r from-noxusColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+            piltoverzaun: 'h-12 rounded-2xl bg-gradient-to-r from-piltoverzaunColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+            freljord: 'h-12 rounded-2xl bg-gradient-to-r from-freljordColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+            ionia: 'h-12 rounded-2xl bg-gradient-to-r from-ioniaColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+            shadowisles: 'h-12 rounded-2xl bg-gradient-to-r from-shadowislesColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+            bilgewater: 'h-12 rounded-2xl bg-gradient-to-r from-bilgewaterColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+            shurima: 'h-12 rounded-2xl bg-gradient-to-r from-shurimaColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+            bandlecity: 'h-12 rounded-2xl bg-gradient-to-r from-bandlecityColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+            targon: 'h-12 rounded-2xl bg-gradient-to-r from-targonColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+            runeterra: 'h-12 rounded-2xl bg-gradient-to-r from-runeterraColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+        };
+
         return <div
-            key={data.id}
-            name={data.name}
-            regions={data.regions}
-            cost={data.cost}
-            type={data.type}
-            keywords={data.keywords}
-            rarity={data.rarity}
+            key={data.card.id}
+            name={data.card.name}
+            regions={data.card.regions}
+            cost={data.card.cost}
+            type={data.card.type}
+            keywords={data.card.keywords}
+            rarity={data.card.rarity}
             onClick={() => removeCard({
-                id: data.id,
-                name: data.name,
-                regions: data.regions,
-                cost: data.cost,
-                type: data.type,
-                keywords: data.keywords,
-                rarity: data.rarity,
+                id: data.card.id,
+                name: data.card.name,
+                regions: data.card.regions,
+                cost: data.card.cost,
+                type: data.card.type,
+                keywords: data.card.keywords,
+                rarity: data.card.rarity,
             })}
         >
-            <div className={`h-12 rounded-2xl bg-gradient-to-r from-${lowerCaseRegion}Color from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100`} >
+            <div className={regionStyles[lowerCaseRegion]} >
                 <div className="flex items-center min-w-40">
                     <div className="btn-circle btn-xs bg-error flex justify-center items-center mr-4">
-                        {data.cost}
+                        {data.card.cost}
                     </div>
                     <div className="text-lg">
-                        {data.name}
+                        {data.card.name}
                     </div>
                 </div>
                 <div className="btn-square btn-xs bg-slate-500 flex justify-center items-center">
-                    1
+                    {data.number}
                 </div>
             </div>
         </div>

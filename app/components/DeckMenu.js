@@ -3,6 +3,29 @@ import { FaPen } from "react-icons/fa";
 
 const DeckMenu = ({ closeMenu, deckList, removeCardFromDeck }) => {
 
+    let totalCardsCount = 0;
+    let unitCardsCount = 0;
+    let spellCardsCount = 0;
+    let landmarkCardsCount = 0;
+    let equipmentCardsCount = 0;
+    let championsCardsCount = 0;
+
+    for (let i = 0; i < deckList.length; i++) {
+        totalCardsCount += deckList[i].number;
+
+        if (deckList[i].card.type === "Unit" && deckList[i].card.rarity !== "Champion") {
+            unitCardsCount += deckList[i].number;
+        };
+
+        if (deckList[i].card.type === "Spell") {
+            spellCardsCount += deckList[i].number;
+        };
+
+        if (deckList[i].card.rarity === "Champion") {
+            championsCardsCount += deckList[i].number;
+        };
+    };
+
     const handleClose = () => {
         closeMenu(false)
     }
@@ -73,12 +96,12 @@ const DeckMenu = ({ closeMenu, deckList, removeCardFromDeck }) => {
                 <input type="text" placeholder="Deck Name" className="input input-success w-72 bg-transparent text-xl placeholder-neutral-100" />
             </div>
             <div className='grid grid-cols-6 grid-rows-2 gap-y-2 mt-6 text-lg font-medium'>
-                <div className='text-center'>6/6</div>
-                <div className='text-center'>4</div>
-                <div className='text-center'>14</div>
-                <div className='text-center'>11</div>
-                <div className='text-center'>5</div>
-                <div className='text-center'>40/40</div>
+                <div className='text-center'>{championsCardsCount}/6</div>
+                <div className='text-center'>{unitCardsCount}</div>
+                <div className='text-center'>{spellCardsCount}</div>
+                <div className='text-center'>{landmarkCardsCount}</div>
+                <div className='text-center'>{equipmentCardsCount}</div>
+                <div className='text-center'>{totalCardsCount}/40</div>
                 <div className='flex justify-center'>
                     <Image className='mr-2' src={'/img/ichampion.svg'} width={24} height={24} style={{ width: "auto", height: "auto" }} alt={"Champion Icon"} />
                 </div>

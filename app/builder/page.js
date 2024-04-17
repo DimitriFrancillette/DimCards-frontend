@@ -1,6 +1,5 @@
 "use client"
 import BuilderCardsDisplay from '../components/BuilderCardsDisplay';
-import CardsDisplay from '../components/CardsDisplay';
 import DeckMenu from "../components/DeckMenu";
 import { useState } from 'react';
 import Header from '../components/Header';
@@ -16,7 +15,6 @@ const DeckBuilderPage = () => {
     keyword: [],
   });
   const [deckList, setDeckList] = useState([]);
-
 
 
   const closeMenu = (param) => {
@@ -38,30 +36,38 @@ const DeckBuilderPage = () => {
     }
 
     if (deckList.length !== 0) {
-      const isTrueIn = []
+      const booleanArray = [];
       for (let i = 0; i < deckList.length; i++) {
         const isSameCard = Object.values(deckList[i].card).includes(card.id);
-        isTrueIn.push(isSameCard);
+        booleanArray.push(isSameCard);
       }
 
-      const trueIndex = isTrueIn.findIndex(element => element === true);
+      const trueIndex = booleanArray.findIndex(element => element === true);
 
 
-      if (!isTrueIn.includes(true)) {
+      if (!booleanArray.includes(true)) {
         setDeckList([...deckList, { card, number: 1 }]);
-      } else if (isTrueIn.includes(true) && trueIndex !== -1 && deckList[trueIndex].number < 3) {
-        deckList[trueIndex].number++
-        setDeckList([...deckList])
-      }
-    }
-
-    console.log("DECKLIST :", deckList)
+      } else if (booleanArray.includes(true) && trueIndex !== -1 && deckList[trueIndex].number < 3) {
+        deckList[trueIndex].number++;
+        setDeckList([...deckList]);
+      };
+    };
   };
 
 
-  const removeFromDeck = (card) => {
-    setDeckList(deckList.filter(element => element.card.id !== card.id));
-  }
+  const removeCardFromDeck = (card) => {
+    const cardToRemove = deckList.find((element) => element.card.id === card.id);
+
+    const index = deckList.findIndex(element => element.card.id === card.id);
+
+    if (cardToRemove.number > 1) {
+      cardToRemove.number--;
+      deckList.splice(index, 1, cardToRemove);
+      setDeckList([...deckList]);
+    } else {
+      setDeckList(deckList.filter(element => element.card.id !== card.id));
+    };
+  };
 
   return (
     <div>
@@ -69,7 +75,7 @@ const DeckBuilderPage = () => {
       <div className='flex'>
         <BuilderCardsDisplay isMenu={isMenu} openMenu={openMenu} pageName={"Deck Builder"} selectedFilter={selectedFilter} addCardToDeck={addCardToDeck} />
         {isMenu &&
-          <DeckMenu closeMenu={closeMenu} deckList={deckList} removeFromDeck={removeFromDeck} key={deckList} />
+          <DeckMenu closeMenu={closeMenu} deckList={deckList} removeCardFromDeck={removeCardFromDeck} key={deckList} />
         }
       </div>
       <Footer />

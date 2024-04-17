@@ -1,16 +1,12 @@
 import Image from "next/image";
 import { FaPen } from "react-icons/fa";
 
-const DeckMenu = ({ closeMenu, deckList, removeFromDeck }) => {
-    const removeCard = (card) => {
-        removeFromDeck(card);
-    };
+const DeckMenu = ({ closeMenu, deckList, removeCardFromDeck }) => {
 
     const handleClose = () => {
         closeMenu(false)
     }
 
-    console.log("LIST In MENU", deckList);
     let cardsToShow = deckList.map(data => {
         const lowerCaseRegion = data.card.regions[0].toLowerCase();
         const regionStyles = {
@@ -35,7 +31,7 @@ const DeckMenu = ({ closeMenu, deckList, removeFromDeck }) => {
             type={data.card.type}
             keywords={data.card.keywords}
             rarity={data.card.rarity}
-            onClick={() => removeCard({
+            onClick={() => removeCardFromDeck({
                 id: data.card.id,
                 name: data.card.name,
                 regions: data.card.regions,

@@ -31,41 +31,43 @@ const DeckBuilderPage = () => {
     setSelectedFilter([...selectedFilter, param]);
   };
 
-  //* IM HERE-----------------------------------------------------------
-  [{
-    id: 6565656,
-    card: {},
-    number: 0
-}]
+  const addCardToDeck = (card) => {
 
-  const addToDeck = (card) => {
-    // console.log("CARD ARRIVE ON PAGE",card);
+    if (deckList.length === 0) {
+      setDeckList([...deckList, { card, number: 1 }]);
+    }
 
-    // si card dans deckList et pas à 3, on up le nombre
+    if (deckList.length !== 0) {
+      const isTrueIn = []
+      for (let i = 0; i < deckList.length; i++) {
+        const isSameCard = Object.values(deckList[i].card).includes(card.id);
+        isTrueIn.push(isSameCard);
+      }
 
-    // si card dans deckList et à 3, on ne change rien
-
-    // si card pas dans deck list, on le rajoute
-
+      const trueIndex = isTrueIn.findIndex(element => element === true);
 
 
-    setDeckList([...deckList, {card, number:1} ]);
+      if (!isTrueIn.includes(true)) {
+        setDeckList([...deckList, { card, number: 1 }]);
+      } else if (isTrueIn.includes(true) && trueIndex !== -1 && deckList[trueIndex].number < 3) {
+        deckList[trueIndex].number++
+        setDeckList([...deckList])
+      }
+    }
+
+    console.log("DECKLIST :", deckList)
   };
 
 
-  //* IM HERE-------------------------------------------------------------------
-
-
   const removeFromDeck = (card) => {
-    console.log("used")
-    setDeckList(deckList.filter(element => element.id !== card.id));
+    setDeckList(deckList.filter(element => element.card.id !== card.id));
   }
 
   return (
     <div>
       <Header />
       <div className='flex'>
-        <BuilderCardsDisplay isMenu={isMenu} openMenu={openMenu} pageName={"Deck Builder"} selectedFilter={selectedFilter} addToDeck={addToDeck} />
+        <BuilderCardsDisplay isMenu={isMenu} openMenu={openMenu} pageName={"Deck Builder"} selectedFilter={selectedFilter} addCardToDeck={addCardToDeck} />
         {isMenu &&
           <DeckMenu closeMenu={closeMenu} deckList={deckList} removeFromDeck={removeFromDeck} key={deckList} />
         }

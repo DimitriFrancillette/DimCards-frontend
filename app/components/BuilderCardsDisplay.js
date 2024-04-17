@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Image from "next/image";
 
-const BuilderCardsDisplay = ({ isMenu, openMenu, pageName, selectedFilter, addToDeck }) => {
+const BuilderCardsDisplay = ({ isMenu, openMenu, pageName, selectedFilter, addCardToDeck }) => {
     const [apiCards, setApiCards] = useState([]);
     const [shownCards, setShownCards] = useState([]);
 
@@ -14,12 +14,8 @@ const BuilderCardsDisplay = ({ isMenu, openMenu, pageName, selectedFilter, addTo
                 setShownCards(data.result);
                 setApiCards(data.result);
             });
-
     }, []);
 
-    const addCard = (card) => {
-        addToDeck(card)
-    }
 
     let cards = shownCards.map(data => {
         return <div
@@ -29,7 +25,7 @@ const BuilderCardsDisplay = ({ isMenu, openMenu, pageName, selectedFilter, addTo
             cost={data.cost} type={data.type}
             keywords={data.keywords}
             rarity={data.rarity}
-            onClick={() => addCard({
+            onClick={() => addCardToDeck({
                 id: data._id,
                 name: data.name,
                 regions: data.regions,

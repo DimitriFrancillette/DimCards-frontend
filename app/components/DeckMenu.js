@@ -10,6 +10,7 @@ const DeckMenu = ({ closeMenu, deckList, removeFromDeck }) => {
         closeMenu(false)
     }
 
+    console.log("LIST In MENU", deckList);
     let cardsToShow = deckList.map(data => {
         const lowerCaseRegion = data.card.regions[0].toLowerCase();
         const regionStyles = {

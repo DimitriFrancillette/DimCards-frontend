@@ -15,6 +15,8 @@ const DeckBuilderPage = () => {
     keyword: [],
   });
   const [deckList, setDeckList] = useState([]);
+  const [totalCardsCount, setTotalCardsCount] = useState(0);
+  const [championsCardsCount, setChampionsCardsCount] = useState(0);
 
 
   const closeMenu = (param) => {
@@ -32,11 +34,16 @@ const DeckBuilderPage = () => {
   const addCardToDeck = (card) => {
 
     if (deckList.length === 0) {
+      setTotalCardsCount(totalCardsCount + 1);
       setDeckList([...deckList, { card, number: 1 }]);
+      if (card.rarity === "Champion") {
+        setChampionsCardsCount(championsCardsCount + 1);
+      }
     }
 
     if (deckList.length !== 0) {
       const booleanArray = [];
+
       for (let i = 0; i < deckList.length; i++) {
         const isSameCard = Object.values(deckList[i].card).includes(card.id);
         booleanArray.push(isSameCard);
@@ -44,15 +51,39 @@ const DeckBuilderPage = () => {
 
       const trueIndex = booleanArray.findIndex(element => element === true);
 
+      if (!booleanArray.includes(true) && totalCardsCount < 40) {
 
-      if (!booleanArray.includes(true)) {
-        setDeckList([...deckList, { card, number: 1 }]);
-      } else if (booleanArray.includes(true) && trueIndex !== -1 && deckList[trueIndex].number < 3) {
-        deckList[trueIndex].number++;
-        setDeckList([...deckList]);
+        if (card.rarity !== "Champion") {
+
+          setTotalCardsCount(totalCardsCount + 1);
+          setDeckList([...deckList, { card, number: 1 }]);
+        } else if (card.rarity === "Champion" && championsCardsCount < 6) {
+
+          setTotalCardsCount(totalCardsCount + 1);
+          setChampionsCardsCount(championsCardsCount + 1);
+          setDeckList([...deckList, { card, number: 1 }]);
+        }
+
+      } else if (booleanArray.includes(true)
+        && trueIndex !== -1
+        && deckList[trueIndex].number < 3
+        && totalCardsCount < 40) {
+
+        if (card.rarity !== "Champion") {
+          deckList[trueIndex].number++;
+          setTotalCardsCount(totalCardsCount + 1);
+          setDeckList([...deckList]);
+        } else if (card.rarity === "Champion" && championsCardsCount < 6) {
+          deckList[trueIndex].number++;
+          setTotalCardsCount(totalCardsCount + 1);
+          setChampionsCardsCount(championsCardsCount + 1);
+          setDeckList([...deckList]);
+        }
+
       };
     };
   };
+  console.log(totalCardsCount)
 
 
   const removeCardFromDeck = (card) => {
@@ -64,8 +95,16 @@ const DeckBuilderPage = () => {
       cardToRemove.number--;
       deckList.splice(index, 1, cardToRemove);
       setDeckList([...deckList]);
+      setTotalCardsCount(totalCardsCount - 1);
+      if (card.rarity === "Champion") {
+        setChampionsCardsCount(championsCardsCount - 1);
+      }
     } else {
       setDeckList(deckList.filter(element => element.card.id !== card.id));
+      setTotalCardsCount(totalCardsCount - 1);
+      if (card.rarity === "Champion") {
+        setChampionsCardsCount(championsCardsCount - 1);
+      }
     };
   };
 

@@ -47,6 +47,7 @@ const DeckMenu = ({ closeMenu, deckList, removeCardFromDeck }) => {
         };
 
         return <div
+            className="cursor-pointer"
             key={data.card.id}
             name={data.card.name}
             regions={data.card.regions}

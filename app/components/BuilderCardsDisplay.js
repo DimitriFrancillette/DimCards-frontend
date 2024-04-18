@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Image from "next/image";
 
-const BuilderCardsDisplay = ({ isMenu, openMenu, pageName, selectedFilter, addCardToDeck }) => {
+const BuilderCardsDisplay = ({ isMenu, openMenu, pageName, selectedFilter, addCardToDeck, deckList }) => {
     const [apiCards, setApiCards] = useState([]);
     const [shownCards, setShownCards] = useState([]);
 
@@ -16,9 +16,21 @@ const BuilderCardsDisplay = ({ isMenu, openMenu, pageName, selectedFilter, addCa
             });
     }, []);
 
-
     let cards = shownCards.map(data => {
+        
+        const findCardInDeck = deckList.find(e => e.card.id === data._id);
+        
+        const circles = []
+        for (let i = 0; i < 3; i++) {
+            let style = 'rounded-full bg-slate-400 border-black w-4 h-4 border-2';
+            if (findCardInDeck !== undefined && i < findCardInDeck.number) {
+                style = 'rounded-full bg-amber-400 border-black w-4 h-4 border-2';
+            }
+            circles.push(<div className={style} />)
+        }
+
         return <div
+            className='flex flex-col items-center mb-4 cursor-pointer'
             key={data._id}
             name={data.name}
             regions={data.regions}
@@ -36,6 +48,9 @@ const BuilderCardsDisplay = ({ isMenu, openMenu, pageName, selectedFilter, addCa
             })}
         >
             <Image src={data.assets[0].gameAbsolutePath} width={250} height={250} alt={data.name} style={{ width: "auto", height: "auto" }} />
+            <div className='flex gap-1'>
+                {circles}
+            </div>
         </div>
     });
 

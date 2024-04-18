@@ -83,8 +83,6 @@ const DeckBuilderPage = () => {
       };
     };
   };
-  console.log(totalCardsCount)
-
 
   const removeCardFromDeck = (card) => {
     const cardToRemove = deckList.find((element) => element.card.id === card.id);
@@ -112,9 +110,9 @@ const DeckBuilderPage = () => {
     <div>
       <Header />
       <div className='flex'>
-        <BuilderCardsDisplay isMenu={isMenu} openMenu={openMenu} pageName={"Deck Builder"} selectedFilter={selectedFilter} addCardToDeck={addCardToDeck} />
+        <BuilderCardsDisplay isMenu={isMenu} openMenu={openMenu} pageName={"Deck Builder"} selectedFilter={selectedFilter} addCardToDeck={addCardToDeck} deckList={deckList} />
         {isMenu &&
-          <DeckMenu closeMenu={closeMenu} deckList={deckList} removeCardFromDeck={removeCardFromDeck} key={deckList} />
+          <DeckMenu closeMenu={closeMenu} deckList={deckList} removeCardFromDeck={removeCardFromDeck} />
         }
       </div>
       <Footer />

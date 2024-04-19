@@ -97,12 +97,12 @@ const DeckMenu = ({ closeMenu, deckList, removeCardFromDeck }) => {
                 <input type="text" placeholder="Deck Name" className="input input-success w-72 bg-transparent text-xl placeholder-neutral-100" />
             </div>
             <div className='grid grid-cols-6 grid-rows-2 gap-y-2 mt-6 text-lg font-medium'>
-                <div className='text-center'>{championsCardsCount}/6</div>
+                <div className={championsCardsCount === 6 ? 'text-center text-success' : 'text-center' }>{championsCardsCount}/6</div>
                 <div className='text-center'>{unitCardsCount}</div>
                 <div className='text-center'>{spellCardsCount}</div>
                 <div className='text-center'>{landmarkCardsCount}</div>
                 <div className='text-center'>{equipmentCardsCount}</div>
-                <div className='text-center'>{totalCardsCount}/40</div>
+                <div className={championsCardsCount === 6 ? 'text-center text-success' : 'text-center' }>{totalCardsCount}/40</div>
                 <div className='flex justify-center'>
                     <Image className='mr-2' src={'/img/ichampion.svg'} width={24} height={24} style={{ width: "auto", height: "auto" }} alt={"Champion Icon"} />
                 </div>

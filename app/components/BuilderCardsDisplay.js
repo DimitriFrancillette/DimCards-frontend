@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Image from "next/image";
 
-const BuilderCardsDisplay = ({ isMenu, openMenu, pageName, selectedFilter, addCardToDeck, deckList }) => {
+const BuilderCardsDisplay = ({ pageName, selectedFilter, addCardToDeck, deckList }) => {
     const [apiCards, setApiCards] = useState([]);
     const [shownCards, setShownCards] = useState([]);
 
@@ -17,9 +17,9 @@ const BuilderCardsDisplay = ({ isMenu, openMenu, pageName, selectedFilter, addCa
     }, []);
 
     let cards = shownCards.map(data => {
-        
+
         const findCardInDeck = deckList.find(e => e.card.id === data._id);
-        
+
         const circles = []
         for (let i = 0; i < 3; i++) {
             let style = 'rounded-full bg-slate-400 border-black w-4 h-4 border-2';
@@ -153,14 +153,26 @@ const BuilderCardsDisplay = ({ isMenu, openMenu, pageName, selectedFilter, addCa
         };
 
         cards = cardsToDisplay.map(data => {
+
+            const findCardInDeck = deckList.find(e => e.card.id === data._id);
+
+            const circles = []
+            for (let i = 0; i < 3; i++) {
+                let style = 'rounded-full bg-slate-400 border-black w-4 h-4 border-2';
+                if (findCardInDeck !== undefined && i < findCardInDeck.number) {
+                    style = 'rounded-full bg-amber-400 border-black w-4 h-4 border-2';
+                }
+                circles.push(<div className={style} />)
+            }
             return <div
+                className='flex flex-col items-center mb-4 cursor-pointer'
                 key={data._id}
                 name={data.name}
                 regions={data.regions}
                 cost={data.cost} type={data.type}
                 keywords={data.keywords}
                 rarity={data.rarity}
-                onClick={() => addCard({
+                onClick={() => addCardToDeck({
                     id: data._id,
                     name: data.name,
                     regions: data.regions,
@@ -171,34 +183,20 @@ const BuilderCardsDisplay = ({ isMenu, openMenu, pageName, selectedFilter, addCa
                 })}
             >
                 <Image src={data.assets[0].gameAbsolutePath} width={250} height={250} alt={data.name} style={{ width: "auto", height: "auto" }} />
+                <div className='flex gap-1'>
+                    {circles}
+                </div>
             </div>
         });
     };
 
-    const handleOpen = () => {
-        openMenu(true)
-    };
-
-    let divClass = 'pt-6 px-4 w-4/5 h-screen overflow-y-auto scrollbar-webkit';
-    if (isMenu === false) {
-        divClass = 'pt-6 px-4 h-screen min-w-full overflow-y-auto scrollbar-webkit';
-    };
-
-    let menuButtonClass = 'btn btn-circle bg-success hover:bg-info mr-8';
-    if (isMenu === true) {
-        menuButtonClass = 'hidden';
-    };
-
     return (
-        <div className={divClass}>
+        <div className='pt-6 px-4 w-4/5 h-screen overflow-y-auto scrollbar-webkit'>
             <div className='flex justify-between'>
                 <div>
                     <h2 className='text-5xl font-semibold'>{pageName}</h2>
                     <p className='text-lg ml-2'>found {cards.length} cards</p>
                 </div>
-                <button className={menuButtonClass} onClick={() => handleOpen()}>
-                    <svg className="swap-off fill-current" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" /></svg>
-                </button>
             </div>
             <div className="flex flex-wrap justify-center mt-2">
                 {cards}

@@ -1,12 +1,13 @@
 "use client"
 import BuilderCardsDisplay from '../components/BuilderCardsDisplay';
 import DeckMenu from "../components/DeckMenu";
+import FilterMenu from '../components/FilterMenu';
 import { useState } from 'react';
 import Header from '../components/Header';
 import Footer from "../components/Footer.js";
 
 const DeckBuilderPage = () => {
-  const [isMenu, setIsMenu] = useState(true);
+  const [isMenu, setIsMenu] = useState(false);
   const [selectedFilter, setSelectedFilter] = useState({
     region: [],
     cost: [],
@@ -18,18 +19,74 @@ const DeckBuilderPage = () => {
   const [totalCardsCount, setTotalCardsCount] = useState(0);
   const [championsCardsCount, setChampionsCardsCount] = useState(0);
 
-
-  const closeMenu = (param) => {
-    setIsMenu(param);
-  };
-
-  const openMenu = (param) => {
+  const handleFilter = (param) => {
     setIsMenu(param);
   };
 
   const selected = (param) => {
-    setSelectedFilter([...selectedFilter, param]);
-  };
+    console.log("PARAM BUILDER", param)
+    if (param.region) {
+      if (param.region === "Clear") {
+        setSelectedFilter(prevState => ({ ...prevState, region: [] }));
+        return
+      }
+
+
+      if (!selectedFilter.region.includes(param.region)) {
+        setSelectedFilter(prevState => ({ ...prevState, region: [...prevState.region, param.region] }));
+      }
+      else {
+        setSelectedFilter(prevState => ({ ...prevState, region: prevState.region.filter(e => e !== param.region) }));
+      }
+
+    }
+
+    if (param.cost) {
+      if (param.cost === "Clear") {
+        setSelectedFilter(prevState => ({ ...prevState, cost: [] }));
+        return
+      }
+
+
+      if (!selectedFilter.cost.includes(param.cost)) {
+        setSelectedFilter(prevState => ({ ...prevState, cost: [...prevState.cost, param.cost] }));
+      }
+      else {
+        setSelectedFilter(prevState => ({ ...prevState, cost: prevState.cost.filter(e => e !== param.cost) }));
+      }
+    }
+
+    if (param.type) {
+      if (param.type === "Clear") {
+        setSelectedFilter(prevState => ({ ...prevState, type: [] }));
+        return
+      }
+
+
+      if (!selectedFilter.type.includes(param.type)) {
+        setSelectedFilter(prevState => ({ ...prevState, type: [...prevState.type, param.type] }));
+      }
+      else {
+        setSelectedFilter(prevState => ({ ...prevState, type: prevState.type.filter(e => e !== param.type) }));
+      }
+    }
+
+    if (param.rarity) {
+      if (param.rarity === "Clear") {
+        setSelectedFilter(prevState => ({ ...prevState, rarity: [] }));
+        return
+      }
+
+
+      if (!selectedFilter.rarity.includes(param.rarity)) {
+        setSelectedFilter(prevState => ({ ...prevState, rarity: [...prevState.rarity, param.rarity] }));
+      }
+      else {
+        setSelectedFilter(prevState => ({ ...prevState, rarity: prevState.rarity.filter(e => e !== param.rarity) }));
+      }
+    }
+
+  }
 
   const addCardToDeck = (card) => {
 
@@ -110,9 +167,10 @@ const DeckBuilderPage = () => {
     <div>
       <Header />
       <div className='flex'>
-        <BuilderCardsDisplay isMenu={isMenu} openMenu={openMenu} pageName={"Deck Builder"} selectedFilter={selectedFilter} addCardToDeck={addCardToDeck} deckList={deckList} />
-        {isMenu &&
-          <DeckMenu closeMenu={closeMenu} deckList={deckList} removeCardFromDeck={removeCardFromDeck} />
+        <BuilderCardsDisplay pageName={"Deck Builder"} selectedFilter={selectedFilter} addCardToDeck={addCardToDeck} deckList={deckList} />
+        {isMenu ?
+          <FilterMenu handleFilter={handleFilter} selected={selected} />
+          : <DeckMenu handleFilter={handleFilter} deckList={deckList} removeCardFromDeck={removeCardFromDeck} />
         }
       </div>
       <Footer />

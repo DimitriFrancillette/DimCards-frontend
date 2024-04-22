@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { FaPen } from "react-icons/fa";
 
-const DeckMenu = ({ closeMenu, deckList, removeCardFromDeck }) => {
+const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
 
     let totalCardsCount = 0;
     let unitCardsCount = 0;
@@ -27,7 +27,7 @@ const DeckMenu = ({ closeMenu, deckList, removeCardFromDeck }) => {
     };
 
     const handleClose = () => {
-        closeMenu(false)
+        handleFilter(true)
     }
 
     let cardsToShow = deckList.map(data => {
@@ -81,14 +81,13 @@ const DeckMenu = ({ closeMenu, deckList, removeCardFromDeck }) => {
         </div>
     });
 
-
     return (
         <div className='px-3 w-1/5 bg-cyan-700/75 h-screen overflow-y-auto pb-6'>
             <div className='my-6 flex justify-between'>
-                <h3 className='text-3xl'>Filters</h3>
+                <h3 className='text-3xl'>Deck</h3>
                 <div>
                     <div className='btn btn-circle bg-success btn-sm hover:bg-success hover:opacity-70' onClick={() => handleClose()}>
-                        <svg xmlns="http://www.w3.org/2000/svg" className="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M6 18L18 6M6 6l12 12" /></svg>
+                        <svg className="swap-off fill-current h-6 w-6" xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 512 512"><path d="M64,384H448V341.33H64Zm0-106.67H448V234.67H64ZM64,128v42.67H448V128Z" /></svg>
                     </div>
                 </div>
             </div>
@@ -97,12 +96,12 @@ const DeckMenu = ({ closeMenu, deckList, removeCardFromDeck }) => {
                 <input type="text" placeholder="Deck Name" className="input input-success w-72 bg-transparent text-xl placeholder-neutral-100" />
             </div>
             <div className='grid grid-cols-6 grid-rows-2 gap-y-2 mt-6 text-lg font-medium'>
-                <div className={championsCardsCount === 6 ? 'text-center text-success' : 'text-center' }>{championsCardsCount}/6</div>
+                <div className={championsCardsCount === 6 ? 'text-center text-success' : 'text-center'}>{championsCardsCount}/6</div>
                 <div className='text-center'>{unitCardsCount}</div>
                 <div className='text-center'>{spellCardsCount}</div>
                 <div className='text-center'>{landmarkCardsCount}</div>
                 <div className='text-center'>{equipmentCardsCount}</div>
-                <div className={championsCardsCount === 6 ? 'text-center text-success' : 'text-center' }>{totalCardsCount}/40</div>
+                <div className={totalCardsCount === 40 ? 'text-center text-success' : 'text-center'}>{totalCardsCount}/40</div>
                 <div className='flex justify-center'>
                     <Image className='mr-2' src={'/img/ichampion.svg'} width={24} height={24} style={{ width: "auto", height: "auto" }} alt={"Champion Icon"} />
                 </div>
@@ -123,7 +122,7 @@ const DeckMenu = ({ closeMenu, deckList, removeCardFromDeck }) => {
                 </div>
             </div>
 
-            <div className="mt-8 h-screen flex flex-col gap-1 bg-secondary pt-2 px-2 rounded-md">
+            <div className="mt-8 h-screen flex flex-col gap-1 bg-slate-400 pt-2 px-2 rounded-md">
                 {cardsToShow}
 
 

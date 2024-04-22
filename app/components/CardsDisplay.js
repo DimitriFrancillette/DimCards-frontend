@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Image from "next/image";
 
-const CardsDisplay = (props) => {
+const CardsDisplay = ({isMenu, handleFilter, pageName, selectedFilter}) => {
   const [apiCards, setApiCards] = useState([]);
   const [shownCards, setShownCards] = useState([]);
 
@@ -23,7 +23,7 @@ const CardsDisplay = (props) => {
     </div>
   });
 
-  const filter = props.selectedFilter;
+  const filter = selectedFilter;
 
   if (filter.region.length > 0 || filter.cost.length > 0 || filter.type.length > 0 || filter.rarity.length > 0) {
     let cardsToDisplay = [];
@@ -132,16 +132,16 @@ const CardsDisplay = (props) => {
   };
 
   const handleOpen = () => {
-    props.openMenu(true)
+    handleFilter(true)
   };
 
   let divClass = 'pt-6 px-4 w-4/5 h-screen overflow-y-auto scrollbar-webkit';
-  if (props.isMenu === false) {
+  if (isMenu === false) {
     divClass = 'pt-6 px-4 h-screen min-w-full overflow-y-auto scrollbar-webkit';
   };
 
   let menuButtonClass = 'btn btn-circle bg-success hover:bg-info mr-8';
-  if (props.isMenu === true) {
+  if (isMenu === true) {
     menuButtonClass = 'hidden';
   };
 
@@ -149,7 +149,7 @@ const CardsDisplay = (props) => {
     <div className={divClass}>
       <div className='flex justify-between'>
         <div>
-          <h2 className='text-5xl font-semibold'>{props.pageName}</h2>
+          <h2 className='text-5xl font-semibold'>{pageName}</h2>
           <p className='text-lg ml-2'>found {cards.length} cards</p>
         </div>
         <button className={menuButtonClass} onClick={() => handleOpen()}>

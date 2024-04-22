@@ -5,7 +5,7 @@ import RarityButton from "./filterComponents/RarityButton";
 import ClearButton from "./filterComponents/ClearButton";
 import { useState } from "react";
 
-const FilterMenu = (props) => {
+const FilterMenu = ({handleFilter, selected}) => {
     const [regionClear, setRegionClear] = useState(false);
     const [costClear, setCostClear] = useState(false);
     const [typeClear, setTypeClear] = useState(false);
@@ -17,27 +17,27 @@ const FilterMenu = (props) => {
     const cardsRarity = ["Champion", "Epic", "Rare", "Common"];
 
     const selectedRegion = (region) => {
-        props.selected({ region });
+        selected({ region });
         if (region === "Clear") { setRegionClear(!regionClear) };
     };
 
     const selectedCost = (cost) => {
-        props.selected({ cost });
+        selected({ cost });
         if (cost === "Clear") { setCostClear(!costClear) };
     };
 
     const selectedType = (type) => {
-        props.selected({ type });
+        selected({ type });
         if (type === "Clear") { setTypeClear(!typeClear) };
     };
 
     const selectedRarity = (rarity) => {
-        props.selected({ rarity })
+        selected({ rarity })
         if (rarity === "Clear") { setRarityClear(!rarityClear) };
     };
 
     const handleClose = () => {
-        props.closeFilter(false)
+        handleFilter(false)
     };
 
     const regionButtons = gameRegions.map(regionName => {

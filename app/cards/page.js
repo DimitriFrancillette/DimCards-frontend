@@ -15,17 +15,13 @@ const CardsPage = () => {
     keyword: [],
   });
 
-  const closeFilter = (param) => {
-    setIsMenu(param);
-  }
 
-  const openMenu = (param) => {
+  const handleFilter = (param) => {
     setIsMenu(param);
-  }
-
+  };
 
   const selected = (param) => {
-    console.log("PARAM", param)
+    console.log("PARAM CARD DISPLAY", param)
     if (param.region) {
       if (param.region === "Clear") {
         setSelectedFilter(prevState => ({ ...prevState, region: [] }));
@@ -93,10 +89,10 @@ const CardsPage = () => {
     <div>
       <Header />
       <div className='flex'>
-        <CardsDisplay isMenu={isMenu} openMenu={openMenu} pageName={"Cards Gallery"} selectedFilter={selectedFilter} />
+        <CardsDisplay isMenu={isMenu} handleFilter={handleFilter} pageName={"Cards Gallery"} selectedFilter={selectedFilter} />
 
         {isMenu &&
-          <FilterMenu closeFilter={closeFilter} selected={selected} />
+          <FilterMenu handleFilter={handleFilter} selected={selected} />
         }
       </div>
       <Footer />

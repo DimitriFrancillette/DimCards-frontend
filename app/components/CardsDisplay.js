@@ -18,6 +18,7 @@ const CardsDisplay = ({ isMenu, handleFilter, pageName, selectedFilter }) => {
   let cards = shownCards.map((data) => {
     return (
       <div
+        className='mb-4 mx-2'
         key={data._id}
         name={data.name}
         regions={data.regions}
@@ -27,6 +28,7 @@ const CardsDisplay = ({ isMenu, handleFilter, pageName, selectedFilter }) => {
         rarity={data.rarity}
       >
         <Image
+          className='transition ease-in-out  hover:-translate-y-1 hover:scale-110 duration-300'
           src={data.assets[0].gameAbsolutePath}
           width={250}
           height={250}
@@ -135,6 +137,7 @@ const CardsDisplay = ({ isMenu, handleFilter, pageName, selectedFilter }) => {
     cards = cardsToDisplay.map((data) => {
       return (
         <div
+          className='mb-4 mx-2'
           key={data._id}
           name={data.name}
           regions={data.regions}
@@ -144,6 +147,7 @@ const CardsDisplay = ({ isMenu, handleFilter, pageName, selectedFilter }) => {
           rarity={data.rarity}
         >
           <Image
+            className='transition ease-in-out  hover:-translate-y-1 hover:scale-110 duration-300'
             src={data.assets[0].gameAbsolutePath}
             width={250}
             height={250}

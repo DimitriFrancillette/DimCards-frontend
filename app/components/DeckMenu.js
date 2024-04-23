@@ -36,27 +36,27 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
     const lowerCaseRegion = data.card.regions[0].toLowerCase();
     const regionStyles = {
       demacia:
-        'h-12 rounded-2xl bg-gradient-to-r from-demaciaColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+        'h-12 rounded-2xl bg-gradient-to-r from-demaciaColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100 hover:opacity-95 hover:border-4 hover:rounded-2xl hover:border-success',
       noxus:
-        'h-12 rounded-2xl bg-gradient-to-r from-noxusColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+        'h-12 rounded-2xl bg-gradient-to-r from-noxusColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100 hover:opacity-95 hover:border-4 hover:rounded-2xl hover:border-success',
       piltoverzaun:
-        'h-12 rounded-2xl bg-gradient-to-r from-piltoverzaunColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+        'h-12 rounded-2xl bg-gradient-to-r from-piltoverzaunColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100 hover:opacity-95 hover:border-4 hover:rounded-2xl hover:border-success',
       freljord:
-        'h-12 rounded-2xl bg-gradient-to-r from-freljordColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+        'h-12 rounded-2xl bg-gradient-to-r from-freljordColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100 hover:opacity-95 hover:border-4 hover:rounded-2xl hover:border-success',
       ionia:
-        'h-12 rounded-2xl bg-gradient-to-r from-ioniaColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+        'h-12 rounded-2xl bg-gradient-to-r from-ioniaColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100 hover:opacity-95 hover:border-4 hover:rounded-2xl hover:border-success',
       shadowisles:
-        'h-12 rounded-2xl bg-gradient-to-r from-shadowislesColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+        'h-12 rounded-2xl bg-gradient-to-r from-shadowislesColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100 hover:opacity-95 hover:border-4 hover:rounded-2xl hover:border-success',
       bilgewater:
-        'h-12 rounded-2xl bg-gradient-to-r from-bilgewaterColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+        'h-12 rounded-2xl bg-gradient-to-r from-bilgewaterColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100 hover:opacity-95 hover:border-4 hover:rounded-2xl hover:border-success',
       shurima:
-        'h-12 rounded-2xl bg-gradient-to-r from-shurimaColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+        'h-12 rounded-2xl bg-gradient-to-r from-shurimaColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100 hover:opacity-95 hover:border-4 hover:rounded-2xl hover:border-success',
       bandlecity:
-        'h-12 rounded-2xl bg-gradient-to-r from-bandlecityColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+        'h-12 rounded-2xl bg-gradient-to-r from-bandlecityColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100 hover:opacity-95 hover:border-4 hover:rounded-2xl hover:border-success',
       targon:
-        'h-12 rounded-2xl bg-gradient-to-r from-targonColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+        'h-12 rounded-2xl bg-gradient-to-r from-targonColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100 hover:opacity-95 hover:border-4 hover:rounded-2xl hover:border-success',
       runeterra:
-        'h-12 rounded-2xl bg-gradient-to-r from-runeterraColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100',
+        'h-12 rounded-2xl bg-gradient-to-r from-runeterraColor from-70% to-slate-800 flex justify-between items-center px-4 text-slate-100 hover:opacity-95 hover:border-4 hover:rounded-2xl hover:border-success',
     };
 
     return (

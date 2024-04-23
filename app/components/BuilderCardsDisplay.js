@@ -29,12 +29,12 @@ const BuilderCardsDisplay = ({
       if (findCardInDeck !== undefined && i < findCardInDeck.number) {
         style = 'rounded-full bg-amber-400 border-black w-4 h-4 border-2';
       }
-      circles.push(<div className={style} />);
+      circles.push(<div key={i} className={style} />);
     }
 
     return (
       <div
-        className='flex flex-col items-center mb-4 cursor-pointer'
+        className='flex flex-col items-center mb-6 mx-2 cursor-pointer'
         key={data._id}
         name={data.name}
         regions={data.regions}
@@ -55,6 +55,7 @@ const BuilderCardsDisplay = ({
         }
       >
         <Image
+          className='mb-4 transition ease-in-out  hover:-translate-y-1 hover:scale-110 duration-300'
           src={data.assets[0].gameAbsolutePath}
           width={250}
           height={250}
@@ -174,7 +175,7 @@ const BuilderCardsDisplay = ({
       }
       return (
         <div
-          className='flex flex-col items-center mb-4 cursor-pointer'
+          className='flex flex-col items-center mb-6 mx-2 cursor-pointer'
           key={data._id}
           name={data.name}
           regions={data.regions}
@@ -195,6 +196,7 @@ const BuilderCardsDisplay = ({
           }
         >
           <Image
+            className='mb-4 transition ease-in-out  hover:-translate-y-1 hover:scale-110 duration-300'
             src={data.assets[0].gameAbsolutePath}
             width={250}
             height={250}

@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Image from "next/image";
 
-const TypeButton = ({ selectedType, typeClear, type }) => {
+const TypeButton = ({ selectedType, typeClear, type, selectedFilter }) => {
     const [isBorderActive, setIsBorderActive] = useState(false);
 
     const handleType = (type) => {
@@ -11,7 +11,13 @@ const TypeButton = ({ selectedType, typeClear, type }) => {
 
     useEffect(() => {
         setIsBorderActive(false);
-    }, [typeClear])
+    }, [typeClear]);
+
+    useEffect(() => {
+        if (selectedFilter.type.includes(type)) {
+            setIsBorderActive(true)
+        }
+    }, []);
 
     let buttonText = type;
     if (buttonText === 'Unit') { buttonText = 'Follower' };

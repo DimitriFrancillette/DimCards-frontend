@@ -92,7 +92,7 @@ const CardsPage = () => {
         <CardsDisplay isMenu={isMenu} handleFilter={handleFilter} pageName={"Cards Gallery"} selectedFilter={selectedFilter} />
 
         {isMenu &&
-          <FilterMenu handleFilter={handleFilter} selected={selected} />
+          <FilterMenu handleFilter={handleFilter} selected={selected} selectedFilter={selectedFilter}/>
         }
       </div>
       <Footer />

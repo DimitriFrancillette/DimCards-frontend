@@ -5,7 +5,7 @@ import RarityButton from "./filterComponents/RarityButton";
 import ClearButton from "./filterComponents/ClearButton";
 import { useState } from "react";
 
-const FilterMenu = ({handleFilter, selected}) => {
+const FilterMenu = ({handleFilter, selected, selectedFilter}) => {
     const [regionClear, setRegionClear] = useState(false);
     const [costClear, setCostClear] = useState(false);
     const [typeClear, setTypeClear] = useState(false);
@@ -40,20 +40,21 @@ const FilterMenu = ({handleFilter, selected}) => {
         handleFilter(false)
     };
 
+    
     const regionButtons = gameRegions.map(regionName => {
-        return <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region={regionName} />
+        return <RegionButton selectedRegion={selectedRegion} regionClear={regionClear} region={regionName} selectedFilter={selectedFilter} />
     });
 
     const manaButtons = cardsCosts.map(costMana => {
-        return <ManaCostButton selectedCost={selectedCost} costClear={costClear} cost={costMana} />
+        return <ManaCostButton selectedCost={selectedCost} costClear={costClear} cost={costMana} selectedFilter={selectedFilter} />
     });
 
     const typeButtons = cardsTypes.map(typeName => {
-        return <TypeButton selectedType={selectedType} typeClear={typeClear} type={typeName} />
+        return <TypeButton selectedType={selectedType} typeClear={typeClear} type={typeName} selectedFilter={selectedFilter} />
     });
 
     const rarityButtons = cardsRarity.map(rarityName => {
-        return <RarityButton selectedRarity={selectedRarity} rarityClear={rarityClear} rarity={rarityName} />
+        return <RarityButton selectedRarity={selectedRarity} rarityClear={rarityClear} rarity={rarityName} selectedFilter={selectedFilter} />
     });
 
 

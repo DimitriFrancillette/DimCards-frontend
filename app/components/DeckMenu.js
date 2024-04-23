@@ -82,7 +82,7 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
     });
 
     return (
-        <div className='px-3 w-1/5 bg-cyan-700/75 h-screen overflow-y-auto pb-6'>
+        <div className='px-3 w-1/5 bg-cyan-700/75 h-screen overflow-y-auto no-scrollbar pb-6'>
             <div className='my-6 flex justify-between'>
                 <h3 className='text-3xl'>Deck</h3>
                 <div>

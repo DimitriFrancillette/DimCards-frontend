@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 
-const ManaCostButton = ({ selectedCost, cost, costClear }) => {
+const ManaCostButton = ({ selectedCost, cost, costClear, selectedFilter }) => {
     const [isBorderActive, setIsBorderActive] = useState(false);
 
     const handleCost = (cost) => {
@@ -10,7 +10,13 @@ const ManaCostButton = ({ selectedCost, cost, costClear }) => {
 
     useEffect(() => {
         setIsBorderActive(false);
-    }, [costClear])
+    }, [costClear]);
+
+    useEffect(() => {
+        if (selectedFilter.cost.includes(cost)) {
+            setIsBorderActive(true)
+        }
+    }, []);
 
     let buttonText = cost.toString();
     if (buttonText === '7') { buttonText = '7+' };

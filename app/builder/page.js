@@ -169,7 +169,7 @@ const DeckBuilderPage = () => {
       <div className='flex'>
         <BuilderCardsDisplay pageName={"Deck Builder"} selectedFilter={selectedFilter} addCardToDeck={addCardToDeck} deckList={deckList} />
         {isMenu ?
-          <FilterMenu handleFilter={handleFilter} selected={selected} />
+          <FilterMenu handleFilter={handleFilter} selected={selected}  selectedFilter={selectedFilter} />
           : <DeckMenu handleFilter={handleFilter} deckList={deckList} removeCardFromDeck={removeCardFromDeck} />
         }
       </div>

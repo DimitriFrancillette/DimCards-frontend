@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import Image from "next/image";
 
-const RarityButton = ({ selectedRarity, rarityClear, rarity }) => {
+const RarityButton = ({ selectedRarity, rarityClear, rarity, selectedFilter }) => {
     const [isBorderActive, setIsBorderActive] = useState(false);
 
     const handleRarity = (rarity) => {
@@ -11,7 +11,13 @@ const RarityButton = ({ selectedRarity, rarityClear, rarity }) => {
 
     useEffect(() => {
         setIsBorderActive(false);
-    }, [rarityClear])
+    }, [rarityClear]);
+
+    useEffect(() => {
+        if (selectedFilter.rarity.includes(rarity)) {
+            setIsBorderActive(true)
+        }
+    }, [])
 
     let buttonText = rarity;
 

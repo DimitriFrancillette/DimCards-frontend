@@ -171,7 +171,7 @@ const BuilderCardsDisplay = ({
         if (findCardInDeck !== undefined && i < findCardInDeck.number) {
           style = 'rounded-full bg-amber-400 border-black w-4 h-4 border-2';
         }
-        circles.push(<div className={style} />);
+        circles.push(<div key={i} className={style} />);
       }
       return (
         <div

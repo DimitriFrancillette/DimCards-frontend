@@ -52,47 +52,55 @@ const FilterMenu = ({ handleFilter, selected, selectedFilter }) => {
     handleFilter(false);
   };
 
-  const regionButtons = gameRegions.map((regionName) => {
+  const regionButtons = gameRegions.map((regionName, index) => {
     return (
-      <RegionButton
-        selectedRegion={selectedRegion}
-        regionClear={regionClear}
-        region={regionName}
-        selectedFilter={selectedFilter}
-      />
+      <div key={index}>
+        <RegionButton
+          selectedRegion={selectedRegion}
+          regionClear={regionClear}
+          region={regionName}
+          selectedFilter={selectedFilter}
+        />
+      </div>
     );
   });
 
-  const manaButtons = cardsCosts.map((costMana) => {
+  const manaButtons = cardsCosts.map((costMana, index) => {
     return (
-      <ManaCostButton
-        selectedCost={selectedCost}
-        costClear={costClear}
-        cost={costMana}
-        selectedFilter={selectedFilter}
-      />
+      <div key={index}>
+        <ManaCostButton
+          selectedCost={selectedCost}
+          costClear={costClear}
+          cost={costMana}
+          selectedFilter={selectedFilter}
+        />
+      </div>
     );
   });
 
-  const typeButtons = cardsTypes.map((typeName) => {
+  const typeButtons = cardsTypes.map((typeName, index) => {
     return (
-      <TypeButton
-        selectedType={selectedType}
-        typeClear={typeClear}
-        type={typeName}
-        selectedFilter={selectedFilter}
-      />
+      <div key={index}>
+        <TypeButton
+          selectedType={selectedType}
+          typeClear={typeClear}
+          type={typeName}
+          selectedFilter={selectedFilter}
+        />
+      </div>
     );
   });
 
-  const rarityButtons = cardsRarity.map((rarityName) => {
+  const rarityButtons = cardsRarity.map((rarityName, index) => {
     return (
-      <RarityButton
-        selectedRarity={selectedRarity}
-        rarityClear={rarityClear}
-        rarity={rarityName}
-        selectedFilter={selectedFilter}
-      />
+      <div key={index}>
+        <RarityButton
+          selectedRarity={selectedRarity}
+          rarityClear={rarityClear}
+          rarity={rarityName}
+          selectedFilter={selectedFilter}
+        />
+      </div>
     );
   });
 
@@ -170,7 +178,7 @@ const FilterMenu = ({ handleFilter, selected, selectedFilter }) => {
         {rarityButtons}
       </div>
 
-      <div className='my-3 flex justify-around items-center'>
+      {/* <div className='my-3 flex justify-around items-center'>
         <div
           className='divider divider-start divider-primary text-xl'
           style={{ width: '80%' }}
@@ -202,7 +210,7 @@ const FilterMenu = ({ handleFilter, selected, selectedFilter }) => {
           <option value='Double Attack'>Double Attack</option>
           <option value='Fearsome'>Fearsome</option>
         </select>
-      </div>
+      </div> */}
     </div>
   );
 };

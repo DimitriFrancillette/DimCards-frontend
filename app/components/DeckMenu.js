@@ -1,7 +1,10 @@
 import Image from 'next/image';
 import { FaPen } from 'react-icons/fa';
+import { useState } from 'react';
 
 const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
+  const [deckname, setDeckName] = useState('');
+
   let totalCardsCount = 0;
   let unitCardsCount = 0;
   let spellCardsCount = 0;
@@ -30,6 +33,10 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
 
   const handleClose = () => {
     handleFilter(true);
+  };
+
+  const handleSave = () => {
+    console.log('Deck Name', deckname, 'Deck list:', deckList);
   };
 
   let cardsToShow = deckList.map((data) => {
@@ -123,6 +130,8 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
           type='text'
           placeholder='Deck Name'
           className='input input-success w-72 bg-transparent text-xl placeholder-neutral-100'
+          onChange={(e) => setDeckName(e.target.value)}
+          value={deckname}
         />
       </div>
       <div className='grid grid-cols-6 grid-rows-2 gap-y-2 mt-6 text-lg font-medium'>
@@ -199,7 +208,7 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
         <div className='flex justify-center'>Total</div>
       </div>
 
-      <div className='mt-8 h-screen flex flex-col gap-1 bg-slate-400 pt-2 px-2 rounded-md'>
+      <div className='mt-8 h-2/3 flex flex-col gap-1 bg-slate-400 pt-2 px-2 rounded-md overflow-y-auto scrollbar-webkit'>
         {cardsToShow}
 
         {/* --------------CARD IN DECK TESTING WITH backgroundImage */}
@@ -228,6 +237,14 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
                     </div>
                 </div> */}
         {/* --------------CARD IN DECK TESTING WITH backgroundImage */}
+      </div>
+      <div className='flex justify-center w-full mt-4'>
+        <button
+          className='btn btn-wide bg-secondary'
+          onClick={() => handleSave()}
+        >
+          Save deck
+        </button>
       </div>
     </div>
   );

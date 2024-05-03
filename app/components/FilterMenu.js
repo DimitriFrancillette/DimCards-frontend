@@ -19,7 +19,7 @@ const FilterMenu = ({ handleFilter, selected, selectedFilter }) => {
     'Ionia',
     'Noxus',
     'PiltoverZaun',
-    'Runeterran',
+    'Runeterra',
     'ShadowIsles',
     'Shurima',
     'Targon',

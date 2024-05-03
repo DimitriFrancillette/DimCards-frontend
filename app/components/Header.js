@@ -7,6 +7,7 @@ import {
 } from 'react-icons/gi';
 import { IoLibrarySharp, IoSettingsSharp } from 'react-icons/io5';
 import { FaBoxArchive } from 'react-icons/fa6';
+import UserModal from './filterComponents/UserModal';
 
 const Header = () => {
   return (
@@ -46,11 +47,7 @@ const Header = () => {
             </button>
           </Link>
         </div>
-        <div className='min-w-16'>
-          <div className='mt-3.5'>
-            <IoSettingsSharp className='size-10' />
-          </div>
-        </div>
+        <UserModal />
       </div>
     </header>
   );

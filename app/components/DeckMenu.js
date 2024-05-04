@@ -29,6 +29,13 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
     if (deckList[i].card.rarity === 'Champion') {
       championsCardsCount += deckList[i].number;
     }
+
+    if (deckList[i].card.type === 'Equipment') {
+      equipmentCardsCount += deckList[i].number;
+    }
+    if (deckList[i].card.type === 'Landmark') {
+      landmarkCardsCount += deckList[i].number;
+    }
   }
 
   const handleClose = () => {

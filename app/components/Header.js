@@ -7,7 +7,8 @@ import {
 } from 'react-icons/gi';
 import { IoLibrarySharp, IoSettingsSharp } from 'react-icons/io5';
 import { FaBoxArchive } from 'react-icons/fa6';
-import UserModal from './filterComponents/UserModal';
+import RegisterModal from './filterComponents/RegisterModal';
+import SignInModal from './filterComponents/SignInModal';
 
 const Header = () => {
   return (
@@ -47,7 +48,10 @@ const Header = () => {
             </button>
           </Link>
         </div>
-        <UserModal />
+        <div className='flex justify-between items-center mt-1 mr-4 min-w-60'>
+          <RegisterModal /> or
+          <SignInModal />
+        </div>
       </div>
     </header>
   );

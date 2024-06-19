@@ -1,28 +1,31 @@
 'use client';
 import { useState, useEffect } from 'react';
 
-const RegisterModal = () => {
+const SignInModal = () => {
   const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
+
+  const handleSignIn = () => {
+    console.log('Email:', email, ' / password:', password);
+  };
 
   return (
     <div>
       <button
         className='btn bg-neutral hover:bg-secondary'
-        onClick={() => document.getElementById('register_modal').showModal()}
+        onClick={() => document.getElementById('sign_in_modal').showModal()}
       >
-        Register
+        Sign In
       </button>
-      <dialog id='register_modal' className='modal'>
-        <div className='modal-box bg-gradient-to-br from-secondary from-55% to-success'>
+      <dialog id='sign_in_modal' className='modal'>
+        <div className='modal-box bg-gradient-to-tl from-secondary from-55% to-success'>
           <form method='dialog'>
             <button className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>
               ✕
             </button>
           </form>
           <div>
-            <h3 className='font-bold text-2xl text-center mb-4'>Register</h3>
+            <h3 className='font-bold text-4xl text-center mb-4'>Sign In</h3>
             <label className='input input-bordered flex items-center gap-2 mb-4'>
               <svg
                 xmlns='http://www.w3.org/2000/svg'
@@ -39,23 +42,6 @@ const RegisterModal = () => {
                 placeholder='Email'
                 onChange={(e) => setEmail(e.target.value)}
                 value={email}
-              />
-            </label>
-            <label className='input input-bordered flex items-center gap-2 mb-4'>
-              <svg
-                xmlns='http://www.w3.org/2000/svg'
-                viewBox='0 0 16 16'
-                fill='currentColor'
-                className='w-4 h-4 opacity-70'
-              >
-                <path d='M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6ZM12.735 14c.618 0 1.093-.561.872-1.139a6.002 6.002 0 0 0-11.215 0c-.22.578.254 1.139.872 1.139h9.47Z' />
-              </svg>
-              <input
-                type='text'
-                className='grow bg-transparent placeholder:text-neutral'
-                placeholder='Username'
-                onChange={(e) => setUsername(e.target.value)}
-                value={username}
               />
             </label>
             <label className='input input-bordered flex items-center gap-2'>
@@ -80,8 +66,11 @@ const RegisterModal = () => {
             </label>
           </div>
           <div className='w-full flex justify-center mt-6'>
-            <button className='btn btn-wide btn-outline border-4'>
-              Register
+            <button
+              className='btn btn-wide btn-outline border-4'
+              onClick={() => handleSignIn()}
+            >
+              Sign In
             </button>
           </div>
         </div>
@@ -90,4 +79,4 @@ const RegisterModal = () => {
   );
 };
 
-export default RegisterModal;
+export default SignInModal;

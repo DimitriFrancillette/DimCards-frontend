@@ -1,7 +1,6 @@
 import Header from '../components/Header.js';
 import Footer from '../components/Footer.js';
 import Image from 'next/image.js';
-
 const DecksLibraryPage = () => {
   return (
     <div>

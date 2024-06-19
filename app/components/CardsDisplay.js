@@ -1,9 +1,11 @@
 import { useState, useEffect } from 'react';
 import Image from 'next/image';
+import { useSelector } from 'react-redux';
 
 const CardsDisplay = ({ isMenu, handleFilter, pageName, selectedFilter }) => {
   const [apiCards, setApiCards] = useState([]);
   const [shownCards, setShownCards] = useState([]);
+  const TEST = useSelector((state) => state.user.value.username);
 
   useEffect(() => {
     fetch('http://localhost:3000/cards')
@@ -175,6 +177,7 @@ const CardsDisplay = ({ isMenu, handleFilter, pageName, selectedFilter }) => {
 
   return (
     <div className={divClass}>
+      {TEST}
       <div className='flex justify-between'>
         <div>
           <h2 className='text-5xl font-semibold'>{pageName}</h2>

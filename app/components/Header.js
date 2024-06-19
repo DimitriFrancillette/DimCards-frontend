@@ -7,8 +7,8 @@ import {
 } from 'react-icons/gi';
 import { IoLibrarySharp, IoSettingsSharp } from 'react-icons/io5';
 import { FaBoxArchive } from 'react-icons/fa6';
-import RegisterModal from './filterComponents/RegisterModal';
-import SignInModal from './filterComponents/SignInModal';
+import RegisterModal from './headerComponents/RegisterModal';
+import SignInModal from './headerComponents/SignInModal';
 
 const Header = () => {
   return (

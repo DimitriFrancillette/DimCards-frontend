@@ -7,7 +7,6 @@ const RegisterModal = () => {
   const [email, setEmail] = useState('');
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const [signUpError, setSignUpError] = useState(false);
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleRegister = () => {
@@ -32,7 +31,7 @@ const RegisterModal = () => {
             throw new Error(errorData.message || 'Network response was not ok');
           });
         }
-        response.json();
+        return response.json();
       })
       .then((data) => {
         if (data.email) {
@@ -54,7 +53,7 @@ const RegisterModal = () => {
         setErrorMessage(error.message);
       });
   };
-  // todo: HANDLE CLOSE CHANGE
+  // todo: HANDLE CLOSE CHANGE and vider le message au moment du close
   return (
     <div>
       <button
@@ -131,11 +130,6 @@ const RegisterModal = () => {
           <p className='mt-2 flex justify-center text-red-600 font-bold'>
             {errorMessage}
           </p>
-          {/* {signUpError && (
-            <p className='mt-2 flex justify-center text-red-600 font-bold'>
-              {errorMessage}
-            </p>
-          )} */}
           <div className='w-full flex justify-center mt-6'>
             {/* <form method='dialog'> */}
             <button

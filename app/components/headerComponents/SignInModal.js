@@ -1,12 +1,57 @@
 import { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { login } from '@/redux/reducers/user';
 
 const SignInModal = () => {
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleSignIn = () => {
     console.log('Email:', email, ' / password:', password);
+    fetch('http://localhost:3000/users/signin', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        email: email,
+        password: password,
+      }),
+    })
+      .then((response) => {
+        console.log(response);
+        if (!response.ok) {
+          return response.json().then((errorData) => {
+            if (!errorData.error) {
+              console.error(`${errorData.message}`);
+            } else {
+              console.error(`${errorData.message}: ${errorData.error}`);
+            }
+            throw new Error(errorData.message || 'Network response was not ok');
+          });
+        }
+        return response.json();
+      })
+      .then((data) => {
+        if (data.token) {
+          dispatch(
+            login({
+              token: data.token,
+              username: data.username,
+              email: data.email,
+            })
+          );
+          setEmail('');
+          setPassword('');
+          // props.modalOk('up');
+          return;
+        }
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
+      });
   };
+  // todo: HANDLE CLOSE CHANGE and vider le message au moment du close
 
   return (
     <div>
@@ -64,6 +109,9 @@ const SignInModal = () => {
               />
             </label>
           </div>
+          <p className='mt-2 flex justify-center text-red-600 font-bold'>
+            {errorMessage}
+          </p>
           <div className='w-full flex justify-center mt-6'>
             <button
               className='btn btn-wide btn-outline border-4'

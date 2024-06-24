@@ -21,9 +21,20 @@ const RegisterModal = () => {
         password: password,
       }),
     })
-      .then((response) => response.json())
+      .then((response) => {
+        if (!response.ok) {
+          return response.json().then((errorData) => {
+            if (!errorData.error) {
+              console.error(`${errorData.message}`);
+            } else {
+              console.error(`${errorData.message}: ${errorData.error}`);
+            }
+            throw new Error(errorData.message || 'Network response was not ok');
+          });
+        }
+        response.json();
+      })
       .then((data) => {
-        console.log(data);
         if (data.email) {
           dispatch(
             login({
@@ -38,15 +49,12 @@ const RegisterModal = () => {
           // props.modalOk('up');
           return;
         }
-
-        setSignUpError(true);
-        setErrorMessage(data.error);
-        // setEmail('');
-        // setUsername('');
-        // setPassword('');
+      })
+      .catch((error) => {
+        setErrorMessage(error.message);
       });
   };
-
+  // todo: HANDLE CLOSE CHANGE
   return (
     <div>
       <button
@@ -120,11 +128,14 @@ const RegisterModal = () => {
               />
             </label>
           </div>
-          {signUpError && (
+          <p className='mt-2 flex justify-center text-red-600 font-bold'>
+            {errorMessage}
+          </p>
+          {/* {signUpError && (
             <p className='mt-2 flex justify-center text-red-600 font-bold'>
               {errorMessage}
             </p>
-          )}
+          )} */}
           <div className='w-full flex justify-center mt-6'>
             {/* <form method='dialog'> */}
             <button

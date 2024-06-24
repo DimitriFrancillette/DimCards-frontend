@@ -1,5 +1,4 @@
-'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { login } from '@/redux/reducers/user';
 
@@ -9,9 +8,10 @@ const RegisterModal = () => {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [signUpError, setSignUpError] = useState(false);
+  const [errorMessage, setErrorMessage] = useState('');
 
   const handleRegister = () => {
-    console.log(email, username, password);
+    console.log('REGISTER MODAL', email, username, password);
     fetch('http://localhost:3000/users/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -39,7 +39,8 @@ const RegisterModal = () => {
           return;
         }
 
-        // setSignUpError(true);
+        setSignUpError(true);
+        setErrorMessage(data.error);
         // setEmail('');
         // setUsername('');
         // setPassword('');
@@ -119,15 +120,20 @@ const RegisterModal = () => {
               />
             </label>
           </div>
+          {signUpError && (
+            <p className='mt-2 flex justify-center text-red-600 font-bold'>
+              {errorMessage}
+            </p>
+          )}
           <div className='w-full flex justify-center mt-6'>
-            <form method='dialog'>
-              <button
-                className='btn btn-wide btn-outline border-4'
-                onClick={() => handleRegister()}
-              >
-                Register
-              </button>
-            </form>
+            {/* <form method='dialog'> */}
+            <button
+              className='btn btn-wide btn-outline border-4'
+              onClick={() => handleRegister()}
+            >
+              Register
+            </button>
+            {/* </form> */}
           </div>
         </div>
       </dialog>

@@ -1,5 +1,4 @@
-'use client';
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 
 const SignInModal = () => {
   const [email, setEmail] = useState('');

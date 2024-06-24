@@ -1,3 +1,4 @@
+'use client';
 import React from 'react';
 import Link from 'next/link';
 import {
@@ -9,8 +10,34 @@ import { IoLibrarySharp, IoSettingsSharp } from 'react-icons/io5';
 import { FaBoxArchive } from 'react-icons/fa6';
 import RegisterModal from './headerComponents/RegisterModal';
 import SignInModal from './headerComponents/SignInModal';
+import UserModal from './headerComponents/UserModal';
+import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 const Header = () => {
+  const [username, setUsername] = useState('');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
+
+  let user = useSelector((state) => state.user.value);
+
+  let connexionArea;
+
+  if (!user.token) {
+    connexionArea = (
+      <div className='flex justify-between items-center mt-1 mr-4 min-w-60'>
+        <RegisterModal /> or
+        <SignInModal />
+      </div>
+    );
+  } else {
+    connexionArea = (
+      <div className='flex justify-evenly items-center mt-1 mr-4 min-w-60'>
+        HELLO {user.username}
+        <UserModal />
+      </div>
+    );
+  }
   return (
     <header>
       <div className='bg-sky-700 flex justify-between min-h-14'>
@@ -48,10 +75,7 @@ const Header = () => {
             </button>
           </Link>
         </div>
-        <div className='flex justify-between items-center mt-1 mr-4 min-w-60'>
-          <RegisterModal /> or
-          <SignInModal />
-        </div>
+        {connexionArea}
       </div>
     </header>
   );

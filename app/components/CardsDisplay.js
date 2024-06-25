@@ -110,7 +110,6 @@ const CardsDisplay = ({ isMenu, handleFilter, pageName, selectedFilter }) => {
     }
 
     //FILTER THE CARDS BY RARITY
-
     for (const element of filter.rarity) {
       const filteredRarityCards = apiCards.filter((card) => {
         return card.rarity === element;

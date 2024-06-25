@@ -10,7 +10,6 @@ const RegisterModal = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleRegister = () => {
-    console.log('REGISTER MODAL', email, username, password);
     fetch('http://localhost:3000/users/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -45,7 +44,6 @@ const RegisterModal = () => {
           setEmail('');
           setUsername('');
           setPassword('');
-          // props.modalOk('up');
           return;
         }
       })
@@ -53,7 +51,13 @@ const RegisterModal = () => {
         setErrorMessage(error.message);
       });
   };
-  // todo: HANDLE CLOSE CHANGE and vider le message au moment du close
+
+  const handleClose = () => {
+    setEmail('');
+    setUsername('');
+    setPassword('');
+    setErrorMessage('');
+  };
   return (
     <div>
       <button
@@ -65,7 +69,10 @@ const RegisterModal = () => {
       <dialog id='register_modal' className='modal'>
         <div className='modal-box bg-gradient-to-br from-secondary from-55% to-success'>
           <form method='dialog'>
-            <button className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>
+            <button
+              className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'
+              onClick={() => handleClose()}
+            >
               ✕
             </button>
           </form>
@@ -131,14 +138,12 @@ const RegisterModal = () => {
             {errorMessage}
           </p>
           <div className='w-full flex justify-center mt-6'>
-            {/* <form method='dialog'> */}
             <button
               className='btn btn-wide btn-outline border-4'
               onClick={() => handleRegister()}
             >
               Register
             </button>
-            {/* </form> */}
           </div>
         </div>
       </dialog>

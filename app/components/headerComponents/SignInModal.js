@@ -43,7 +43,6 @@ const SignInModal = () => {
           );
           setEmail('');
           setPassword('');
-          // props.modalOk('up');
           return;
         }
       })
@@ -51,7 +50,12 @@ const SignInModal = () => {
         setErrorMessage(error.message);
       });
   };
-  // todo: HANDLE CLOSE CHANGE and vider le message au moment du close
+
+  const handleClose = () => {
+    setEmail('');
+    setPassword('');
+    setErrorMessage('');
+  };
 
   return (
     <div>
@@ -64,7 +68,10 @@ const SignInModal = () => {
       <dialog id='sign_in_modal' className='modal'>
         <div className='modal-box bg-gradient-to-tl from-secondary from-55% to-success'>
           <form method='dialog'>
-            <button className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'>
+            <button
+              className='btn btn-sm btn-circle btn-ghost absolute right-2 top-2'
+              onClick={() => handleClose()}
+            >
               ✕
             </button>
           </form>

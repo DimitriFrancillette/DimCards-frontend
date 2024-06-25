@@ -2,17 +2,23 @@ import { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { login, logout } from '@/redux/reducers/user';
 import { IoSettingsSharp } from 'react-icons/io5';
+import { useRouter } from 'next/navigation';
+import DeleteModal from './DeleteModal';
 
 const UserModal = () => {
+  const dispatch = useDispatch();
+  const router = useRouter();
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
-  const dispatch = useDispatch();
   const [message, setMessage] = useState('');
 
   let user = useSelector((state) => state.user.value);
 
   const handleUserChanges = () => {
-    console.log('USER MODAL', username, password);
+    if (username === '' && password === '') {
+      setMessage('Nothing has been changed');
+      return;
+    }
 
     fetch('http://localhost:3000/users/update', {
       method: 'PATCH',
@@ -26,7 +32,11 @@ const UserModal = () => {
       .then((response) => {
         if (!response.ok) {
           return response.json().then((errorData) => {
-            console.error(`${errorData.message}: ${errorData.error}`);
+            if (!errorData.error) {
+              console.error(`${errorData.message}`);
+            } else {
+              console.error(`${errorData.message}: ${errorData.error}`);
+            }
             throw new Error(errorData.message || 'Network response was not ok');
           });
         }
@@ -54,11 +64,13 @@ const UserModal = () => {
 
   const handleDisconnect = () => {
     dispatch(logout());
+    router.push('/');
   };
 
-  //TODO
   const handleClose = () => {
-    // console.log('JE FERME');
+    setUsername('');
+    setPassword('');
+    setMessage('');
   };
 
   return (
@@ -109,7 +121,9 @@ const UserModal = () => {
               value={password}
             />
           </label>
-          <div>{message}</div>
+          <p className='mt-2 flex justify-center text-success font-bold text-xl'>
+            {message}
+          </p>
           <div className='w-full flex justify-center mt-6'>
             <button
               className='btn btn-wide btn-outline border-4'
@@ -126,9 +140,13 @@ const UserModal = () => {
               Disconnect
             </button>
           </div>
+          <div className='divider'></div>
+          <div className='w-full flex justify-center mt-6'>
+            <DeleteModal />
+          </div>
         </div>
         <form method='dialog' className='modal-backdrop'>
-          <button>close</button>
+          <button onClick={() => handleClose()}>close</button>
         </form>
       </dialog>
     </div>

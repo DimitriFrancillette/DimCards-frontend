@@ -6,19 +6,14 @@ import {
   GiAnvilImpact,
   GiCardAceSpades,
 } from 'react-icons/gi';
-import { IoLibrarySharp, IoSettingsSharp } from 'react-icons/io5';
+import { IoLibrarySharp } from 'react-icons/io5';
 import { FaBoxArchive } from 'react-icons/fa6';
 import RegisterModal from './headerComponents/RegisterModal';
 import SignInModal from './headerComponents/SignInModal';
 import UserModal from './headerComponents/UserModal';
 import { useSelector } from 'react-redux';
-import { useState } from 'react';
 
 const Header = () => {
-  const [username, setUsername] = useState('');
-  const [email, setEmail] = useState('');
-  const [password, setPassword] = useState('');
-
   let user = useSelector((state) => state.user.value);
 
   let connexionArea;
@@ -34,7 +29,9 @@ const Header = () => {
     connexionArea = (
       <div className='flex justify-evenly items-center mt-1 mr-4 min-w-60'>
         HELLO {user.username}
-        <UserModal />
+        <button className='btn-ghost rounded-lg'>
+          <UserModal />
+        </button>
       </div>
     );
   }

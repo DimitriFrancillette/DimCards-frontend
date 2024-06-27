@@ -19,7 +19,6 @@ const DeleteModal = () => {
       }),
     })
       .then((response) => {
-        console.log('RESPONSE', response);
         if (!response.ok) {
           return response.json().then((errorData) => {
             if (!errorData.error) {
@@ -58,20 +57,22 @@ const DeleteModal = () => {
               ✕
             </button>
           </form>
-          <h3 className='font-bold text-lg'>
-            Are your sure you want to delete your account ?
-          </h3>
-          <p className='py-4'>
-            <button
-              className='btn btn-wide btn-outline bg-red-600 border-4'
-              onClick={() => handleUserDelete()}
-            >
-              Confirm
-            </button>
-            <div className='mt-2 flex justify-center text-success font-bold text-xl'>
-              {message}
+          <div className='flex flex-col items-center'>
+            <h3 className='font-bold text-lg'>
+              Are your sure you want to delete your account ?
+            </h3>
+            <div className='py-4 mt-4'>
+              <button
+                className='btn btn-wide btn-outline bg-red-600 border-4'
+                onClick={() => handleUserDelete()}
+              >
+                Confirm
+              </button>
+              <div className='mt-2 flex justify-center text-success font-bold text-xl'>
+                {message}
+              </div>
             </div>
-          </p>
+          </div>
         </div>
       </dialog>
     </div>

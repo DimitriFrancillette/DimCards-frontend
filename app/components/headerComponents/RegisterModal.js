@@ -36,6 +36,7 @@ const RegisterModal = () => {
         if (data.email) {
           dispatch(
             login({
+              userId: data.userId,
               token: data.token,
               username: data.username,
               email: data.email,

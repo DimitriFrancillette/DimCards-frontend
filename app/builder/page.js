@@ -31,7 +31,7 @@ const DeckBuilderPage = () => {
         return;
       }
 
-      //if region name is not in selectedFiler.region array we had the name in it or we remove it from the array
+      //if region name is not in selectedFiler.region array, we add the name in it or we remove it from the array
       !selectedFilter.region.includes(param.region)
         ? setSelectedFilter((prevState) => ({
             ...prevState,

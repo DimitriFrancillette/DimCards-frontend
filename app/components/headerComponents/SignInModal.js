@@ -9,7 +9,6 @@ const SignInModal = () => {
   const [errorMessage, setErrorMessage] = useState('');
 
   const handleSignIn = () => {
-    console.log('Email:', email, ' / password:', password);
     fetch('http://localhost:3000/users/signin', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -19,7 +18,6 @@ const SignInModal = () => {
       }),
     })
       .then((response) => {
-        console.log(response);
         if (!response.ok) {
           return response.json().then((errorData) => {
             if (!errorData.error) {
@@ -36,6 +34,7 @@ const SignInModal = () => {
         if (data.token) {
           dispatch(
             login({
+              userId: data.userId,
               token: data.token,
               username: data.username,
               email: data.email,

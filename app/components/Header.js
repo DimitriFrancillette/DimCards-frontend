@@ -29,9 +29,9 @@ const Header = () => {
     connexionArea = (
       <div className='flex justify-evenly items-center mt-1 mr-4 min-w-60'>
         HELLO {user.username}
-        <button className='btn-ghost rounded-lg'>
+        <div className='btn-ghost rounded-lg'>
           <UserModal />
-        </button>
+        </div>
       </div>
     );
   }

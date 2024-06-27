@@ -1,9 +1,12 @@
 import Image from 'next/image';
 import { FaPen } from 'react-icons/fa';
 import { useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 
 const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
   const [deckname, setDeckName] = useState('');
+
+  let user = useSelector((state) => state.user.value);
 
   let totalCardsCount = 0;
   let unitCardsCount = 0;
@@ -43,9 +46,74 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
   };
 
   const handleSave = () => {
-    console.log('Deck Name', deckname, 'Deck list:', deckList);
-  };
+    console.log(
+      'Deck Name:',
+      deckname,
+      '- Deck list:',
+      deckList,
+      '- UserId:',
+      user.userId
+    );
 
+    if (!user.userId) {
+      console.log('You have to be connected to save your deck');
+      return;
+    }
+    if (!deckname) {
+      console.log('The deck name is missing');
+      return;
+    }
+    if (!deckList) {
+      console.log('Oops! Something went wrong with the deck...');
+      return;
+    }
+
+    fetch('http://localhost:3000/decks/save', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        name: deckname,
+        userId: user.userId,
+        cards: deckList,
+        public: false,
+        regions: 'whatever for now',
+      }),
+    })
+      .then((response) => {
+        if (!response.ok) {
+          return response.json().then((errorData) => {
+            if (!errorData.error) {
+              console.error(`${errorData.message}`);
+            } else {
+              console.error(`${errorData.message}: ${errorData.error}`);
+            }
+            throw new Error(errorData.message || 'Network response was not ok');
+          });
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        // if (data.user) {
+        //   dispatch(
+        //     login({
+        //       token: data.user.token,
+        //       username: data.user.username,
+        //       email: data.user.email,
+        //     })
+        //   );
+        //   setMessage(data.message);
+        //   setUsername('');
+        //   setPassword('');
+        //   return;
+        // }
+      })
+      .catch((error) => {
+        console.log(error);
+        // setMessage(error.message);
+      });
+  };
+  console.log('deck list: ', deckList);
   let cardsToShow = deckList.map((data) => {
     const lowerCaseRegion = data.card.regions[0].toLowerCase();
     const regionStyles = {
@@ -217,33 +285,6 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
 
       <div className='mt-8 h-2/3 flex flex-col gap-1 bg-slate-400 pt-2 px-2 rounded-md overflow-y-auto scrollbar-webkit'>
         {cardsToShow}
-
-        {/* --------------CARD IN DECK TESTING WITH backgroundImage */}
-        {/* <div className="relative h-14 rounded-2xl overflow-hidden flex items-center text-slate-100">
-                    <div className="absolute inset-0 bg-gradient-to-r from-demaciaColor to-transparent from-40% z-10"></div>
-                    <div className="relative p-4 flex justify-between items-center w-full z-10">
-                        <div className="flex justify-between items-center min-w-40">
-                            <div className="btn-circle btn-xs bg-error flex justify-center items-center">
-                                2
-                            </div>
-                            <p className="text-2xl">FIORA</p>
-                        </div>
-                        <div className="btn-square btn-xs bg-slate-500 flex justify-center items-center">
-                            2
-                        </div>
-                    </div>
-                    <div className="absolute w-full h-full left-42">
-                        <div>
-                            <Image
-                                src="http://dd.b.pvp.net/4_12_0/set1/en_us/img/cards/01DE045-full.png"
-                                fill
-                                objectFit="cover"
-                                objectPosition="0% 40%"
-                            />
-                        </div>
-                    </div>
-                </div> */}
-        {/* --------------CARD IN DECK TESTING WITH backgroundImage */}
       </div>
       <div className='flex justify-center w-full mt-4'>
         <button

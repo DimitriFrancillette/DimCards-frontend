@@ -14,7 +14,6 @@ const BuilderCardsDisplay = ({
     fetch('http://localhost:3000/cards')
       .then((response) => response.json())
       .then((data) => {
-        console.log('FETCH', data.result);
         setShownCards(data.result);
         setApiCards(data.result);
       });
@@ -22,7 +21,6 @@ const BuilderCardsDisplay = ({
 
   let cards = shownCards.map((data) => {
     const findCardInDeck = deckList.find((e) => e.card.id === data._id);
-
     const circles = [];
     for (let i = 0; i < 3; i++) {
       let style = 'rounded-full bg-slate-400 border-black w-4 h-4 border-2';
@@ -42,6 +40,7 @@ const BuilderCardsDisplay = ({
         type={data.type}
         keywords={data.keywords}
         rarity={data.rarity}
+        cardcode={data.cardCode}
         onClick={() =>
           addCardToDeck({
             id: data._id,
@@ -50,6 +49,7 @@ const BuilderCardsDisplay = ({
             cost: data.cost,
             type: data.type,
             keywords: data.keywords,
+            cardCode: data.cardCode,
             rarity: data.rarity,
           })
         }
@@ -61,6 +61,7 @@ const BuilderCardsDisplay = ({
           height={250}
           alt={data.name}
           style={{ width: 'auto', height: 'auto' }}
+          loading='lazy'
         />
         <div className='flex gap-1'>{circles}</div>
       </div>
@@ -183,6 +184,7 @@ const BuilderCardsDisplay = ({
           type={data.type}
           keywords={data.keywords}
           rarity={data.rarity}
+          cardcode={data.cardCode}
           onClick={() =>
             addCardToDeck({
               id: data._id,
@@ -191,6 +193,7 @@ const BuilderCardsDisplay = ({
               cost: data.cost,
               type: data.type,
               keywords: data.keywords,
+              cardCode: data.cardCode,
               rarity: data.rarity,
             })
           }
@@ -202,6 +205,7 @@ const BuilderCardsDisplay = ({
             height={250}
             alt={data.name}
             style={{ width: 'auto', height: 'auto' }}
+            loading='lazy'
           />
           <div className='flex gap-1'>{circles}</div>
         </div>

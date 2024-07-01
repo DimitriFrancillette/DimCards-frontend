@@ -46,15 +46,31 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
   };
 
   const handleSave = () => {
-    console.log(
-      'Deck Name:',
-      deckname,
-      '- Deck list:',
-      deckList,
-      '- UserId:',
-      user.userId
-    );
+    // Put all the cards regions in a array
+    const deckListRegions = [];
+    for (const obj of deckList) {
+      const cardRegions = obj.card.regions;
+      for (const region of cardRegions) {
+        deckListRegions.push(region);
+      }
+    }
+    // make an object with regions and the number of card with them
+    const regionsCount = {};
+    deckListRegions.forEach((item) => {
+      if (regionsCount[item]) {
+        regionsCount[item]++;
+      } else {
+        regionsCount[item] = 1;
+      }
+    });
 
+    //selecting the 2 regions with the most cards in the deck
+    const deckTwoRegions = Object.entries(regionsCount)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 2)
+      .map((entry) => entry[0]);
+
+    //TODO AFFICHER LE MESSAGE D'ERREUR
     if (!user.userId) {
       console.log('You have to be connected to save your deck');
       return;
@@ -76,7 +92,7 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
         userId: user.userId,
         cards: deckList,
         public: false,
-        regions: 'whatever for now',
+        regions: deckTwoRegions,
       }),
     })
       .then((response) => {
@@ -113,7 +129,7 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
         // setMessage(error.message);
       });
   };
-  console.log('deck list: ', deckList);
+
   let cardsToShow = deckList.map((data) => {
     const lowerCaseRegion = data.card.regions[0].toLowerCase();
     const regionStyles = {

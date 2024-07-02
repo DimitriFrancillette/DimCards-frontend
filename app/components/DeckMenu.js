@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
   const [deckname, setDeckName] = useState('');
+  const [isPublic, setIsPublic] = useState(false);
 
   let user = useSelector((state) => state.user.value);
 
@@ -45,6 +46,10 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
     handleFilter(true);
   };
 
+  const handlePublic = () => {
+    setIsPublic(!isPublic);
+  };
+
   const handleSave = () => {
     // Put all the cards regions in a array
     const deckListRegions = [];
@@ -69,8 +74,8 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
       .sort((a, b) => b[1] - a[1])
       .slice(0, 2)
       .map((entry) => entry[0]);
-
     //TODO AFFICHER LE MESSAGE D'ERREUR
+
     if (!user.userId) {
       console.log('You have to be connected to save your deck');
       return;
@@ -83,7 +88,6 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
       console.log('Oops! Something went wrong with the deck...');
       return;
     }
-
     fetch('http://localhost:3000/decks/save', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
@@ -91,7 +95,7 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
         name: deckname,
         userId: user.userId,
         cards: deckList,
-        public: false,
+        public: isPublic,
         regions: deckTwoRegions,
       }),
     })
@@ -301,6 +305,16 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
 
       <div className='mt-8 h-2/3 flex flex-col gap-1 bg-slate-400 pt-2 px-2 rounded-md overflow-y-auto scrollbar-webkit'>
         {cardsToShow}
+      </div>
+      <div className='form-control items-center mt-4'>
+        <label className='cursor-pointer label min-w-44'>
+          <span className='label-text text-xl'>Deck is public</span>
+          <input
+            type='checkbox'
+            className='checkbox checkbox-success'
+            onClick={() => handlePublic()}
+          />
+        </label>
       </div>
       <div className='flex justify-center w-full mt-4'>
         <button

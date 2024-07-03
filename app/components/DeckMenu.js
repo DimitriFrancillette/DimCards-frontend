@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from 'react-redux';
 
 const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
   const [deckname, setDeckName] = useState('');
+  const [message, setMessage] = useState('');
   const [isPublic, setIsPublic] = useState(false);
 
   let user = useSelector((state) => state.user.value);
@@ -74,18 +75,21 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
       .sort((a, b) => b[1] - a[1])
       .slice(0, 2)
       .map((entry) => entry[0]);
-    //TODO AFFICHER LE MESSAGE D'ERREUR
 
     if (!user.userId) {
-      console.log('You have to be connected to save your deck');
+      setMessage('You have to be connected to save your deck');
       return;
     }
     if (!deckname) {
-      console.log('The deck name is missing');
+      setMessage('The deck name is missing');
+      return;
+    }
+    if (deckList.length < 1) {
+      setMessage('Your deck is empty');
       return;
     }
     if (!deckList) {
-      console.log('Oops! Something went wrong with the deck...');
+      setMessage('Oops! Something went wrong with the deck...');
       return;
     }
     fetch('http://localhost:3000/decks/save', {
@@ -315,6 +319,9 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
             onClick={() => handlePublic()}
           />
         </label>
+      </div>
+      <div className='mt-2 flex justify-center text-center text-success font-bold text-xl'>
+        {message}
       </div>
       <div className='flex justify-center w-full mt-4'>
         <button

@@ -95,7 +95,6 @@ const DeckBuilderPage = () => {
   };
 
   const addCardToDeck = (card) => {
-    console.log('CARDS', card);
     if (deckList.length === 0) {
       setTotalCardsCount(totalCardsCount + 1);
       setDeckList([...deckList, { card, number: 1 }]);

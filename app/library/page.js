@@ -14,23 +14,64 @@ const DecksLibraryPage = () => {
     fetch('http://localhost:3000/decks/public')
       .then((response) => response.json())
       .then((data) => {
-        console.log('DECKS FROM BACK', data);
         setApiDecks(data.decks);
       });
   }, []);
 
   let decks = apiDecks.map((data) => {
-    const fromNow = dayjs(data.created_at).fromNow();
+    const timePassed = dayjs(data.created_at).fromNow();
+    const lowerCaseRegion = data.regions[0].toLowerCase();
+    const regionStyles = {
+      demacia:
+        'w-80 h-80 rounded-box bg-demaciaColor flex flex-col justify-around border-gray-600 border-4',
+      noxus:
+        'w-80 h-80 rounded-box bg-noxusColor flex flex-col justify-around border-gray-600 border-4',
+      piltoverzaun:
+        'w-80 h-80 rounded-box bg-piltoverzaunColor flex flex-col justify-around border-gray-600 border-4',
+      freljord:
+        'w-80 h-80 rounded-box bg-freljordColor flex flex-col justify-around border-gray-600 border-4',
+      ionia:
+        'w-80 h-80 rounded-box bg-ioniaColor flex flex-col justify-around border-gray-600 border-4',
+      shadowisles:
+        'w-80 h-80 rounded-box bg-shadowislesColor flex flex-col justify-around border-gray-600 border-4',
+      bilgewater:
+        'w-80 h-80 rounded-box bg-bilgewaterColor flex flex-col justify-around border-gray-600 border-4',
+      shurima:
+        'w-80 h-80 rounded-box bg-shurimaColor flex flex-col justify-around border-gray-600 border-4',
+      bandlecity:
+        'w-80 h-80 rounded-box bg-bandlecityColor flex flex-col justify-around border-gray-600 border-4',
+      targon:
+        'w-80 h-80 rounded-box bg-targonColor flex flex-col justify-around border-gray-600 border-4',
+      runeterra:
+        'w-80 h-80 rounded-box bg-runeterraColor flex flex-col justify-around border-gray-600 border-4',
+    };
+
+    const firstRegion = data.regions[0];
+    const secondRegion = data.regions[1];
+    let firstRegionCount = 0;
+    let secondRegionCount = 0;
+
+    console.log(data.cards);
+    for (const card of data.cards) {
+      if (card.regionRefs[0] === firstRegion) {
+        firstRegionCount += card.number;
+      }
+
+      if (card.regionRefs[0] === secondRegion) {
+        secondRegionCount += card.number;
+      }
+    }
+
     return (
-      <div className='' key={data._id} name={data.name} regions={data.regions}>
-        <div className='w-80 h-80 rounded-box bg-demaciaColor flex flex-col justify-around border-gray-600 border-4'>
+      <div key={data._id} name={data.name} regions={data.regions}>
+        <div className={regionStyles[lowerCaseRegion]}>
           <div className='flex flex-col items-center justify-around my-4'>
             <p className='text-3xl mb-6'>{data.name}</p>
             <p>
               Created by{' '}
               <span className='italic underline'>{data.userId.username}</span>
             </p>
-            <div>{fromNow}</div>
+            <div>{timePassed}</div>
           </div>
           <div className='w-full flex justify-center'>
             <div className='divider divider-primary w-4/5'></div>
@@ -38,21 +79,23 @@ const DecksLibraryPage = () => {
           <div className='flex justify-around'>
             <div>
               <Image
-                src={`/img/icon-Demacia.png`}
+                src={`/img/icon-${firstRegion}.png`}
                 width={48}
                 height={48}
-                alt={`Demacia Icon`}
+                alt={`${firstRegion} Icon`}
               />
-              <p className='text-center text-gray-100'>13</p>
+              <p className='text-center text-gray-100'>{firstRegionCount}</p>
             </div>
             <div>
               <Image
-                src={`/img/icon-Ionia.png`}
+                src={`/img/icon-${secondRegion}.png`}
                 width={48}
                 height={48}
-                alt={`Ionia Icon`}
+                alt={`${secondRegion} Icon`}
               />
-              <p className='text-center text-gray-100'>12</p>
+              <div className='text-center text-gray-100'>
+                {secondRegionCount}
+              </div>
             </div>
           </div>
         </div>
@@ -65,139 +108,6 @@ const DecksLibraryPage = () => {
       <Header />
       <div className='min-h-svh flex flex-col justify-center items-center gap-14'>
         <div className='flex flex-wrap justify-center items-center gap-6'>
-          {/* ONE DECK ---------------------------------------------------------- */}
-          <div className='w-80 h-80 rounded-box bg-demaciaColor flex flex-col justify-around border-gray-600 border-4'>
-            <div className='flex flex-col items-center justify-around my-4'>
-              <p className='text-3xl mb-6'>Demacia deck</p>
-              <p>
-                Created by <span className='italic underline'>Dim</span>
-              </p>
-              <p>15 minutes ago</p>
-            </div>
-            <div className='w-full flex justify-center'>
-              <div className='divider divider-primary w-4/5'></div>
-            </div>
-            <div className='flex justify-around'>
-              <div>
-                <Image
-                  src={`/img/icon-Demacia.png`}
-                  width={48}
-                  height={48}
-                  alt={`Demacia Icon`}
-                />
-                <p className='text-center text-gray-100'>13</p>
-              </div>
-              <div>
-                <Image
-                  src={`/img/icon-Ionia.png`}
-                  width={48}
-                  height={48}
-                  alt={`Ionia Icon`}
-                />
-                <p className='text-center text-gray-100'>12</p>
-              </div>
-            </div>
-          </div>
-          {/* ONE DECK ---------------------------------------------------------- */}
-
-          <div className='w-80 h-80 rounded-box bg-freljordColor flex flex-col justify-around border-gray-600 border-4'>
-            <div className='flex flex-col items-center my-4'>
-              <p className='text-3xl mb-6'>Ash deck</p>
-              <p>
-                Created by <span className='italic underline'>Dim</span>
-              </p>
-              <p>2 hours ago</p>
-            </div>
-            <div className='w-full flex justify-center'>
-              <div className='divider divider-primary w-4/5'></div>
-            </div>
-            <div className='flex justify-around'>
-              <div>
-                <Image
-                  src={`/img/icon-Freljord.png`}
-                  width={48}
-                  height={48}
-                  alt={`Freljord Icon`}
-                />
-                <p className='text-center text-slate-200'>13</p>
-              </div>
-              <div>
-                <Image
-                  src={`/img/icon-BandleCity.png`}
-                  width={48}
-                  height={48}
-                  alt={`BandleCity Icon`}
-                />
-                <p className='text-center text-slate-200'>12</p>
-              </div>
-            </div>
-          </div>
-
-          <div className='w-80 h-80 rounded-box bg-noxusColor flex flex-col justify-around border-gray-600 border-4'>
-            <div className='flex flex-col items-center my-4'>
-              <p className='text-3xl mb-6'>Draven Deck</p>
-              <p>
-                Created by<span className='italic underline'>Dim</span>
-              </p>
-              <p>1 day ago</p>
-            </div>
-            <div className='w-full flex justify-center'>
-              <div className='divider divider-primary w-4/5'></div>
-            </div>
-            <div className='flex justify-around'>
-              <div>
-                <Image
-                  src={`/img/icon-Noxus.png`}
-                  width={48}
-                  height={48}
-                  alt={`Noxus Icon`}
-                />
-                <p className='text-center text-slate-200'>28</p>
-              </div>
-              <div>
-                <Image
-                  src={`/img/icon-Targon.png`}
-                  width={48}
-                  height={48}
-                  alt={`Targon Icon`}
-                />
-                <p className='text-center text-slate-200'>12</p>
-              </div>
-            </div>
-          </div>
-
-          <div className='w-80 h-80 rounded-box bg-shadowislesColor flex flex-col justify-around border-gray-600 border-4'>
-            <div className='flex flex-col items-center my-4'>
-              <p className='text-3xl mb-6'>Undying DECK</p>
-              <p>
-                Created by <span className='italic underline'>Dim</span>
-              </p>
-              <p>2 days ago</p>
-            </div>
-            <div className='w-full flex justify-center'>
-              <div className='divider divider-primary w-4/5'></div>
-            </div>
-            <div className='flex justify-around'>
-              <div>
-                <Image
-                  src={`/img/icon-ShadowIsles.png`}
-                  width={48}
-                  height={48}
-                  alt={`ShadowIsles Icon`}
-                />
-                <p className='text-center text-slate-200'>15</p>
-              </div>
-              <div>
-                <Image
-                  src={`/img/icon-Shurima.png`}
-                  width={48}
-                  height={48}
-                  alt={`Shurima Icon`}
-                />
-                <p className='text-center text-slate-200'>25</p>
-              </div>
-            </div>
-          </div>
           {decks}
         </div>
       </div>

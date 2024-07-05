@@ -1,7 +1,7 @@
 import Image from 'next/image';
 import { FaPen } from 'react-icons/fa';
 import { useState } from 'react';
-import { useDispatch, useSelector } from 'react-redux';
+import { useSelector } from 'react-redux';
 
 const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
   const [deckname, setDeckName] = useState('');

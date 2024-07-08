@@ -5,9 +5,9 @@ import Footer from './components/Footer.js';
 
 export default function Home() {
   return (
-    <div>
+    <div className='flex flex-col justify-between h-screen'>
       <Header />
-      <div className='mt-12 h-svh'>
+      <div className='mt-12 h-full'>
         <div className='flex justify-center'>
           <h1 className='text-5xl'>Build your LoR Decks</h1>
         </div>

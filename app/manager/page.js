@@ -57,6 +57,10 @@ const DecksManagerPage = () => {
   return (
     <div>
       <Header />
+      <div className='px-4 pt-6'>
+        <h2 className='text-5xl font-semibold'>Decks Manager</h2>
+        <p className='text-lg'>The list of a user's decks</p>
+      </div>
       <div className='min-h-svh flex flex-col justify-center items-center gap-14'>
         <div className='flex flex-wrap justify-center items-center gap-6'>
           {decks}

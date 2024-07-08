@@ -31,6 +31,10 @@ const DecksLibraryPage = () => {
   return (
     <div>
       <Header />
+      <div className='px-4 pt-6'>
+        <h2 className='text-5xl font-semibold'>Deck Library</h2>
+        <p className='text-lg'>The public decks made by all users </p>
+      </div>
       <div className='min-h-svh flex flex-col justify-center items-center gap-14'>
         <div className='flex flex-wrap justify-center items-center gap-6'>
           {decks}

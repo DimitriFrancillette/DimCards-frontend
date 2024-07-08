@@ -33,8 +33,7 @@ const BuilderCardsDisplay = ({
     let cardStyle =
       'mb-4 transition ease-in-out  hover:-translate-y-1 hover:scale-110 duration-300';
     if (findCardInDeck !== undefined && findCardInDeck.number > 2) {
-      cardStyle =
-        'mb-4 transition ease-in-out  hover:-translate-y-1 hover:scale-110 duration-300 brightness-50';
+      cardStyle = 'mb-4 transition duration-300 brightness-50';
     }
 
     return (

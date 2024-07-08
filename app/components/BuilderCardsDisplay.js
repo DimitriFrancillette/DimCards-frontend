@@ -30,6 +30,13 @@ const BuilderCardsDisplay = ({
       circles.push(<div key={i} className={style} />);
     }
 
+    let cardStyle =
+      'mb-4 transition ease-in-out  hover:-translate-y-1 hover:scale-110 duration-300';
+    if (findCardInDeck !== undefined && findCardInDeck.number > 2) {
+      cardStyle =
+        'mb-4 transition ease-in-out  hover:-translate-y-1 hover:scale-110 duration-300 brightness-50';
+    }
+
     return (
       <div
         className='flex flex-col items-center mb-6 mx-2 cursor-pointer'
@@ -55,7 +62,7 @@ const BuilderCardsDisplay = ({
         }
       >
         <Image
-          className='mb-4 transition ease-in-out  hover:-translate-y-1 hover:scale-110 duration-300'
+          className={cardStyle}
           src={data.assets[0].gameAbsolutePath}
           width={250}
           height={250}

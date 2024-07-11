@@ -51,18 +51,22 @@ const DecksManagerPage = () => {
       );
     });
   } else {
-    decks = 'You have to be connected to see all your decks';
+    decks = (
+      <p className='text-4xl font-bold'>Sign In to see your deck collection</p>
+    );
   }
 
   return (
-    <div>
-      <Header />
-      <div className='px-4 pt-6'>
-        <h2 className='text-5xl font-semibold'>Decks Manager</h2>
-        <p className='text-lg'>The list of a user's decks</p>
+    <div className='min-h-screen flex flex-col justify-between'>
+      <div>
+        <Header />
+        <div className='px-4 pt-6'>
+          <h2 className='text-5xl font-semibold'>Decks Manager</h2>
+          <p className='text-lg'>The list of a user's decks</p>
+        </div>
       </div>
-      <div className='min-h-svh flex flex-col justify-center items-center gap-14'>
-        <div className='flex flex-wrap justify-center items-center gap-6'>
+      <div>
+        <div className='flex flex-wrap justify-center items-center gap-6 my-6'>
           {decks}
         </div>
       </div>

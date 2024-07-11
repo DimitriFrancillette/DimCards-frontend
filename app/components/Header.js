@@ -28,7 +28,7 @@ const Header = () => {
   } else {
     connexionArea = (
       <div className='flex justify-evenly items-center mt-1 mr-4 min-w-60'>
-        Hello {user.username}
+        <div className='text-success font-semibold'>Hello {user.username}</div>
         <div className='btn-ghost rounded-lg'>
           <UserModal />
         </div>

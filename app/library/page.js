@@ -15,18 +15,23 @@ const DecksLibraryPage = () => {
       });
   }, []);
 
-  let decks = apiDecks.map((data) => {
-    return (
-      <Deck
-        deckId={data._id}
-        name={data.name}
-        regions={data.regions}
-        createdDate={data.created_at}
-        cards={data.cards}
-        userInfo={data.userId}
-      />
-    );
-  });
+  let decks;
+  if (apiDecks.length > 0) {
+    decks = apiDecks.map((data) => {
+      return (
+        <Deck
+          deckId={data._id}
+          name={data.name}
+          regions={data.regions}
+          createdDate={data.created_at}
+          cards={data.cards}
+          userInfo={data.userId}
+        />
+      );
+    });
+  } else {
+    decks = <p className='text-4xl font-bold'>There is no public deck yet</p>;
+  }
 
   return (
     <div className='min-h-screen flex flex-col justify-between'>
@@ -37,7 +42,7 @@ const DecksLibraryPage = () => {
           <p className='text-lg'>The public decks made by all users </p>
         </div>
       </div>
-      <div className=''>
+      <div>
         <div className='flex flex-wrap justify-center items-center gap-6 my-6'>
           {decks}
         </div>

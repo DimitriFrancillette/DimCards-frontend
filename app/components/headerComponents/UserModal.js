@@ -77,9 +77,9 @@ const UserModal = () => {
     <div>
       <IoSettingsSharp
         className='size-10'
-        onClick={() => document.getElementById('my_modal_2').showModal()}
+        onClick={() => document.getElementById('user_modal').showModal()}
       />
-      <dialog id='my_modal_2' className='modal'>
+      <dialog id='user_modal' className='modal'>
         <div className='modal-box bg-gradient-to-br from-accent from-5% to-primary'>
           <h3 className='font-bold text-4xl text-center mb-4'>User settings</h3>
 

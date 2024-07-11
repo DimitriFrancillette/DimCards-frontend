@@ -118,6 +118,7 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
       })
       .then((data) => {
         console.log(data);
+        document.getElementById('deck_saved_modal').showModal();
         // if (data.user) {
         //   dispatch(
         //     login({
@@ -331,6 +332,14 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
           Save deck
         </button>
       </div>
+      <dialog id='deck_saved_modal' className='modal'>
+        <div className='modal-box flex justify-center text-lg text-success'>
+          <p className='py-4 font-bold'>Your deck has been saved !</p>
+        </div>
+        <form method='dialog' className='modal-backdrop'>
+          <button>close</button>
+        </form>
+      </dialog>
     </div>
   );
 };

@@ -117,21 +117,7 @@ const DeckMenu = ({ handleFilter, deckList, removeCardFromDeck }) => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
         document.getElementById('deck_saved_modal').showModal();
-        // if (data.user) {
-        //   dispatch(
-        //     login({
-        //       token: data.user.token,
-        //       username: data.user.username,
-        //       email: data.user.email,
-        //     })
-        //   );
-        //   setMessage(data.message);
-        //   setUsername('');
-        //   setPassword('');
-        //   return;
-        // }
       })
       .catch((error) => {
         console.log(error);

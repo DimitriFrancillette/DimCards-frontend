@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import Image from 'next/image';
+import CardImage from './CardImage';
 
 const BuilderCardsDisplay = ({
   pageName,
@@ -37,40 +37,12 @@ const BuilderCardsDisplay = ({
     }
 
     return (
-      <div
-        className='flex flex-col items-center mb-6 mx-2 cursor-pointer'
-        key={data._id}
-        name={data.name}
-        regions={data.regions}
-        cost={data.cost}
-        type={data.type}
-        keywords={data.keywords}
-        rarity={data.rarity}
-        cardcode={data.cardCode}
-        onClick={() =>
-          addCardToDeck({
-            id: data._id,
-            name: data.name,
-            regions: data.regions,
-            cost: data.cost,
-            type: data.type,
-            keywords: data.keywords,
-            cardCode: data.cardCode,
-            rarity: data.rarity,
-          })
-        }
-      >
-        <Image
-          className={cardStyle}
-          src={data.assets[0].gameAbsolutePath}
-          width={250}
-          height={250}
-          alt={data.name}
-          style={{ width: 'auto', height: 'auto' }}
-          loading='lazy'
-        />
-        <div className='flex gap-1'>{circles}</div>
-      </div>
+      <CardImage
+        data={data}
+        cardStyle={cardStyle}
+        circles={circles}
+        addCardToDeck={addCardToDeck}
+      />
     );
   });
 
@@ -180,41 +152,19 @@ const BuilderCardsDisplay = ({
         }
         circles.push(<div key={i} className={style} />);
       }
+
+      let cardStyle =
+        'mb-4 transition ease-in-out  hover:-translate-y-1 hover:scale-110 duration-300';
+      if (findCardInDeck !== undefined && findCardInDeck.number > 2) {
+        cardStyle = 'mb-4 transition duration-300 brightness-50';
+      }
       return (
-        <div
-          className='flex flex-col items-center mb-6 mx-2 cursor-pointer'
-          key={data._id}
-          name={data.name}
-          regions={data.regions}
-          cost={data.cost}
-          type={data.type}
-          keywords={data.keywords}
-          rarity={data.rarity}
-          cardcode={data.cardCode}
-          onClick={() =>
-            addCardToDeck({
-              id: data._id,
-              name: data.name,
-              regions: data.regions,
-              cost: data.cost,
-              type: data.type,
-              keywords: data.keywords,
-              cardCode: data.cardCode,
-              rarity: data.rarity,
-            })
-          }
-        >
-          <Image
-            className='mb-4 transition ease-in-out  hover:-translate-y-1 hover:scale-110 duration-300'
-            src={data.assets[0].gameAbsolutePath}
-            width={250}
-            height={250}
-            alt={data.name}
-            style={{ width: 'auto', height: 'auto' }}
-            loading='lazy'
-          />
-          <div className='flex gap-1'>{circles}</div>
-        </div>
+        <CardImage
+          data={data}
+          cardStyle={cardStyle}
+          circles={circles}
+          addCardToDeck={addCardToDeck}
+        />
       );
     });
   }

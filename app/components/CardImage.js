@@ -27,7 +27,7 @@ export default function CardImage({ data, cardStyle, circles, addCardToDeck }) {
     >
       <Image
         className={cardStyle}
-        src={data.assets[0].gameAbsolutePath}
+        src={data.assets[0].dimCloudPath}
         width={250}
         height={250}
         alt={data.name}
